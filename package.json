@@ -1,0 +1,14 @@
+{
+  "name": "bayan-reading-site",
+  "private": true,
+  "scripts": {
+    "build:avatar": "esbuild js/avatar-library.js --bundle --minify --legal-comments=external --outfile=js/avatar-library.bundle.js --format=iife"
+  },
+  "dependencies": {
+    "@dicebear/avataaars": "9.4.2",
+    "@dicebear/core": "9.4.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
