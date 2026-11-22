@@ -2787,7 +2787,7 @@ th { font-size: 15px; color: var(--muted); }
 .dark-visual-mode .trust-strip div {
   border-inline-end-color: var(--line);
 }
-.dark-visual-mode button:not(.brand):not(.footer-link):not(.featured-teacher-button):not(.teacher-directory-card-button):not(.teacher-profile-back):not(.role-choice):not(.onboarding-option):not(.level-row):not(.nav-btn):not(.btn-blue):not(.btn-green):not(.btn-pink):not(.btn-red):not(.btn-gold):not(.btn-buy):not(.theme-toggle-button):not(.notification-button),
+.dark-visual-mode button:not(.brand):not(.footer-link):not(.featured-teacher-button):not(.teacher-directory-card-button):not(.teacher-profile-back):not(.role-choice):not(.onboarding-option):not(.level-row):not(.nav-btn):not(.btn-blue):not(.btn-green):not(.btn-pink):not(.btn-red):not(.btn-gold):not(.btn-buy):not(.theme-toggle-button):not(.notification-button):not(.chip):not([data-font-size]),
 .dark-visual-mode .role-choice,
 .dark-visual-mode .checkout-plan,
 .dark-visual-mode .mission-option,
@@ -3381,6 +3381,10 @@ th { font-size: 15px; color: var(--muted); }
   background: #24394e !important;
   color: #fff !important;
   box-shadow: 0 4px 0 #1d5d8f !important;
+}
+.dark-visual-mode .font-size-switch {
+  border-color: var(--line) !important;
+  background: var(--card) !important;
 }
 .dark-visual-mode .btn-blue,
 .dark-visual-mode .btn-green,
