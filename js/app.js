@@ -123,6 +123,11 @@ const T = {
     teacherProfileNotice: "النبذة والتخصصات والخبرة والمؤهلات وأسلوب التدريس ستظهر للعامة في صفحة «معلمينا». لا تكتب معلومات خاصة أو بيانات تواصل.",
     teacherYearsExperience: "سنوات خبرة",
     noTeachersAvailable: "لا يوجد معلمون نشطون للعرض حالياً.",
+    featuredTeachersTitle: "أشهر المعلمين لدينا",
+    featuredTeachersIntro: "تعرّف على المعلمين المميزين في رحلة طفلك داخل درب البيان.",
+    featuredTeachersSearch: "ابحث عن معلم بالاسم أو التخصص",
+    featuredTeachersSearchEmpty: "لا توجد نتائج مطابقة لبحثك.",
+    featuredTeachersViewAll: "عرض كل المعلمين",
     startFree: "أنشئ حساباً", login: "تسجيل الدخول", logout: "خروج",
     heroTag: "عربي وإنجليزي", heroTitle1: "نتعلم القراءة…", heroTitle2: "ونكبر على القيم",
     heroText: "قصص مصورة مشكولة ومسموعة، بأبطال يحبهم الأطفال، تعلّم القراءة والأخلاق ومعرفة الله.",
@@ -307,6 +312,13 @@ const T = {
     noSubscription: "لا يوجد اشتراك فعال",
     subscriptionManagedManually: "هذه الحالة إدارية فقط حتى ربط الدفع والـ Backend.",
     lockedForSubscription: "يتطلب اشتراكًا",
+    paidContent: "كتاب مدفوع",
+    buyBook: "شراء الكتاب",
+    bookPurchased: "تم شراء الكتاب وفتحه لك.",
+    purchaseCheckout: "إتمام شراء الكتاب",
+    purchaseDemoHint: "شراء تجريبي — لن يتم خصم أي مبلغ حقيقي.",
+    protectionNotice: "عرض القراءة محميّ بصريًا ولا يُسمح بتنزيل صفحات الكتاب أو نسخ نصه.",
+    securityLimitNotice: "يمكن إخفاء الصفحة عند تبديل التطبيقات؛ الحماية الكاملة ضد تصوير الجهاز تتطلب DRM وخادمًا مؤمّنًا.",
     freeLabel: "مجاني",
     hello: "أهلاً", helloSub: "هيا نكمل رحلتنا اليوم", continueReading: "أكمل القراءة", read: "اقرأ",
     journeyTitle: "رحلتي التعليمية — 12 مستوى", stars: "نجوم", streak: "أيام متتالية", booksRead: "كتب", minutes: "دقيقة",
@@ -315,13 +327,17 @@ const T = {
     level: "المستوى", series: "السلسلة", all: "الكل", sRabbi: "أتعرّف على ربي", sAdhkar: "أذكاري", sAkhlaq: "أخلاقي",
     bothLangs: "عربي + English", comingSoon: "كتب هذا المستوى قادمة قريباً إن شاء الله.",
     back: "رجوع", prev: "السابق", next: "التالي", listen: "استمع", recStart: "سجّل قراءتي", recStop: "إيقاف التسجيل", recDone: "سجّل من جديد",
-    recStarting: "جارٍ تشغيل الميكروفون…", recSaving: "جارٍ حفظ التسجيل…",
-    recSavedMsg: "تم حفظ قراءتك على هذا المتصفح! يستطيع والدك ومعلمك سماعها منه.",
-    recordingPermissionHint: "أول مرة، اسمح باستخدام الميكروفون عندما يطلب المتصفح ذلك. التسجيل محفوظ على هذا المتصفح فقط.",
+    recStarting: "جارٍ تشغيل الميكروفون…", recSaving: "جارٍ تجهيز التسجيل…", recSending: "جارٍ إرسال التسجيل…",
+    recReviewTitle: "استمع لتسجيلك قبل إرساله", recSentTitle: "تم إرسال تسجيلك", recReviewHint: "لو مش عاجبك، سجّل مرة تانية قبل الإرسال.",
+    recRetake: "إعادة التسجيل", recSend: "إرسال التسجيل",
+    recSavedMsg: "تم إرسال التسجيل وحفظه! يستطيع والدك ومعلمك سماعه.",
+    recPlay: "تشغيل التسجيل", recPause: "إيقاف التسجيل مؤقتاً", recSeek: "موضع التسجيل",
+    recordingPermissionHint: "أول مرة، اسمح باستخدام الميكروفون عندما يطلب المتصفح ذلك. التسجيل يُحفظ على هذا المتصفح بعد إرساله.",
     recordingNotSupported: "التسجيل الصوتي غير متاح هنا. افتح الموقع عبر localhost أو HTTPS واستخدم متصفحاً حديثاً.",
     recordingMicDenied: "لم يُسمح باستخدام الميكروفون. وافق على الإذن من المتصفح ثم جرّب مجدداً.",
     recordingMicMissing: "لم نعثر على ميكروفون متصل بهذا الجهاز.",
     recordingSaveFailed: "تعذر حفظ التسجيل. تحقق من مساحة المتصفح ثم أعد المحاولة.",
+    recordingPlaybackFailed: "تعذر تشغيل التسجيل. حاول مرة أخرى.",
     toQuiz: "إلى الأسئلة",
     quizTag: "سؤال القصة", quizQ: "سورة الإخلاص تعدل…", right: "أحسنت! +3 نجوم", wrong: "حاول مرة أخرى، أنت قادر!", toGame: "إلى لعبة الحروف",
     gameTag: "لعبة الحروف", gameTitle: "أي حرف ينقص الكلمة؟", gameHelp: "اضغط على الحرف ثم على المربع الفارغ.",
@@ -367,7 +383,7 @@ const T = {
     addChild: "+ إضافة طفل", recordingsTitle: "تسجيلات أطفالك", recordingsSub: "اسمع قراءة طفلك، وأرسل له نجمة تشجيعاً.",
     sendStar: "أرسل نجمة", play: "تشغيل", weekTitle: "دقائق القراءة هذا الأسبوع", subTitle: "الاشتراك",
     subPlan: "الخطة السنوية — تتجدد بعد 11 شهراً", reminder: "تذكير يومي بالقراءة", manage: "إدارة الاشتراك",
-    aboutTitle: "من نحن", aboutP1: "«درب البيان» موقع من «طريق البيان» لتعليم الأطفال القراءة بالعربية والإنجليزية، بقصص مصورة تغرس حب الله وحسن الخلق.",
+    aboutTitle: "من نحن", aboutP1: "«درب البيان» منصة لتعليم الأطفال القراءة بالعربية والإنجليزية، بقصص مصورة تغرس حب الله وحسن الخلق.",
     aboutP2: "كل قصة مشكولة ومسموعة، وكل آية وحديث مذكور مصدره، ويراجع المحتوى مختص شرعي قبل النشر.",
     contactTitle: "تواصل معنا", emailLabel: "البريد", whatsapp: "واتساب", hours: "أوقات الرد", hoursText: "من الأحد إلى الخميس",
     yourName: "اسمك", message: "رسالتك", send: "إرسال", sentMsg: "وصلتنا رسالتك، جزاك الله خيراً!", slogan: "مكان لكل قارئ.. في كل عمر",
@@ -508,11 +524,13 @@ const T = {
     encouragementOptions: ["فخور بك!", "قراءة رائعة!", "واصل التقدم!"],
     encouragementReceived: "وصلت رسالة التشجيع.",
     profileTitle: "ملفي وإنجازاتي",
-    profileIntro: "هنا تتابع نجومك وأوسمتك ورسائل التشجيع، ويمكنك تعديل بياناتك.",
+    profileIntro: "هنا تتابع نجومك وكتبك وأوسمتك ورسائل التشجيع.",
     editMyDetails: "بياناتي",
     profileSaved: "تم حفظ بياناتك بنجاح.",
     profileInvalid: "تحقق من الاسم والبريد والعمر، وتأكد أن البريد غير مستخدم.",
     profileEmailHint: "يُستخدم هذا البريد لتسجيل الدخول.",
+    profileEmailReadOnlyHint: "لا يمكن تغيير البريد الإلكتروني من هذه الصفحة.",
+    profileReadingLanguage: "لغة القراءة المفضلة",
     profilePhoto: "صورتي الشخصية",
     profilePhotoHint: "اختر صورة واضحة؛ سيتم تصغيرها تلقائيًا لتناسب حسابك.",
     newPasswordOptional: "كلمة مرور جديدة (اختياري)",
@@ -592,6 +610,11 @@ const T = {
     teacherProfileNotice: "Your bio, specialties, experience, qualifications and teaching approach will appear publicly in Our teachers. Do not include private or contact information.",
     teacherYearsExperience: "years experience",
     noTeachersAvailable: "There are no active teachers to display right now.",
+    featuredTeachersTitle: "Our featured teachers",
+    featuredTeachersIntro: "Meet the teachers helping children grow through Darb Al-Bayan.",
+    featuredTeachersSearch: "Search by teacher name or specialty",
+    featuredTeachersSearchEmpty: "No teachers match your search.",
+    featuredTeachersViewAll: "View all teachers",
     startFree: "Create account", login: "Log in", logout: "Log out",
     heroTag: "Arabic & English", heroTitle1: "Learning to read…", heroTitle2: "growing up with values",
     heroText: "Illustrated stories with audio, starring heroes kids love, that teach reading, good manners and knowing Allah.",
@@ -776,6 +799,13 @@ const T = {
     noSubscription: "No active subscription",
     subscriptionManagedManually: "This is an administrative status only until payment and a backend are connected.",
     lockedForSubscription: "Subscription required",
+    paidContent: "Paid book",
+    buyBook: "Buy book",
+    bookPurchased: "The book was purchased and unlocked for you.",
+    purchaseCheckout: "Complete book purchase",
+    purchaseDemoHint: "Demo purchase — no real amount will be charged.",
+    protectionNotice: "The reader is visually protected and prevents downloading or copying book pages.",
+    securityLimitNotice: "The page can be hidden when apps switch; complete screenshot and screen-recording protection requires DRM and a secure backend.",
     freeLabel: "Free",
     hello: "Hi", helloSub: "Let’s continue our journey today", continueReading: "Continue reading", read: "Read",
     journeyTitle: "My learning path — 12 levels", stars: "Stars", streak: "Day streak", booksRead: "Books", minutes: "Minutes",
@@ -784,13 +814,17 @@ const T = {
     level: "Level", series: "Series", all: "All", sRabbi: "Know My Lord", sAdhkar: "My Adhkar", sAkhlaq: "My Manners",
     bothLangs: "English + عربي", comingSoon: "Books for this level are coming soon, insha’Allah.",
     back: "Back", prev: "Previous", next: "Next", listen: "Listen", recStart: "Record my reading", recStop: "Stop recording", recDone: "Record again",
-    recStarting: "Starting microphone…", recSaving: "Saving recording…",
-    recSavedMsg: "Your reading is saved in this browser! Parents and teachers can listen here.",
-    recordingPermissionHint: "Allow microphone access when your browser asks. Recordings are saved only in this browser.",
+    recStarting: "Starting microphone…", recSaving: "Preparing recording…", recSending: "Sending recording…",
+    recReviewTitle: "Listen to your recording before sending", recSentTitle: "Your recording was sent", recReviewHint: "Not happy with it? Record again before sending.",
+    recRetake: "Record again", recSend: "Send recording",
+    recSavedMsg: "Your recording was sent and saved. Your parent and teacher can listen to it.",
+    recPlay: "Play recording", recPause: "Pause recording", recSeek: "Recording position",
+    recordingPermissionHint: "Allow microphone access when your browser asks. Recordings are saved in this browser after you send them.",
     recordingNotSupported: "Audio recording is unavailable here. Open the site over localhost or HTTPS in a modern browser.",
     recordingMicDenied: "Microphone access was not allowed. Grant permission in your browser and try again.",
     recordingMicMissing: "No microphone was found on this device.",
     recordingSaveFailed: "The recording could not be saved. Check your browser storage and try again.",
+    recordingPlaybackFailed: "The recording could not be played. Please try again.",
     toQuiz: "To the questions",
     quizTag: "Story question", quizQ: "Surat al-Ikhlas is equal to…", right: "Well done! +3 stars", wrong: "Try again, you can do it!", toGame: "To the letter game",
     gameTag: "Letter game", gameTitle: "Which letter is missing?", gameHelp: "Tap a letter, then the empty box.",
@@ -836,7 +870,7 @@ const T = {
     addChild: "+ Add a child", recordingsTitle: "Your children’s recordings", recordingsSub: "Listen, then send a star.",
     sendStar: "Send a star", play: "Play", weekTitle: "Reading minutes this week", subTitle: "Subscription",
     subPlan: "Yearly plan — renews in 11 months", reminder: "Daily reading reminder", manage: "Manage subscription",
-    aboutTitle: "About us", aboutP1: "Darb Al-Bayan is a Tariq Al-Bayan website that teaches children to read in Arabic and English, through illustrated stories that grow love of Allah and good character.",
+    aboutTitle: "About us", aboutP1: "Darb Al-Bayan is an educational platform that teaches children to read in Arabic and English through illustrated stories that nurture love of Allah and good character.",
     aboutP2: "Every story is voweled and narrated, every verse and hadith has its source, and a qualified scholar reviews the content before it is published.",
     contactTitle: "Contact us", emailLabel: "Email", whatsapp: "WhatsApp", hours: "Reply hours", hoursText: "Sunday to Thursday",
     yourName: "Your name", message: "Your message", send: "Send", sentMsg: "We received your message, may Allah reward you!", slogan: "A place for every reader… at every age",
@@ -977,11 +1011,13 @@ const T = {
     encouragementOptions: ["Proud of you!", "Lovely reading!", "Keep it up!"],
     encouragementReceived: "Your encouragement was sent.",
     profileTitle: "My profile & achievements",
-    profileIntro: "Track your stars, badges and encouragement. You can also update your details here.",
+    profileIntro: "Track your stars, books, badges and encouragement here.",
     editMyDetails: "My details",
     profileSaved: "Your details were saved.",
     profileInvalid: "Check your name, email and age, and make sure the email is not already in use.",
     profileEmailHint: "This email is used to sign in.",
+    profileEmailReadOnlyHint: "The email address cannot be changed here.",
+    profileReadingLanguage: "Preferred reading language",
     profilePhoto: "Profile photo",
     profilePhotoHint: "Choose a clear photo; it will be resized to fit your account.",
     newPasswordOptional: "New password (optional)",
@@ -1043,8 +1079,11 @@ const T = {
 const ICONS = {
   book: "M4 5.5C6.5 4 9.5 4 12 6c2.5-2 5.5-2 8-.5v13c-2.5-1.5-5.5-1.5-8 .5-2.5-2-5.5-2-8-.5z M12 6v13",
   mic: "M12 3a3 3 0 013 3v6a3 3 0 01-6 0V6a3 3 0 013-3zM5 11a7 7 0 0014 0M12 18v3",
+  play: "M8 5v14l11-7z",
+  pause: "M8 5v14M16 5v14",
   star: "M12 3l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.8z",
   chart: "M4 20V10M10 20V4M16 20v-7M22 20H2",
+  bell: "M18 16v-5a6 6 0 00-12 0v5l-2 2h16zM10 21h4",
   check: "M6 12.5l4 4L18 8",
   lock: "M7 11V8a5 5 0 0110 0v3M6 11h12v9H6z"
 };
@@ -1061,7 +1100,87 @@ let activeMediaRecorder;
 let activeRecordingStream;
 let activeRecordingStartedAt = 0;
 let activeRecordingDetails;
+let pendingReadingRecording;
 const recordingAudioUrls = new Map();
+
+function clearPendingReadingRecording() {
+  if (pendingReadingRecording?.url) URL.revokeObjectURL(pendingReadingRecording.url);
+  pendingReadingRecording = null;
+}
+
+function recordingDurationLabel(seconds) {
+  return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
+}
+
+function recordingWaveformBars() {
+  return Array.from({ length: 44 }, (_, index) => {
+    const envelope = 0.25 + 0.75 * Math.sin((index + 1) / 45 * Math.PI);
+    const detail = 0.2 + 0.8 * Math.abs(Math.sin(index * 1.71 + 0.4));
+    const height = Math.round(14 + envelope * detail * 82);
+    return `<i style="--wave-height:${height}%"></i>`;
+  }).join("");
+}
+
+function bindRecordingPreviewPlayer() {
+  const player = document.querySelector(".recording-audio-player");
+  if (!player) return;
+  const audio = player.querySelector("audio");
+  const button = player.querySelector("[data-recording-toggle]");
+  const waveform = player.querySelector(".recording-waveform-track");
+  const seek = player.querySelector("[data-recording-seek]");
+  const currentLabel = player.querySelector("[data-recording-current]");
+  const durationLabel = player.querySelector("[data-recording-duration]");
+  if (!audio || !button || !waveform || !seek || !currentLabel || !durationLabel) return;
+
+  const fallbackDuration = Number(player.dataset.duration) || 0;
+  const actualDuration = () => Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0;
+  const update = () => {
+    const duration = actualDuration();
+    const displayedDuration = duration || fallbackDuration;
+    const current = Math.floor(audio.currentTime || 0);
+    const progress = duration ? Math.min(1, Math.max(0, audio.currentTime / duration)) : 0;
+    const isPlaying = !audio.paused && !audio.ended;
+    currentLabel.textContent = recordingDurationLabel(current);
+    durationLabel.textContent = recordingDurationLabel(Math.floor(displayedDuration));
+    seek.disabled = !duration;
+    seek.value = String(Math.round(progress * 1000));
+    seek.setAttribute("aria-valuetext", `${recordingDurationLabel(current)} / ${recordingDurationLabel(Math.floor(displayedDuration))}`);
+    waveform.style.setProperty("--recording-progress", `${progress * 100}%`);
+    button.setAttribute("aria-label", isPlaying ? t().recPause : t().recPlay);
+    button.setAttribute("aria-pressed", String(isPlaying));
+    button.innerHTML = svg(
+      isPlaying ? ICONS.pause : ICONS.play,
+      22,
+      22,
+      "currentColor",
+      isPlaying ? "none" : "currentColor"
+    );
+  };
+
+  ["loadedmetadata", "durationchange", "timeupdate", "play", "pause", "ended"].forEach((event) => {
+    audio.addEventListener(event, update);
+  });
+  button.addEventListener("click", async () => {
+    if (!audio.paused && !audio.ended) {
+      audio.pause();
+      return;
+    }
+    if (audio.ended) audio.currentTime = 0;
+    try {
+      await audio.play();
+    } catch (error) {
+      state.flash = t().recordingPlaybackFailed;
+      render();
+    }
+  });
+  seek.addEventListener("input", () => {
+    const duration = actualDuration();
+    if (!duration) return;
+    audio.currentTime = duration * Number(seek.value) / 1000;
+    update();
+  });
+  update();
+}
 
 function openRecordingAudioDatabase() {
   if (recordingAudioDatabase) return Promise.resolve(recordingAudioDatabase);
@@ -1100,6 +1219,21 @@ function loadRecordingAudio(id) {
     const request = transaction.objectStore(RECORDING_STORE_NAME).get(id);
     request.onsuccess = () => resolve(request.result?.blob || null);
     request.onerror = () => reject(request.error || new Error("Unable to load recording"));
+  }));
+}
+
+function deleteRecordingAudio(id) {
+  const url = recordingAudioUrls.get(id);
+  if (url) {
+    URL.revokeObjectURL(url);
+    recordingAudioUrls.delete(id);
+  }
+  return openRecordingAudioDatabase().then((database) => new Promise((resolve, reject) => {
+    const transaction = database.transaction(RECORDING_STORE_NAME, "readwrite");
+    transaction.objectStore(RECORDING_STORE_NAME).delete(id);
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error || new Error("Unable to delete recording audio"));
+    transaction.onabort = () => reject(transaction.error || new Error("Recording deletion was cancelled"));
   }));
 }
 
@@ -1164,6 +1298,8 @@ async function startReadingRecording() {
     render();
     return;
   }
+  if (pendingReadingRecording && !pendingReadingRecording.sent) return;
+  clearPendingReadingRecording();
   state.rec = "starting";
   render();
   try {
@@ -1201,7 +1337,7 @@ async function startReadingRecording() {
       state.flash = t().recordingSaveFailed;
       render();
     }, { once: true });
-    recorder.addEventListener("stop", async () => {
+    recorder.addEventListener("stop", () => {
       const details = activeRecordingDetails;
       const blob = new Blob(chunks, { type: recorder.mimeType || chunks[0]?.type || "audio/webm" });
       const duration = Math.max(1, Math.round((Date.now() - activeRecordingStartedAt) / 1000));
@@ -1214,16 +1350,19 @@ async function startReadingRecording() {
         render();
         return;
       }
+      if (state.screen !== "reader" || sessionUser()?.id !== details.studentId) {
+        state.rec = "idle";
+        return;
+      }
       try {
-        await storeRecordingAudio(details.id, blob);
-        const data = db();
-        data.recordings.unshift({
-          ...details,
-          when: "today",
-          dur: `${Math.floor(duration / 60)}:${String(duration % 60).padStart(2, "0")}`
-        });
-        save(data);
-        state.rec = "saved";
+        pendingReadingRecording = {
+          details,
+          blob,
+          duration,
+          url: URL.createObjectURL(blob),
+          sent: false
+        };
+        state.rec = "preview";
       } catch (error) {
         state.rec = "idle";
         state.flash = t().recordingSaveFailed;
@@ -1243,6 +1382,30 @@ async function startReadingRecording() {
       : error.name === "NotFoundError" ? t().recordingMicMissing : t().recordingSaveFailed;
     render();
   }
+}
+
+async function sendReadingRecording() {
+  const pending = pendingReadingRecording;
+  if (!pending || pending.sent || state.rec === "sending") return;
+  state.rec = "sending";
+  render();
+  try {
+    await storeRecordingAudio(pending.details.id, pending.blob);
+    const data = db();
+    data.recordings.unshift({
+      ...pending.details,
+      when: "today",
+      dur: recordingDurationLabel(pending.duration)
+    });
+    save(data);
+    pending.sent = true;
+    state.rec = "saved";
+    state.flash = "";
+  } catch (error) {
+    state.rec = "preview";
+    state.flash = t().recordingSaveFailed;
+  }
+  render();
 }
 
 function seed() {
@@ -1277,6 +1440,15 @@ function seed() {
     }
     db.week = Array.isArray(db.week) ? db.week : [0, 0, 0, 0, 0, 0, 0];
     db.users.forEach((user) => {
+      if (["u-admin", "u-parent", "u-teacher", "u-sara", "u-yusuf", "u-omar"].includes(user.id)) {
+        if (user.isDemo !== true) {
+          user.isDemo = true;
+          changed = true;
+        }
+      } else if (typeof user.isDemo !== "boolean") {
+        user.isDemo = false;
+        changed = true;
+      }
       if (user.role === "parent" && !Array.isArray(user.childIds)) {
         user.childIds = [];
         changed = true;
@@ -1299,6 +1471,10 @@ function seed() {
         changed = true;
       }
       if (user.role === "student") {
+        if (!Array.isArray(user.ownedBooks)) {
+          user.ownedBooks = [];
+          changed = true;
+        }
         const validOutfits = new Set(OUTFITS.map((outfit) => outfit.id));
         const ownedOutfits = Array.isArray(user.ownedOutfits)
           ? user.ownedOutfits.filter((id) => validOutfits.has(id)) : ["starter"];
@@ -1433,8 +1609,8 @@ function seed() {
       db.bookAccess = {};
       changed = true;
     }
-    if (Object.hasOwn(db, "classes")) {
-      delete db.classes;
+    if (!Array.isArray(db.classes)) {
+      db.classes = [];
       changed = true;
     }
     if (changed) save(db);
@@ -1442,12 +1618,12 @@ function seed() {
   }
   db = {
     users: [
-      { id: "u-admin", role: "admin", name: "مدير بيان", nameEn: "Bayan Admin", email: "admin@bayan.test", password: "1234", active: true },
-      { id: "u-parent", role: "parent", name: "أم سارة", nameEn: "Sara’s mom", email: "parent@bayan.test", password: "1234", childIds: ["u-sara", "u-yusuf", "u-omar"], reminder: true, subscriptionStatus: "active", subscriptionPlan: "yearly" },
-      { id: "u-teacher", role: "teacher", name: "الأستاذة نورة", nameEn: "Ms. Noura", email: "teacher@bayan.test", password: "1234" },
-      { id: "u-sara", role: "student", name: "سارة", nameEn: "Sara", email: "sara@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "girl", age: 8, level: 6, stars: 34, streak: 5, books: 6, minutes: 74, currentBook: "wahid", progress: 35, quiz: "right", note: "" },
-      { id: "u-yusuf", role: "student", name: "يوسف", nameEn: "Yusuf", email: "yusuf@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "boy", age: 10, level: 9, stars: 41, streak: 3, books: 8, minutes: 95, currentBook: "word", progress: 80, quiz: "pending", note: "" },
-      { id: "u-omar", role: "student", name: "عمر", nameEn: "Omar", email: "omar@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "boy", age: 7, level: 5, stars: 27, streak: 4, books: 5, minutes: 52, currentBook: "circle", progress: 45, quiz: "wrong", note: "" }
+      { id: "u-admin", role: "admin", name: "مدير بيان", nameEn: "Bayan Admin", email: "admin@bayan.test", password: "1234", active: true, isDemo: true },
+      { id: "u-parent", role: "parent", name: "أم سارة", nameEn: "Sara’s mom", email: "parent@bayan.test", password: "1234", childIds: ["u-sara", "u-yusuf", "u-omar"], reminder: true, subscriptionStatus: "active", subscriptionPlan: "yearly", isDemo: true },
+      { id: "u-teacher", role: "teacher", name: "الأستاذة نورة", nameEn: "Ms. Noura", email: "teacher@bayan.test", password: "1234", isDemo: true },
+      { id: "u-sara", role: "student", name: "سارة", nameEn: "Sara", email: "sara@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "girl", age: 8, level: 6, stars: 34, streak: 5, books: 6, minutes: 74, currentBook: "wahid", progress: 35, quiz: "right", note: "", isDemo: true },
+      { id: "u-yusuf", role: "student", name: "يوسف", nameEn: "Yusuf", email: "yusuf@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "boy", age: 10, level: 9, stars: 41, streak: 3, books: 8, minutes: 95, currentBook: "word", progress: 80, quiz: "pending", note: "", isDemo: true },
+      { id: "u-omar", role: "student", name: "عمر", nameEn: "Omar", email: "omar@bayan.test", password: "1234", parentId: "u-parent", teacherIds: ["u-teacher"], gender: "boy", age: 7, level: 5, stars: 27, streak: 4, books: 5, minutes: 52, currentBook: "circle", progress: 45, quiz: "wrong", note: "", isDemo: true }
     ],
     assignments: [
       { id: "a1", teacherId: "u-teacher", recipientIds: ["u-sara", "u-yusuf", "u-omar"], completedBy: [], bookId: "wahid", title: "اقرأ «الله الواحد الأحد»" }
@@ -1461,6 +1637,7 @@ function seed() {
     contacts: [],
     payments: [],
     challenges: [],
+    classes: [],
     books: [],
     bookAccess: {},
     freeBiboMigrationVersion: 1,
@@ -1480,16 +1657,20 @@ const state = {
   rec: "idle",
   placed: [null, null, null],
   sel: null,
+  letterGameRewardStatus: "",
   gender: "girl",
   signupRole: "parent",
   signupDraft: {},
+  parentChildCount: 1,
   contactSent: false,
   flash: "",
   wordHuntRound: 0,
   wordHuntChoice: null,
+  wordHuntAnswers: {},
   wordHuntRewardStatus: "",
   wordBuilderRound: 0,
   wordBuilderLetters: [],
+  wordBuilderHistory: {},
   wordBuilderFeedback: "",
   wordBuilderRewardStatus: "",
   accMs: 0,
@@ -1515,7 +1696,22 @@ const state = {
   adminContentSeries: "all",
   adminContentAccess: "all",
   adminContentStatus: "all",
-  adminContentPage: 1
+  adminContentPage: 1,
+  checkoutPlan: "yearly",
+  checkoutBook: null,
+  notificationsOpen: false,
+  onboardingStep: 0,
+  onboardingInterests: [],
+  onboardingAge: null,
+  onboardingGoalMins: null,
+  screenHistory: [],
+  editChildId: null,
+  classroomDraft: "",
+  viewClass: null,
+  accessibilityMode: localStorage.getItem("bayan-accessibility") || "standard",
+  fontSize: ["small", "standard", "large"].includes(localStorage.getItem("bayan-font-size"))
+    ? localStorage.getItem("bayan-font-size") : "standard",
+  visualMode: localStorage.getItem("bayan-visual-mode") === "dark" ? "dark" : "standard"
 };
 
 function db() { return seed(); }
@@ -1627,11 +1823,24 @@ function imageDataUrl(file) {
 function allBooks() {
   const data = db();
   return [
-    ...BOOKS.map((book) => ({
-      ...book,
-      premium: Object.hasOwn(data.bookAccess || {}, book.id)
-        ? Boolean(data.bookAccess[book.id]) : book.id !== "bibo"
-    })),
+    ...BOOKS.map((book) => {
+      const configured = data.bookAccess?.[book.id];
+      if (configured && typeof configured === "object") {
+        return {
+          ...book,
+          premium: configured.accessMode !== "free",
+          accessMode: configured.accessMode || "subscription",
+          purchasePrice: Number(configured.purchasePrice) || 0
+        };
+      }
+      return {
+        ...book,
+        premium: Object.hasOwn(data.bookAccess || {}, book.id)
+          ? Boolean(configured) : book.id !== "bibo",
+        accessMode: "subscription",
+        purchasePrice: 0
+      };
+    }),
     ...(data.books || []).map((book) => ({ ...book, custom: true, active: book.active !== false }))
   ];
 }
@@ -1657,6 +1866,17 @@ function subscriptionStatus(user) {
   const expiresAt = new Date(`${user.subscriptionExpiresAt}T23:59:59`).getTime();
   return Number.isFinite(expiresAt) && expiresAt >= Date.now() ? "active" : "expired";
 }
+function bookAccessMode(book) {
+  return book?.accessMode || (book?.premium ? "subscription" : "free");
+}
+function hasPurchasedBook(user, book) {
+  return Boolean(user?.ownedBooks?.includes(book?.id));
+}
+function bookLockedForUser(book, user, data = db()) {
+  if (bookAccessMode(book) === "free") return false;
+  if (bookAccessMode(book) === "paid") return !hasPurchasedBook(user, book);
+  return Boolean(book?.premium && user?.role === "student" && !hasActiveSubscription(user, data));
+}
 function paginate(items, page, pageSize = 25) {
   const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
   const currentPage = Math.min(Math.max(1, page), totalPages);
@@ -1678,9 +1898,6 @@ function adminPagination(result, pageKey) {
   </div>`;
 }
 function csvCell(value) { return `"${String(value ?? "").replace(/"/g, '""')}"`; }
-function bookLockedForUser(book, user, data = db()) {
-  return Boolean(book?.premium && user?.role === "student" && !hasActiveSubscription(user, data));
-}
 function lvName(n) { return (ar() ? "المستوى " : "Level ") + n; }
 function homeFor(role) {
   return role === "admin" ? "admin" : role === "teacher" ? "teacher" : role === "parent" ? "parent" : "kid";
@@ -1719,7 +1936,7 @@ function completeBookAssignments(data, studentId, bookId) {
 }
 function newStudentProfile({ id, name, email, password, age, gender, parentId }) {
   return {
-    id, role: "student", name, nameEn: name, email, password, age, gender,
+    id, role: "student", name, nameEn: name, email, password, age, gender, isDemo: false,
     ...(parentId ? { parentId } : {}),
     teacherIds: [], completedLevels: [], level: 1, stars: 0, streak: 0,
     books: 0, minutes: 0, readingSeconds: 0, readingHistory: {}, currentBook: "bibo", progress: 0,
@@ -1728,10 +1945,10 @@ function newStudentProfile({ id, name, email, password, age, gender, parentId })
 }
 
 const ROLE_SCREENS = {
-  public: ["home", "about", "login", "signup", "teacher-directory", "teacher-profile"],
-  student: ["kid", "library", "reader", "quiz", "games", "game", "word-hunt", "word-builder", "avatar-builder", "student-profile"],
-  parent: ["parent", "account-profile"],
-  teacher: ["teacher", "teacher-students", "teacher-tasks", "account-profile"],
+  public: ["home", "about", "login", "signup", "onboarding", "reset-password", "checkout", "privacy", "schools", "help", "teacher-directory", "teacher-profile", "accessibility"],
+  student: ["kid", "library", "reader", "quiz", "games", "game", "word-hunt", "word-builder", "avatar-builder", "student-profile", "accessibility"],
+  parent: ["parent", "account-profile", "accessibility"],
+  teacher: ["teacher", "teacher-students", "teacher-tasks", "account-profile", "classroom", "accessibility"],
   admin: ["admin", "admin-accounts", "admin-content", "admin-subscriptions", "admin-inbox"]
 };
 
@@ -1784,6 +2001,7 @@ function weekReadingMinutes(student) {
     return Number(student.readingHistory?.[dateKey(date)]) || 0;
   }).reduce((total, seconds) => total + seconds, 0) / 60;
 }
+
 function readingCircleForStudent(data, student) {
   const teacherIds = Array.isArray(student.teacherIds) ? student.teacherIds : [];
   return data.users.filter((candidate) => {
@@ -1820,7 +2038,7 @@ function saveReadingTime(milliseconds) {
   }
   save(data);
 }
-function go(screen, extra) {
+function go(screen, extra, options = {}) {
   if (!keepFlash) state.flash = "";
   keepFlash = false;
   const user = sessionUser();
@@ -1830,6 +2048,10 @@ function go(screen, extra) {
     screen = homeFor(user.role);
   }
   const previousScreen = state.screen;
+  if (!options.skipHistory && previousScreen !== screen) {
+    state.screenHistory.push(previousScreen);
+    if (state.screenHistory.length > 30) state.screenHistory.shift();
+  }
   const now = Date.now();
   if (state.screen === "reader" &&
     (screen !== "reader" || (extra && extra.page !== undefined && extra.page !== state.page))) {
@@ -1840,21 +2062,6 @@ function go(screen, extra) {
     saveReadingTime(state.accMs);
     state.accMs = 0;
   }
-  if (screen === "game" && previousScreen !== "game") {
-    state.placed = [null, null, null];
-    state.sel = null;
-  }
-  if (screen === "word-hunt" && previousScreen !== screen) {
-    state.wordHuntRound = 0;
-    state.wordHuntChoice = null;
-    state.wordHuntRewardStatus = "";
-  }
-  if (screen === "word-builder" && previousScreen !== screen) {
-    state.wordBuilderRound = 0;
-    state.wordBuilderLetters = [];
-    state.wordBuilderFeedback = "";
-    state.wordBuilderRewardStatus = "";
-  }
   state.screen = screen;
   state.segStart = screen === "reader" ? now : null;
   state.now = now;
@@ -1862,6 +2069,27 @@ function go(screen, extra) {
   if (screen !== "quiz") state.answer = null;
   window.scrollTo(0, 0);
   render();
+}
+
+function goBack(fallback) {
+  const history = state.screenHistory;
+  const previous = history.length ? history.pop() : fallback;
+  go(previous || fallback, undefined, { skipHistory: true });
+}
+
+function resetLearningGames() {
+  state.placed = [null, null, null];
+  state.sel = null;
+  state.letterGameRewardStatus = "";
+  state.wordHuntRound = 0;
+  state.wordHuntChoice = null;
+  state.wordHuntAnswers = {};
+  state.wordHuntRewardStatus = "";
+  state.wordBuilderRound = 0;
+  state.wordBuilderLetters = [];
+  state.wordBuilderHistory = {};
+  state.wordBuilderFeedback = "";
+  state.wordBuilderRewardStatus = "";
 }
 
 function login(email, password) {
@@ -1872,15 +2100,21 @@ function login(email, password) {
   user.lastLoginAt = Date.now();
   save(data);
   setSession(user.id);
+  state.screenHistory = [];
+  resetLearningGames();
   state.flash = t().welcomeRole;
   keepFlash = true;
-  go(homeFor(user.role));
+  go(homeFor(user.role), undefined, { skipHistory: true });
   return true;
 }
 
 function logout() {
+  clearPendingReadingRecording();
   setSession(null);
-  go("home");
+  state.screenHistory = [];
+  state.editChildId = null;
+  resetLearningGames();
+  go("home", undefined, { skipHistory: true });
 }
 
 function upsertUser(user) {
@@ -1897,6 +2131,7 @@ function svg(path, w, h, stroke, fill) {
 
 function uiIcon(name, size = 26) {
   const paths = {
+    bell: `<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/><circle cx="12" cy="5" r="1.2"/>`,
     trophy: `<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4"/>`,
     star: `<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>`,
     book: `<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 5v16M8 7h8M8 11h7"/>`,
@@ -1907,17 +2142,121 @@ function uiIcon(name, size = 26) {
     goal: `<path d="M4 20V5m0 1h12l-2 3 2 3H4M8 16h12v4H8z"/>`,
     microphone: `<rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M9 22h6"/>`,
     teacher: `<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0M18 4l2 2-2 2M20 6h-5"/>`,
-    check: `<path d="m5 12 4 4L19 6"/>`
+    check: `<path d="m5 12 4 4L19 6"/>`,
+    moon: `<path d="M20 15.2A8.5 8.5 0 0 1 8.8 4a8.5 8.5 0 1 0 11.2 11.2Z"/>`,
+    sun: `<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>`
   };
   return `<svg class="ui-icon ui-icon-${name}" width="${size}" height="${size}" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[name] || paths.star}</g></svg>`;
 }
 
 function navBtn(key, label, colors, active) {
   const [deep, mid, soft] = colors;
-  const style = active
-    ? `background:${mid};color:#fff;border:3px solid ${mid};box-shadow:0 4px 0 ${deep}`
-    : `background:${soft};color:${deep};border:3px solid ${mid};box-shadow:0 3px 0 ${mid}`;
-  return `<button class="nav-btn" data-go="${key}" style="${style}">${label}</button>`;
+  return `<button class="nav-btn ${active ? "is-active" : ""}" data-go="${key}" style="--nav-deep:${deep};--nav-mid:${mid};--nav-soft:${soft}">${label}</button>`;
+}
+
+function setMobileMenuOpen(open, button) {
+  const nav = document.getElementById("primary-navigation");
+  if (!nav || !button) return;
+  nav.classList.toggle("is-open", open);
+  button.setAttribute("aria-expanded", String(open));
+  button.setAttribute("aria-label", open
+    ? (ar() ? "إغلاق القائمة" : "Close menu")
+    : (ar() ? "فتح القائمة" : "Open menu"));
+}
+
+function notificationItems(user) {
+  if (!user) return [];
+  const data = db();
+  const arMode = ar();
+
+  if (user.role === "student") {
+    return (user.encouragements || [])
+      .slice()
+      .sort((a, b) => Number(b.at) - Number(a.at))
+      .slice(0, 8)
+      .map((message) => {
+        const senderRole = message.senderRole === "teacher"
+          ? (arMode ? "المعلم" : "Teacher")
+          : message.senderRole === "parent"
+            ? (arMode ? "ولي الأمر" : "Parent")
+            : (arMode ? "الدعم" : "Support");
+        const senderName = String(message.senderName || "").trim();
+        return {
+          title: arMode ? "رسالة تشجيع جديدة" : "New encouragement",
+          sender: senderName ? `${senderRole} · ${senderName}` : senderRole,
+          text: message.text,
+          time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+        };
+      });
+  }
+
+  if (user.role === "parent") {
+    const children = data.users.filter((student) => student.role === "student" &&
+      (student.parentId === user.id || user.childIds?.includes(student.id)));
+    const items = [];
+    children.forEach((child) => {
+      const homework = assignmentsForStudent(data, child)
+        .filter((assignment) => !(assignment.completedBy || []).includes(child.id))
+        .slice(0, 3);
+      homework.forEach((assignment) => items.push({
+        title: arMode ? `واجب جديد لـ${displayName(child)}` : `New homework for ${displayName(child)}`,
+        sender: arMode ? "المعلم" : "Teacher",
+        text: findBook(assignment.bookId) ? bookTitle(findBook(assignment.bookId)) : (assignment.title || ""),
+        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : ""
+      }));
+      (child.encouragements || []).slice(0, 2).forEach((message) => items.push({
+        title: arMode ? `تحديث لـ${displayName(child)}` : `Update for ${displayName(child)}`,
+        sender: message.senderName
+          ? `${message.senderRole === "teacher" ? (arMode ? "المعلم" : "Teacher") : (arMode ? "الدعم" : "Support")} · ${message.senderName}`
+          : (arMode ? "رسالة تشجيع" : "Encouragement"),
+        text: message.text,
+        time: message.at ? new Date(message.at).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+      }));
+    });
+    return items.slice(0, 8);
+  }
+
+  if (user.role === "teacher") {
+    const students = studentsForTeacher(data, user);
+    const items = [];
+    data.assignments
+      .filter((assignment) => assignment.teacherId === user.id)
+      .slice(0, 4)
+      .forEach((assignment) => items.push({
+        title: arMode ? "تم نشر واجب قراءة" : "Reading assignment published",
+        sender: arMode ? `المعلم · ${displayName(user)}` : `Teacher · ${displayName(user)}`,
+        text: assignment.title || (findBook(assignment.bookId) ? bookTitle(findBook(assignment.bookId)) : ""),
+        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : ""
+      }));
+    data.recordings
+      .filter((recording) => students.some((student) => student.id === recording.studentId))
+      .slice(0, 4)
+      .forEach((recording) => {
+        const student = students.find((candidate) => candidate.id === recording.studentId);
+        items.push({
+          title: arMode ? "تسجيل قراءة جديد" : "New reading recording",
+          sender: student ? `${arMode ? "الطالب" : "Student"} · ${displayName(student)}` : (arMode ? "طالب" : "Student"),
+          text: student ? displayName(student) : "",
+          time: recording.createdAt ? new Date(recording.createdAt).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+        });
+      });
+    return items.slice(0, 8);
+  }
+
+  if (user.role === "admin") {
+    return data.contacts
+      .filter((message) => !message.readAt)
+      .sort((a, b) => Number(b.at) - Number(a.at))
+      .slice(0, 8)
+      .map((message) => ({
+        title: arMode ? "رسالة دعم جديدة" : "New support message",
+        sender: message.name || (message.email || (arMode ? "زائر" : "Visitor")),
+        text: message.message || "",
+        time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+      }));
+  }
+
+  return [];
 }
 
 function header() {
@@ -1930,23 +2269,25 @@ function header() {
     "teacher-directory": ["#6b4bbd", "#9575cd", "#f1ebfb"],
     kid: ["#3f9a38", "#6cc551", "#eef9e8"],
     "student-profile": ["#006b70", "#2ec4b6", "#e0f7f5"],
-    library: ["#d63a72", "#f06292", "#fdeef4"],
+    library: ["#c2185b", "#e91e63", "#fdeef4"],
     games: ["#a86b00", "#ffc107", "#fff6dc"],
     parent: ["#7e57c2", "#9575cd", "#f1ebfb"],
     teacher: ["#d0592a", "#ff8a65", "#fff0ea"],
+    "account-profile": ["#006b70", "#2ec4b6", "#e0f7f5"],
     admin: ["#6b4bbd", "#9575cd", "#f1ebfb"],
     "admin-accounts": ["#1e88d6", "#4fc3f7", "#e3f5fd"],
     "admin-content": ["#d63a72", "#f06292", "#fdeef4"],
     "admin-subscriptions": ["#a86b00", "#ffc107", "#fff6dc"],
-    "admin-inbox": ["#1e88d6", "#4fc3f7", "#e3f5fd"],
+    "admin-inbox": ["#006b70", "#2ec4b6", "#e0f7f5"],
     "teacher-students": ["#1e88d6", "#4fc3f7", "#e3f5fd"],
     "teacher-tasks": ["#a86b00", "#ffc107", "#fff6dc"],
-    about: ["#d0592a", "#ff8a65", "#fff0ea"]
+    about: ["#ad3e64", "#e06a8c", "#fdeef4"]
   };
   if (!user) {
     items += navBtn("home", tt.home, NC.home, s === "home");
-    items += navBtn("teacher-directory", tt.teachersDirectory, NC["teacher-directory"],
-      s === "teacher-directory" || s === "teacher-profile");
+    items += navBtn("library", ar() ? "المكتبة" : "Library", NC.library, s === "library");
+    items += navBtn("teacher-directory", ar() ? "معلمينا" : "Our teachers", NC["teacher-directory"], s === "teacher-directory");
+    items += navBtn("schools", ar() ? "للمدارس" : "For schools", NC.teacher, s === "schools");
     items += navBtn("about", tt.about, NC.about, s === "about");
   } else if (user.role === "student") {
     items += navBtn("kid", tt.kid, NC.kid, s === "kid");
@@ -1955,13 +2296,14 @@ function header() {
     items += navBtn("student-profile", tt.studentProfile, NC["student-profile"], s === "student-profile");
   } else if (user.role === "parent") {
     items += navBtn("parent", tt.parents, NC.parent, s === "parent");
-    items += navBtn("account-profile", tt.studentProfile, NC.parent, s === "account-profile");
+    items += navBtn("account-profile", tt.studentProfile, NC["account-profile"], s === "account-profile");
     items += navBtn("about", tt.about, NC.about, s === "about");
   } else if (user.role === "teacher") {
     items += navBtn("teacher", tt.myClass, NC.teacher, s === "teacher");
     items += navBtn("teacher-students", tt.students, NC["teacher-students"], s === "teacher-students");
     items += navBtn("teacher-tasks", tt.tasks, NC["teacher-tasks"], s === "teacher-tasks");
-    items += navBtn("account-profile", tt.studentProfile, NC.teacher, s === "account-profile");
+    items += navBtn("classroom", ar() ? "الفصول" : "Classes", NC.kid, s === "classroom");
+    items += navBtn("account-profile", tt.studentProfile, NC["account-profile"], s === "account-profile");
   } else if (user.role === "admin") {
     const newMessageCount = db().contacts.filter((message) => !message.readAt).length;
     items += navBtn("admin", tt.adminDashboard, NC.admin, s === "admin");
@@ -1971,13 +2313,33 @@ function header() {
     items += navBtn("admin-inbox", `${tt.adminInbox}${newMessageCount ? ` · ${newMessageCount}` : ""}`, NC["admin-inbox"], s === "admin-inbox");
   }
 
-  let actions = `<button class="btn btn-ghost" data-act="lang">${tt.otherLang}</button>`;
+  let actions = `<button class="btn btn-ghost" data-act="lang">${tt.otherLang}</button>
+    <button class="theme-toggle-button" type="button" data-act="theme" aria-label="${state.visualMode === "dark" ? (ar() ? "التبديل للوضع المعتاد" : "Switch to standard mode") : (ar() ? "التبديل للوضع الليلي" : "Switch to night mode")}" title="${state.visualMode === "dark" ? (ar() ? "الوضع المعتاد" : "Standard") : (ar() ? "الوضع الليلي" : "Night")}">
+      ${uiIcon(state.visualMode === "dark" ? "sun" : "moon", 21)}
+    </button>`;
   if (!user) {
     actions += `<button class="btn btn-ghost" data-go="login">${tt.login}</button>`;
-    actions += `<button class="btn btn-green wiggle" data-go="signup">${tt.startFree}</button>`;
+    actions += `<button class="btn btn-green" data-go="signup">${tt.startFree}</button>`;
   } else {
     const colors = { student: "#6cc551", parent: "#7e57c2", teacher: "#ff8a65", admin: "#9575cd" };
     const labels = { student: tt.student, parent: tt.parentRole, teacher: tt.teacherRole, admin: tt.adminRole };
+    const notifications = notificationItems(user);
+    const notificationCount = notifications.length;
+    actions += `<div class="notification-wrap">
+      <button class="notification-button" type="button" data-act="notifications" aria-label="${ar() ? "الإشعارات" : "Notifications"}">
+        ${uiIcon("bell", 22)}
+        ${notificationCount ? `<span>${notificationCount}</span>` : ""}
+      </button>
+      ${state.notificationsOpen ? `<div class="notification-panel">
+        <strong>${ar() ? "الإشعارات" : "Notifications"}</strong>
+        ${notificationCount
+          ? `<div class="notification-list">${notifications.map((item) => `<article class="notification-item">
+              <span class="notification-dot"></span>
+              <div><strong>${escapeHtml(item.title)}</strong>${item.sender ? `<span class="notification-sender">${escapeHtml(item.sender)}</span>` : ""}<p>${escapeHtml(item.text)}</p>${item.time ? `<time>${escapeHtml(item.time)}</time>` : ""}</div>
+            </article>`).join("")}</div>`
+          : `<p class="muted">${ar() ? "لا توجد إشعارات جديدة." : "No new notifications."}</p>`}
+      </div>` : ""}
+    </div>`;
     const userAvatar = user.role === "student" || user.avatar
       ? `<img src="${escapeHtml(user.avatar || "assets/avatar.jpg")}" alt="">`
       : `<span class="user-chip-initial" style="--user-role-color:${colors[user.role]}" aria-hidden="true">${escapeHtml(displayName(user).slice(0, 1))}</span>`;
@@ -1986,12 +2348,15 @@ function header() {
     </span>`;
     actions += `<button class="btn btn-muted" data-act="logout">${tt.logout}</button>`;
   }
-  return `<header class="header"><div class="wrap header-inner">
+  return `<header class="header ${user?.role === "admin" ? "admin-header" : ""}"><div class="wrap header-inner">
     <button class="brand" data-go="${user ? homeFor(user.role) : "home"}">
       <img src="assets/logo.jpg" alt="">
       <span class="brand-name"><strong>${tt.brand}</strong><span>${tt.brandSub}</span></span>
     </button>
-    <nav class="nav" aria-label="Main">${items}</nav>
+    <button class="menu-toggle" type="button" data-act="mobile-menu" aria-label="${ar() ? "فتح القائمة" : "Open menu"}" aria-expanded="false" aria-controls="primary-navigation">
+      <span class="menu-toggle-lines" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <nav class="nav" id="primary-navigation" aria-label="Main">${items}</nav>
     <div class="header-actions">${actions}</div>
   </div></header>`;
 }
@@ -2004,11 +2369,278 @@ function footer() {
       <span style="font-size:22px;font-weight:800;color:#ffd54f">${tt.slogan}</span>
     </div>
     <div>
-      <button data-go="about">${tt.about}</button>
-      <button data-go="about">${tt.contact}</button>
+      <button class="footer-link" data-go="about">${tt.about}</button>
+      <button class="footer-link" data-go="about" data-contact="1">${tt.contact}</button>
+      <button class="footer-link" data-go="schools">${ar() ? "للمدارس" : "For schools"}</button>
+      <button class="footer-link" data-go="privacy">${ar() ? "الخصوصية" : "Privacy"}</button>
+      <button class="footer-link" data-go="help">${ar() ? "المساعدة" : "Help"}</button>
+      <button class="footer-link" data-go="accessibility">${ar() ? "إتاحة الوصول" : "Accessibility"}</button>
     </div>
-    <span class="copy">© موقع طريق البيان — جميع الحقوق محفوظة | © Tariq Al-Bayan Website — All Rights Reserved</span>
+    <span class="copy">© موقع درب البيان — جميع الحقوق محفوظة | © Darb Al-Bayan Website — All Rights Reserved</span>
   </div></footer>`;
+}
+
+function onboardingView() {
+  const arMode = ar();
+  const steps = arMode
+    ? ["أخبرنا عن الطالب", "اختر اهتمامات القراءة", "حدد هدفه الأسبوعي"]
+    : ["Tell us about the learner", "Choose reading interests", "Set a weekly goal"];
+  const interests = arMode
+    ? [["حكايات", "stories"], ["القرآن", "quran"], ["الأخلاق", "values"], ["الحيوانات", "animals"], ["المغامرات", "adventure"], ["المعلومات", "knowledge"]]
+    : [["Stories", "stories"], ["Quran", "quran"], ["Values", "values"], ["Animals", "animals"], ["Adventure", "adventure"], ["Knowledge", "knowledge"]];
+  return `<section class="onboarding-page">
+    <div class="onboarding-progress">${steps.map((step, i) => `<div class="${i <= state.onboardingStep ? "active" : ""}"><span>${i + 1}</span><strong>${step}</strong></div>`).join("")}</div>
+    ${state.onboardingStep === 0 ? `<div class="onboarding-step-card onboarding-age-step">
+      <span class="pill">${arMode ? "تجربة مخصصة" : "Personalized setup"}</span>
+      <h1>${arMode ? "لنصنع رحلة تناسب طفلك" : "Let’s create the right journey"}</h1>
+      <p class="muted">${arMode ? "نستخدم هذه الإجابات لتفضّل الكتب والألعاب المناسبة." : "These answers personalize books and learning games."}</p>
+      <div class="onboarding-options">
+        <button class="onboarding-option ${state.onboardingAge === 5 ? "selected" : ""}" data-onboarding-age="5"><strong>4–6</strong><span>${arMode ? "البراعم" : "Sprouts"}</span></button>
+        <button class="onboarding-option ${state.onboardingAge === 8 ? "selected" : ""}" data-onboarding-age="8"><strong>7–9</strong><span>${arMode ? "الزهور" : "Flowers"}</span></button>
+        <button class="onboarding-option ${state.onboardingAge === 11 ? "selected" : ""}" data-onboarding-age="11"><strong>10–12</strong><span>${arMode ? "الفرسان" : "Knights"}</span></button>
+      </div>
+    </div>` : ""}
+    ${state.onboardingStep === 1 ? `<div class="onboarding-step-card">
+      <h1>${arMode ? "ما الذي يحب؟" : "What does the learner enjoy?"}</h1>
+      <p class="muted">${arMode ? "اختر موضوعًا واحدًا أو أكثر." : "Choose one or more interests."}</p>
+      <div class="interest-grid">${interests.map(([label, value]) => `<button class="interest-chip ${state.onboardingInterests.includes(value) ? "selected" : ""}" data-onboarding-interest="${value}">${label}</button>`).join("")}</div>
+    </div>` : ""}
+    ${state.onboardingStep === 2 ? `<div class="onboarding-step-card">
+      <h1>${arMode ? "اختر هدف القراءة" : "Choose a reading goal"}</h1>
+      <div class="goal-grid">
+        <button class="goal-card ${state.onboardingGoalMins === 15 ? "selected" : ""}" data-onboarding-goal="15"><strong>15</strong><span>${arMode ? "دقيقة يوميًا" : "minutes daily"}</span></button>
+        <button class="goal-card ${state.onboardingGoalMins === 30 ? "selected" : ""}" data-onboarding-goal="30"><strong>30</strong><span>${arMode ? "دقيقة يوميًا" : "minutes daily"}</span></button>
+        <button class="goal-card ${state.onboardingGoalMins === 45 ? "selected" : ""}" data-onboarding-goal="45"><strong>45</strong><span>${arMode ? "دقيقة يوميًا" : "minutes daily"}</span></button>
+      </div>
+    </div>` : ""}
+    <div class="onboarding-actions">
+      ${state.onboardingStep > 0 ? `<button class="btn btn-muted" data-onboarding-back>${arMode ? "السابق" : "Back"}</button>` : ""}
+      ${state.onboardingStep < 2 ? `<button class="btn btn-blue" data-onboarding-next>${arMode ? "المتابعة" : "Continue"}</button>` : `<button class="btn btn-green" data-onboarding-finish>${arMode ? "ابدأ رحلتي" : "Start my journey"}</button>`}
+    </div>
+  </section>`;
+}
+
+function classroomView() {
+  const arMode = ar();
+  const user = sessionUser();
+  const data = db();
+  const classes = (data.classes || []).filter((item) => item.teacherId === user?.id);
+  const students = studentsForTeacher(data, user);
+  return `<section class="classroom-page">
+    <header class="classroom-heading"><div><span class="pill">${arMode ? "إدارة الفصول" : "Classroom management"}</span><h1>${arMode ? "فصولي" : "My classes"}</h1></div><button class="btn btn-blue" data-act="new-class">${arMode ? "+ فصل جديد" : "+ New class"}</button></header>
+    <form class="classroom-create" id="classroom-create-form" hidden>
+      <div class="classroom-create-main">
+        <label>${arMode ? "اسم الفصل" : "Class name"}<input name="className" value="${escapeHtml(state.classroomDraft)}" placeholder="${arMode ? "مثال: فصل براعم أ" : "Example: Sprouts A"}" required></label>
+        <fieldset class="classroom-student-picker">
+          <legend>${arMode ? "اختيار الطلاب" : "Choose students"}</legend>
+          <label class="classroom-student-search">
+            ${arMode ? "بحث بالاسم أو البريد" : "Search by name or email"}
+            <input type="search" data-classroom-search placeholder="${arMode ? "اكتب اسم الطالب أو بريده" : "Type a student name or email"}" autocomplete="off">
+          </label>
+          ${students.length
+            ? students.map((student) => `<label class="classroom-student-choice" data-student-search="${escapeHtml(`${displayName(student)} ${student.nameEn || ""} ${student.email || ""}`.toLowerCase())}"><input type="checkbox" name="studentIds" value="${escapeHtml(student.id)}"><span>${escapeHtml(displayName(student))}</span><small>${escapeHtml(student.email)}</small></label>`).join("")
+            : `<p class="muted">${arMode ? "لا يوجد طلاب مرتبطون بك بعد." : "No linked students yet."}</p>`}
+        </fieldset>
+      </div>
+      <button class="btn btn-green" type="submit">${arMode ? "إنشاء الفصل" : "Create class"}</button>
+    </form>
+    ${classes.length ? `<div class="classroom-grid">${classes.map((item) => {
+      const assigned = data.assignments.filter((assignment) => assignment.teacherId === user.id &&
+        (!item.studentIds?.length || item.studentIds.some((id) => assignment.recipientIds?.includes(id))));
+      const classStudents = students.filter((student) => item.studentIds?.includes(student.id));
+      return `<article class="card classroom-card">
+        <div class="classroom-card-head"><span class="role-tag" style="background:#6cc551">${arMode ? "نشط" : "Active"}</span><strong>${escapeHtml(item.name)}</strong></div>
+        <div class="classroom-stats"><span><b>${classStudents.length}</b>${arMode ? "طالبًا" : "students"}</span><span><b>${assigned.length}</b>${arMode ? "واجبات" : "assignments"}</span><span><b>0%</b>${arMode ? "متوسط التقدم" : "avg. progress"}</span></div>
+        ${classStudents.length ? `<div class="classroom-members">${classStudents.map((student) => `<span>${escapeHtml(displayName(student))}</span>`).join("")}</div>` : `<p class="muted">${arMode ? "لا يوجد طلاب في هذا الفصل." : "No students in this class."}</p>`}
+        ${state.viewClass === item.id
+          ? `<form class="classroom-edit" data-edit-class="${escapeHtml(item.id)}">
+              <label>${arMode ? "اسم الفصل" : "Class name"}<input name="className" value="${escapeHtml(item.name)}" required></label>
+              <fieldset class="classroom-student-picker">
+                <legend>${arMode ? "طلاب الفصل" : "Class students"}</legend>
+                <label class="classroom-student-search">
+                  ${arMode ? "بحث بالاسم أو البريد" : "Search by name or email"}
+                  <input type="search" data-classroom-search placeholder="${arMode ? "اكتب اسم الطالب أو بريده" : "Type a student name or email"}" autocomplete="off">
+                </label>
+                ${students.map((student) => `<label class="classroom-student-choice" data-student-search="${escapeHtml(`${displayName(student)} ${student.nameEn || ""} ${student.email || ""}`.toLowerCase())}"><input type="checkbox" name="studentIds" value="${escapeHtml(student.id)}" ${item.studentIds?.includes(student.id) ? "checked" : ""}><span>${escapeHtml(displayName(student))}</span><small>${escapeHtml(student.email)}</small></label>`).join("")}
+              </fieldset>
+              <button class="btn btn-green" type="submit">${arMode ? "حفظ الطلاب" : "Save students"}</button>
+            </form>`
+          : ""}
+        ${!state.viewClass || state.viewClass !== item.id
+          ? `<div class="classroom-quick-add">
+              <label>${arMode ? "إضافة طالب للفصل" : "Add student to class"}
+                <input type="search" data-classroom-add-search="${escapeHtml(item.id)}" placeholder="${arMode ? "الاسم أو البريد" : "Name or email"}" autocomplete="off">
+              </label>
+              <div class="classroom-add-results">
+                ${students.filter((student) => !item.studentIds?.includes(student.id)).map((student) =>
+                  `<button type="button" class="classroom-add-result" data-add-student-class="${escapeHtml(item.id)}" data-student-id="${escapeHtml(student.id)}" data-student-search="${escapeHtml(`${displayName(student)} ${student.nameEn || ""} ${student.email || ""}`.toLowerCase())}">
+                    <span><strong>${escapeHtml(displayName(student))}</strong><small>${escapeHtml(student.email)}</small></span><b>${arMode ? "+ إضافة" : "+ Add"}</b>
+                  </button>`).join("") || `<p class="muted">${arMode ? "جميع طلابك مرتبطون بهذا الفصل." : "All your students are already in this class."}</p>`}
+              </div>
+            </div>`
+          : ""}
+        <div class="classroom-card-actions">
+          <button class="btn btn-ghost" data-edit-class-open="${escapeHtml(item.id)}">${arMode ? "تعديل الفصل" : "Edit class"}</button>
+          <button class="btn btn-red" data-delete-class="${escapeHtml(item.id)}">${arMode ? "حذف الفصل" : "Delete class"}</button>
+        </div>
+      </article>`;
+    }).join("")}</div>` : `<div class="card teacher-directory-empty"><strong>${arMode ? "لم تُنشئ فصولًا بعد" : "You haven’t created a class yet"}</strong><span class="muted">${arMode ? "أنشئ فصلًا ثم أضف طلابك من حسابات مرتبطة." : "Create a class, then add linked students."}</span></div>`}
+  </section>`;
+}
+
+function accessibilityView() {
+  const arMode = ar();
+  const mode = state.accessibilityMode;
+  return `<section class="accessibility-page">
+    <header><span class="pill">${arMode ? "إتاحة الوصول" : "Accessibility"}</span><h1>${arMode ? "تفضيلات القراءة والعرض" : "Reading and display preferences"}</h1></header>
+    <div class="accessibility-grid">
+      <article class="card"><h2>${arMode ? "كثافة الحركة" : "Motion"}</h2><button class="chip ${mode === "standard" ? "on" : ""}" data-accessibility="standard" style="${mode === "standard" ? "background:#29a9e8" : ""}">${arMode ? "قياسي" : "Standard"}</button><button class="chip ${mode === "reduced" ? "on" : ""}" data-accessibility="reduced" style="${mode === "reduced" ? "background:#6cc551" : ""}">${arMode ? "حركة أقل" : "Reduce motion"}</button></article>
+      <article class="card"><h2>${arMode ? "الوضع البصري" : "Visual mode"}</h2><button class="chip ${state.visualMode === "dark" ? "on" : ""}" data-visual="dark" style="${state.visualMode === "dark" ? "background:#435174" : ""}">${arMode ? "الوضع الليلي" : "Night mode"}</button><button class="chip ${state.visualMode === "standard" ? "on" : ""}" data-visual="standard" style="${state.visualMode === "standard" ? "background:#29a9e8" : ""}">${arMode ? "الوضع المعتاد" : "Standard"}</button></article>
+      <article class="card"><h2>${arMode ? "حجم الخط" : "Text size"}</h2><div class="font-size-switch"><button data-font-size="small" class="${state.fontSize === "small" ? "selected" : ""}">A</button><button data-font-size="standard" class="${state.fontSize === "standard" ? "selected" : ""}">A</button><button data-font-size="large" class="${state.fontSize === "large" ? "selected" : ""}">A</button></div></article>
+    </div>
+  </section>`;
+}
+
+function resetPasswordView() {
+  const arMode = ar();
+  return `${flashBar()}<section class="auth-public-page">
+    <button class="btn btn-ghost" data-go="login">← ${arMode ? "العودة لتسجيل الدخول" : "Back to login"}</button>
+    <form class="form-card auth-narrow-card" id="reset-password-form">
+      <span class="pill">${arMode ? "استعادة الوصول" : "Account recovery"}</span>
+      <h1>${arMode ? "إعادة تعيين كلمة المرور" : "Reset your password"}</h1>
+      <p class="muted">${arMode ? "أعد تعيين كلمة مرور حساب موجود على هذا الجهاز." : "Reset the password of an account stored on this device."}</p>
+      <label>${arMode ? "البريد الإلكتروني" : "Email"}<input name="email" type="email" dir="ltr" autocomplete="email" required></label>
+      <label>${arMode ? "كلمة المرور الجديدة" : "New password"}<input name="newPassword" type="password" minlength="6" autocomplete="new-password" required></label>
+      <label>${arMode ? "تأكيد كلمة المرور" : "Confirm password"}<input name="confirmPassword" type="password" minlength="6" autocomplete="new-password" required></label>
+      <button class="btn btn-xl btn-blue" type="submit">${arMode ? "حفظ كلمة المرور" : "Save password"}</button>
+    </form>
+  </section>`;
+}
+
+function checkoutView() {
+  const arMode = ar();
+  const yearly = state.checkoutPlan !== "monthly";
+  const user = sessionUser();
+  if (state.checkoutBook) {
+    const book = findBook(state.checkoutBook);
+    if (!user || user.role !== "student" || !book) {
+      state.checkoutBook = null;
+      return `<section class="checkout-page"><div class="alert alert-info">${arMode ? "سجّل دخول طالب للشراء." : "Sign in as a student to purchase."}</div></section>`;
+    }
+    if (!user.isDemo) {
+      return `${flashBar()}<section class="checkout-page">
+        <header class="checkout-heading"><span class="pill">${t().paidContent}</span><h1>${t().purchaseCheckout}</h1><p class="muted">${arMode ? "سيتم تفعيل الدفع عند ربط مزود الدفع." : "Payment will be enabled after connecting a payment provider."}</p></header>
+        <div class="card"><strong>${bookTitle(book)}</strong><p class="muted">${book.purchasePrice || 0} ${arMode ? "ر.س" : "SAR"}</p><button class="btn btn-green" data-go="library">${t().library}</button></div>
+      </section>`;
+    }
+    return `${flashBar()}<section class="checkout-page">
+      <header class="checkout-heading"><span class="pill">${t().paidContent}</span><h1>${t().purchaseCheckout}</h1><p class="muted">${t().purchaseDemoHint}</p></header>
+      <div class="checkout-layout">
+        <form class="form-card checkout-form" id="checkout-form">
+          <h2>${t().buyBook}</h2>
+          <strong>${bookTitle(book)}</strong>
+          <label>${arMode ? "الاسم على البطاقة" : "Name on card"}<input name="cardName" autocomplete="cc-name" required></label>
+          <label>${arMode ? "رقم البطاقة التجريبية" : "Demo card number"}<input name="cardNumber" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242" required></label>
+          <div class="checkout-row"><label>${arMode ? "انتهاء الصلاحية" : "Expiry"}<input name="expiry" placeholder="MM / YY" required></label><label>CVC<input name="cvc" inputmode="numeric" autocomplete="off" placeholder="123" required></label></div>
+          <button class="btn btn-xl btn-buy checkout-buy-btn" type="submit"><strong>${t().buyBook}</strong></button>
+        </form>
+        <aside class="checkout-summary"><h2>${arMode ? "ملخص الطلب" : "Order summary"}</h2><div><span>${bookTitle(book)}</span><strong>${book.purchasePrice || 0} ${arMode ? "ر.س" : "SAR"}</strong></div></aside>
+      </div>
+    </section>`;
+  }
+  if (!user?.isDemo) {
+    return `${flashBar()}<section class="checkout-page">
+      <header class="checkout-heading"><span class="pill">${arMode ? "الاشتراكات" : "Subscriptions"}</span><h1>${arMode ? "الدفع سيُفعّل عند ربط مزود الدفع" : "Checkout is ready for a payment provider"}</h1><p class="muted">${arMode ? "لن تُخصم أي مبالغ ولن تُنشأ اشتراكات وهمية حتى اكتمال الربط." : "No charges or synthetic subscriptions will be created until provider connection."}</p></header>
+      <div class="card"><h2>${arMode ? "حسابك يعمل حاليًا بالخطة المجانية" : "Your account currently uses the free plan"}</h2><p class="muted">${arMode ? "يمكنك الاستمرار في القراءة والألعاب والتجربة الكاملة المتاحة." : "Continue reading, playing games and using all currently available features."}</p><button class="btn btn-green" data-go="${user ? homeFor(user.role) : "signup"}">${arMode ? "متابعة" : "Continue"}</button></div>
+    </section>`;
+  }
+  return `${flashBar()}<section class="checkout-page">
+    <header class="checkout-heading">
+      <span class="pill">${arMode ? "إتمام الاشتراك" : "Complete your subscription"}</span>
+      <h1>${arMode ? "اختر الخطة المناسبة لعائلتك" : "Choose the plan that fits your family"}</h1>
+      <p class="muted">${arMode ? "دفع تجريبي — لن يتم خصم أي مبلغ أو ربط بطاقة حقيقية." : "Demo checkout — no charge or real card connection."}</p>
+    </header>
+    <div class="checkout-layout">
+      <form class="form-card checkout-form" id="checkout-form">
+        <h2>${arMode ? "بيانات الاشتراك" : "Subscription details"}</h2>
+        <div class="checkout-plans">
+          <button type="button" class="checkout-plan ${yearly ? "" : "selected"}" data-checkout-plan="monthly">
+            <strong>${arMode ? "شهري" : "Monthly"}</strong><span>49 ${arMode ? "ر.س / شهر" : "SAR / month"}</span>
+          </button>
+          <button type="button" class="checkout-plan ${yearly ? "selected" : ""}" data-checkout-plan="yearly">
+            <strong>${arMode ? "سنوي" : "Yearly"}</strong><span>390 ${arMode ? "ر.س / سنة" : "SAR / year"}</span><small>${arMode ? "الأفضل قيمة" : "Better value"}</small>
+          </button>
+        </div>
+        <label>${arMode ? "الاسم على البطاقة" : "Name on card"}<input name="cardName" autocomplete="cc-name" required></label>
+        <label>${arMode ? "رقم البطاقة التجريبية" : "Demo card number"}<input name="cardNumber" inputmode="numeric" autocomplete="off" placeholder="4242 4242 4242 4242" required></label>
+        <div class="checkout-row">
+          <label>${arMode ? "انتهاء الصلاحية" : "Expiry"}<input name="expiry" placeholder="MM / YY" required></label>
+          <label>CVC<input name="cvc" inputmode="numeric" autocomplete="off" placeholder="123" required></label>
+        </div>
+        <label class="consent-row"><input type="checkbox" required><span>${arMode ? "أوافق على شروط الاشتراك وسياسة الخصوصية." : "I agree to the subscription terms and privacy policy."}</span></label>
+        <button class="btn btn-xl btn-pink" type="submit">${arMode ? "تأكيد الاشتراك التجريبي" : "Confirm demo subscription"}</button>
+      </form>
+      <aside class="checkout-summary">
+        <h2>${arMode ? "ملخص الطلب" : "Order summary"}</h2>
+        <div><span>${yearly ? (arMode ? "الخطة السنوية" : "Yearly plan") : (arMode ? "الخطة الشهرية" : "Monthly plan")}</span><strong>${yearly ? "390" : "49"} ${arMode ? "ر.س" : "SAR"}</strong></div>
+        <div><span>${arMode ? "حتى 3 أطفال" : "Up to 3 children"}</span><strong>✓</strong></div>
+        <div><span>${arMode ? "كل اللغتين" : "Both languages"}</span><strong>✓</strong></div>
+        <div><span>${arMode ? "إلغاء في أي وقت" : "Cancel anytime"}</span><strong>✓</strong></div>
+      </aside>
+    </div>
+  </section>
+  <section class="school-cta">
+    <div><span class="pill">${ar() ? "للمدارس والمعلمين" : "For schools and teachers"}</span><h2>${ar() ? "اجعل القراءة تجربة للفصل كله" : "Make reading a classroom experience"}</h2><p>${ar() ? "إدارة الفصول والواجبات وتقارير التقدم من مكان واحد." : "Manage classes, assignments and progress reports in one place."}</p></div>
+    <button class="btn btn-lg btn-blue" data-go="schools">${ar() ? "استكشف حلول المدارس" : "Explore school solutions"}</button>
+  </section>
+  <section class="home-faq">
+    <div class="section-head"><h2>${ar() ? "أسئلة شائعة" : "Frequently asked questions"}</h2><button class="btn btn-ghost" data-go="help">${ar() ? "المزيد من المساعدة" : "More help"}</button></div>
+    <details><summary>${ar() ? "هل يناسب الموقع مستويي؟" : "Does it fit my child’s level?"}</summary><p>${ar() ? "يبدأ جميع الطلاب بالمستوى الأول، ثم يتدرجون حسب التقدم والكتب المكتملة." : "Every student starts at level one and progresses through completed books."}</p></details>
+    <details><summary>${ar() ? "هل يمكن للأخوة مشاركة الاشتراك؟" : "Can siblings share a subscription?"}</summary><p>${ar() ? "الخطة العائلية تدعم حتى ثلاثة حسابات للأطفال." : "The family plan supports up to three child accounts."}</p></details>
+  </section>`;
+}
+
+function privacyView() {
+  const arMode = ar();
+  return `<section class="policy-page">
+    <span class="pill">${arMode ? "الخصوصية والأمان" : "Privacy & safety"}</span>
+    <h1>${arMode ? "خصوصية طفلك أساس تجربتنا" : "Your child’s privacy comes first"}</h1>
+    <div class="policy-grid">
+      <article class="card"><h2>${arMode ? "بيانات أقل" : "Collect less"}</h2><p>${arMode ? "نجمع فقط البيانات اللازمة للتعلّم والمتابعة." : "We collect only the data needed for learning and family progress."}</p></article>
+      <article class="card"><h2>${arMode ? "موافقة ولي الأمر" : "Parent consent"}</h2><p>${arMode ? "حساب الطفل مرتبط بوضوح بحساب ولي أمر." : "Every child account is clearly linked to a parent or guardian."}</p></article>
+      <article class="card"><h2>${arMode ? "تحكم كامل" : "Clear control"}</h2><p>${arMode ? "يمكن تعديل الحساب وطلب حذف البيانات من خلال الخدمة الكاملة." : "Account updates and data deletion are included in the production service."}</p></article>
+      <article class="card"><h2>${arMode ? "تسجيلات آمنة" : "Safer recordings"}</h2><p>${arMode ? "التسجيلات مقيدة بالحسابات المصرح لها فقط." : "Voice recordings remain restricted to authorized family and teacher accounts."}</p></article>
+    </div>
+  </section>`;
+}
+
+function schoolsView() {
+  const arMode = ar();
+  return `<section class="school-page">
+    <header class="school-hero">
+      <div><span class="pill">${arMode ? "درب البيان للمدارس" : "Darb Al-Bayan for Schools"}</span><h1>${arMode ? "برنامج قراءة لمعلميك وطلابك" : "A reading program for your teachers and students"}</h1><p>${arMode ? "الفصول، الواجبات، التقارير، وربط المعلمين بمنصة واحدة." : "Classes, assignments, reporting and teacher tools in one workspace."}</p></div>
+      <button class="btn btn-lg btn-pink" data-go="signup" data-role="teacher">${arMode ? "ابدأ كمعلم" : "Start as a teacher"}</button>
+    </header>
+    <div class="school-kpis"><article class="card"><strong>12</strong><span>${arMode ? "مستوى تعليمي" : "learning levels"}</span></article><article class="card"><strong>7</strong><span>${arMode ? "تقارير يومية وأسبوعية" : "daily & weekly reports"}</span></article><article class="card"><strong>2</strong><span>${arMode ? "لغتان في المنصة" : "languages"}</span></article></div>
+    <div class="policy-grid">
+      <article class="card"><h2>${arMode ? "إدارة الفصول" : "Class management"}</h2><p>${arMode ? "راقب تقدم كل فصل وحدد ما يحتاجه كل طالب." : "Monitor every class and see which students need support."}</p></article>
+      <article class="card"><h2>${arMode ? "واجبات قراءة" : "Reading assignments"}</h2><p>${arMode ? "عيّن القصص والألعاب بسرعة وتتبع الإكمال." : "Assign stories and games quickly and track completion."}</p></article>
+      <article class="card"><h2>${arMode ? "تقارير صديقة للمدرسة" : "School-ready reports"}</h2><p>${arMode ? "ملخصات واضحة للمعلمين والإدارة وأولياء الأمور." : "Clear summaries for teachers, leaders and families."}</p></article>
+      <article class="card"><h2>${arMode ? "تجربة آمنة للأطفال" : "A safe student experience"}</h2><p>${arMode ? "صلاحيات منفصلة ومحتوى مناسب للفئات العمرية." : "Separate permissions and age-appropriate content."}</p></article>
+    </div>
+  </section>`;
+}
+
+function helpView() {
+  const arMode = ar();
+  const faqs = arMode
+    ? [["كيف أنشئ حسابًا لطفلي؟", "اختر ولي الأمر عند التسجيل، ثم أضف طفلك أو اربطه بحساب موجود."], ["هل يمكن للمعلم متابعة الطلاب؟", "نعم، الواجهة المعملية تسهّل اختيار الطلاب والواجبات والتقارير."], ["هل الاشتراك تجريبي؟", "حاليًا الاشتراك والبطاقة تجريبية، ولن يتم خصم مبالغ حقيقية قبل ربط الدفع."]]
+    : [["How do I create my child’s account?", "Choose Parent at signup, then add or link your child."], ["Can teachers track students?", "Yes. Teacher tools organize students, assignments and reports."], ["Is checkout real?", "Checkout is currently a demo; no real payments are processed."]];
+  return `<section class="help-page">
+    <header class="help-heading"><span class="pill">${arMode ? "مركز المساعدة" : "Help center"}</span><h1>${arMode ? "كيف نقدر نساعدك؟" : "How can we help?"}</h1></header>
+    <label class="help-search">${arMode ? "ابحث عن إجابة" : "Search for an answer"}<input type="search" placeholder="${arMode ? "مثال: الاشتراك، تسجيل الطالب..." : "Example: subscription, student signup..."}"></label>
+    <div class="faq-list">${faqs.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("")}</div>
+  </section>`;
 }
 
 function flashBar() {
@@ -2038,14 +2670,39 @@ function homeView() {
     <div class="icon-box" style="background:${colors[i]}">${svg(ICONS[keys[i]], 34, 34)}</div>
     <h3>${f[0]}</h3><p>${f[1]}</p>
   </div>`).join("");
+  const featuredTeachers = activeTeachers()
+    .slice()
+    .sort((a, b) => Number(b.teacherExperienceYears || 0) - Number(a.teacherExperienceYears || 0))
+    .slice(0, 4);
+  const featuredCards = featuredTeachers.map((teacher) => {
+    const specialties = teacherSpecialtyTags(teacher);
+    const experience = Number(teacher.teacherExperienceYears);
+    const searchableText = `${displayName(teacher)} ${String(teacher.teacherSpecialties || "")} ${String(teacher.teacherBio || "")}`.trim().toLowerCase();
+    return `<article class="featured-teacher-card" data-teacher-search="${escapeHtml(searchableText)}">
+      <div class="featured-teacher-top">
+        ${teacherPortrait(teacher, "featured-teacher-portrait")}
+        <div class="featured-teacher-name">
+          <span class="teacher-directory-status">${tt.teacherRole}</span>
+          <h3>${displayName(teacher)}</h3>
+        </div>
+      </div>
+      ${specialties ? `<div class="teacher-specialty-list">${specialties}</div>` : ""}
+      ${experience > 0 ? `<span class="featured-teacher-experience">${experience} ${tt.teacherYearsExperience}</span>` : ""}
+      <button class="btn featured-teacher-button" data-go="teacher-profile" data-tid="${escapeHtml(teacher.id)}">
+        ${tt.teacherProfileOpen}<span aria-hidden="true">›</span>
+      </button>
+    </article>`;
+  }).join("");
   return `${flashBar()}
   <section class="hero">
     <div class="hero-copy">
-      <span class="pill wiggle">${tt.heroTag}</span>
-      <h1>${tt.heroTitle1} <em>${tt.heroTitle2}</em></h1>
-      <p>${tt.heroText}</p>
+      <h1 aria-label="${escapeHtml(`${tt.heroTitle1} ${tt.heroTitle2}`)}">
+        <span data-typewriter-part aria-hidden="true">${tt.heroTitle1}</span>
+        <em data-typewriter-part aria-hidden="true">${tt.heroTitle2}</em>
+      </h1>
+      <p class="hero-description">${tt.heroText}</p>
       <div class="cta-row">
-        <button class="btn btn-lg btn-blue wiggle" data-go="signup" data-role="student">${tt.ctaKid}</button>
+        <button class="btn btn-lg btn-blue" data-go="signup" data-role="student">${tt.ctaKid}</button>
         <button class="btn btn-lg btn-outline" data-go="signup" data-role="parent">${tt.ctaParent}</button>
         <button class="btn btn-lg btn-muted" data-go="signup" data-role="teacher">${tt.ctaTeacher}</button>
       </div>
@@ -2055,6 +2712,32 @@ function homeView() {
       <div class="hero-frame"><img src="assets/hero.jpg" alt="${tt.heroAlt}"></div>
       <div class="float-card float-stars bob">${svg(ICONS.star, 28, 28, "#f5a000", "#ffc107")}<span>${tt.floatStars}</span></div>
       <div class="float-card float-ayah bob">${tt.floatAyah}</div>
+    </div>
+  </section>
+  <section class="trust-strip" aria-label="${ar() ? "مميزات درب البيان" : "Darb Al-Bayan benefits"}">
+    <div><strong>12</strong><span>${ar() ? "مستوى تعليمي" : "learning levels"}</span></div>
+    <div><strong>4</strong><span>${ar() ? "مراحل عمرية" : "age stages"}</span></div>
+    <div><strong>2</strong><span>${ar() ? "لغتان للقراءة" : "reading languages"}</span></div>
+    <div><strong>24/7</strong><span>${ar() ? "الوصول من أي مكان" : "access anywhere"}</span></div>
+  </section>
+  <section class="landing-how">
+    <div class="section-head"><h2>${ar() ? "رحلة تقرأها بثقة" : "A reading journey you can trust"}</h2></div>
+    <div class="landing-how-grid">
+      <article class="landing-how-card">
+        <span class="landing-step">1</span>
+        <div class="icon-box" style="background:#e3f5fd">${svg(ICONS.book,30,30,"#1e88d6")}</div>
+        <div><h3>${ar() ? "قصة تناسب مرحلتك" : "A story for your stage"}</h3><p>${ar() ? "نص مشكول واضح، وصوت يساعدك على القراءة والفهم." : "Clear voweled text and audio support reading and comprehension."}</p></div>
+      </article>
+      <article class="landing-how-card">
+        <span class="landing-step">2</span>
+        <div class="icon-box" style="background:#eef9e8">${svg(ICONS.mic,30,30,"#3f9a38")}</div>
+        <div><h3>${ar() ? "اقرأ وحدّثنا بحب" : "Read and share"}</h3><p>${ar() ? "سجّل قراءتك، واطّلع المعلم وولي الأمر على تقدمك." : "Record reading and let your teacher or parent review your progress."}</p></div>
+      </article>
+      <article class="landing-how-card">
+        <span class="landing-step">3</span>
+        <div class="icon-box" style="background:#fff6dc">${svg(ICONS.star,30,30,"#a86b00")}</div>
+        <div><h3>${ar() ? "أجب واكسب النجوم" : "Answer and earn stars"}</h3><p>${ar() ? "أسئلة بسيطة ومكافآت تشجعك أن تكمل وتتعلم." : "Simple questions and rewards keep learning positive and steady."}</p></div>
+      </article>
     </div>
   </section>
   <section>
@@ -2067,16 +2750,56 @@ function homeView() {
     <div class="section-head"><h2>${tt.newBooks}</h2><button class="btn btn-ghost" data-go="login">${tt.seeAll}</button></div>
     <div class="grid-books">${catalogBooks().map((book) => bookCard(book, true)).join("")}</div>
   </section>
+  <section class="featured-teachers-section">
+    <div class="featured-teachers-heading">
+      <div>
+        <span class="pill featured-teachers-pill">${tt.teacherProfessionalProfile}</span>
+        <h2>${tt.featuredTeachersTitle}</h2>
+        <p>${tt.featuredTeachersIntro}</p>
+      </div>
+      <label class="featured-teacher-search">
+        <span>${tt.featuredTeachersSearch}</span>
+        <input id="featured-teacher-search" type="search" placeholder="${tt.featuredTeachersSearch}" autocomplete="off">
+      </label>
+    </div>
+    ${featuredTeachers.length
+      ? `<div class="featured-teachers-grid">${featuredCards}</div>
+         <p class="featured-teacher-search-empty" hidden>${tt.featuredTeachersSearchEmpty}</p>`
+      : `<div class="card featured-teachers-empty">${tt.noTeachersAvailable}</div>`}
+    <button class="btn btn-pink featured-teachers-view-all" data-go="teacher-directory">${tt.featuredTeachersViewAll}</button>
+  </section>
+  <section class="landing-audience">
+    <article class="landing-audience-card">
+      <span class="pill">${ar() ? "للأسر" : "For families"}</span>
+      <h2>${ar() ? "تابع طفلك وهو يقرأ بثقة" : "Follow your child’s reading journey"}</h2>
+      <p>${ar() ? "أضف الأطفال، شجّعهم بالنجوم والرسائل، وحدد هدف قراءة يناسب حياتكم." : "Add children, encourage them with stars and messages, and set a reading goal that fits your routine."}</p>
+      <button class="btn btn-outline" data-go="signup" data-role="parent">${ar() ? "أنشئ حساب الأسرة" : "Create family account"}</button>
+    </article>
+    <article class="landing-audience-card landing-audience-teacher">
+      <span class="pill">${ar() ? "للمعلمين والمدارس" : "For teachers and schools"}</span>
+      <h2>${ar() ? "إدارة فصل القراءة من مكان واحد" : "Manage your reading class in one place"}</h2>
+      <p>${ar() ? "أنشئ الفصول، اربط الطلاب، عيّن الكتب، وراجع تقدمهم وتسجيلاتهم." : "Create classes, link students, assign books, and review progress and recordings."}</p>
+      <button class="btn btn-ghost" data-go="schools">${ar() ? "استكشف حلول المعلمين" : "Explore teacher solutions"}</button>
+    </article>
+  </section>
+  <section class="landing-faq">
+    <div class="section-head"><h2>${ar() ? "أسئلة قبل البدء" : "Before you get started"}</h2><button class="btn btn-ghost" data-go="help">${ar() ? "المساعدة" : "Help center"}</button></div>
+    <div class="landing-faq-grid">
+      <details><summary>${ar() ? "هل يناسب الموقع الأطفال الذين لا يقرأون بعد؟" : "Is it suitable for children who are not reading yet?"}</summary><p>${ar() ? "يبدأ التعلم بالحروف والأصوات والكلمات القصيرة، ويزداد التقدم تدريجيًا." : "Learning begins with letters, sounds and short words, then progresses gradually."}</p></details>
+      <details><summary>${ar() ? "هل أحتاج اشتراكًا لكل طفل؟" : "Does every child need a separate subscription?"}</summary><p>${ar() ? "الاشتراك العائلي المصمم لدينا يدعم حتى ثلاثة أطفال." : "The family plan supports up to three children."}</p></details>
+      <details><summary>${ar() ? "هل يمكن للمعلم متابعة طلابه؟" : "Can a teacher follow students?"}</summary><p>${ar() ? "نعم، المعلم يربط الطلاب بفصوله ويشاهد واجباتهم وتسجيلاتهم." : "Yes, teachers link students to classes and follow assignments and recordings."}</p></details>
+    </div>
+  </section>
   <section class="pricing">
     <h2 class="center-title">${tt.pricingTitle}</h2>
     <div class="plans">
       <div class="plan"><span style="font-size:22px;font-weight:800;color:#1e88d6">${tt.planMonthly}</span>
         <span class="plan-price">${tt.priceM}</span><span class="muted">${tt.planMonthlyNote}</span>
-        <button class="btn btn-blue" data-go="signup" data-role="parent">${tt.choose}</button></div>
+        <button class="btn btn-blue" data-go="checkout" data-plan="monthly">${tt.choose}</button></div>
       <div class="plan best"><span class="best-tag">${tt.best}</span>
         <span style="font-size:22px;font-weight:800;color:#d63a72">${tt.planYearly}</span>
         <span class="plan-price">${tt.priceY}</span><span class="muted">${tt.planYearlyNote}</span>
-        <button class="btn btn-pink" data-go="signup" data-role="parent">${tt.choose}</button></div>
+        <button class="btn btn-pink" data-go="checkout" data-plan="yearly">${tt.choose}</button></div>
     </div>
   </section>`;
 }
@@ -2157,6 +2880,10 @@ function teacherPublicProfileView() {
       </div>
     </header>
     ${specialties ? `<section class="teacher-public-specialties"><h2>${tt.teacherSpecialtiesLabel}</h2><div class="teacher-specialty-list">${specialties}</div></section>` : ""}
+    ${teacher.teacherInstitution ? `<section class="card teacher-public-detail">
+      <h2>${ar() ? "المدرسة أو المؤسسة" : "School or institution"}</h2>
+      <p>${escapeHtml(teacher.teacherInstitution)}</p>
+    </section>` : ""}
     <div class="teacher-public-details">
       ${profileSections.map(([labelKey, property, placeholderKey]) =>
         detail(labelKey, property, placeholderKey)).join("")}
@@ -2169,9 +2896,12 @@ function bookCard(b, withBtn) {
   const st = stageOf(b.l);
   const user = sessionUser();
   const subscriptionLocked = bookLockedForUser(b, user);
+  const paid = bookAccessMode(b) === "paid";
+  const purchased = hasPurchasedBook(user, b);
   const levelLocked = user?.role === "student" && b.l > user.level;
   const locked = subscriptionLocked || levelLocked;
-  const lockLabel = subscriptionLocked ? t().lockedForSubscription
+  const lockLabel = paid && !purchased ? `${t().paidContent} · ${b.purchasePrice || 0} ر.س`
+    : subscriptionLocked ? t().lockedForSubscription
     : levelLocked ? t().bookLocked
       : b.premium ? t().premiumContent : t().freeLabel;
   return `<button class="book-btn" data-open="${b.id}">
@@ -2179,7 +2909,9 @@ function bookCard(b, withBtn) {
     <span style="font-size:18px;font-weight:800;line-height:1.3">${bookTitle(b)}</span>
     <span class="level-chip" style="background:${st.bg};border-color:${st.c}">${lvName(b.l)}</span>
     <span class="level-chip">${lockLabel}</span>
-    ${withBtn ? `<span class="btn ${locked ? "btn-muted" : "btn-blue"}" style="height:46px;width:100%">${locked ? lockLabel : t().read}</span>` : ""}
+    ${withBtn ? `<span class="btn ${paid && !purchased ? "btn-buy book-buy-action" : locked ? "btn-muted" : "btn-blue"}" style="width:100%">${paid && !purchased
+      ? `<strong>${t().buyBook}</strong>`
+      : locked ? `<strong>${lockLabel}</strong>` : `<strong>${t().read}</strong>`}</span>` : ""}
   </button>`;
 }
 
@@ -2209,23 +2941,61 @@ function authForms(kind) {
         <div id="auth-err"></div>
         <label>${tt.email}<input name="email" type="email" dir="ltr" autocomplete="username" required></label>
         <label>${tt.password}<span class="password-field"><input name="password" type="password" dir="ltr" autocomplete="current-password" required><button type="button" class="password-toggle" data-act="toggle-password">${tt.showPassword}</button></span></label>
+        <button type="button" class="btn-text auth-reset-link" data-go="reset-password">${ar() ? "نسيت كلمة المرور؟" : "Forgot password?"}</button>
+        <div class="auth-divider"><span>${ar() ? "أو" : "or"}</span></div>
+        <button type="button" class="social-login-button social-google" disabled title="${ar() ? "سيتاح بعد ربط مزود الدخول" : "Available after provider connection"}">
+          <span class="social-provider-icon google-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4a4.6 4.6 0 0 1-2 3v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.5Z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.3l-3.3-2.6c-.9.6-2.1 1-3.4 1a5.9 5.9 0 0 1-5.5-4.1H3.1v2.7A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.5 14a6 6 0 0 1 0-3.9V7.3H3.1A10 10 0 0 0 3.1 17Z"/><path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.9 1.5l2.9-2.9A9.7 9.7 0 0 0 12 2a10 10 0 0 0-8.9 5.3l3.4 2.8A5.9 5.9 0 0 1 12 6Z"/></svg>
+          </span>
+          <span class="social-provider-text">${ar() ? "المتابعة باستخدام Google" : "Continue with Google"}</span>
+        </button>
+        <button type="button" class="social-login-button social-apple" disabled title="${ar() ? "سيتاح بعد ربط مزود الدخول" : "Available after provider connection"}">
+          <span class="social-provider-icon apple-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M16.7 12.8c0-2.7 2.2-4 2.3-4.1a5 5 0 0 0-3.9-2.1c-1.6-.2-3.2 1-4 1-.8 0-2.1-1-3.5-1-1.8 0-3.5 1-4.4 2.6-1.9 3.3-.5 8.1 1.3 10.8.9 1.3 2 2.7 3.4 2.6 1.3-.1 1.9-.8 3.5-.8 1.5 0 2.1.8 3.5.8 1.5 0 2.4-1.3 3.3-2.6a11 11 0 0 0 1.5-3.1 4.7 4.7 0 0 1-3-4.1ZM14 4.9A4.6 4.6 0 0 0 15.1 1a4.7 4.7 0 0 0-3.1 1.6A4.4 4.4 0 0 0 10.9 6a3.9 3.9 0 0 0 3.1-1.1Z"/></svg>
+          </span>
+          <span class="social-provider-text">${ar() ? "المتابعة باستخدام Apple" : "Continue with Apple"}</span>
+        </button>
         <button class="btn btn-xl btn-green" type="submit">${tt.login}</button>
         <span class="muted" style="text-align:center">${tt.noAccount} <button type="button" class="btn-text" data-go="signup">${tt.signup}</button></span>
       </form>
     </section>`;
   }
   const extra = role === "teacher"
-    ? ""
+    ? `<label>${ar() ? "التخصص" : "Specialty"}<input name="teacherSpecialties" maxlength="200"${fieldValue("teacherSpecialties")} required></label>
+       <label>${tt.teacherExperienceLabel}<input name="teacherExperienceYears" type="number" min="0" max="60"${fieldValue("teacherExperienceYears")}></label>
+       <label>${ar() ? "المدرسة أو المؤسسة (اختياري)" : "School or institution (optional)"}<input name="teacherInstitution" maxlength="120"${fieldValue("teacherInstitution")}></label>`
     : role === "parent"
-      ? `<div class="onboarding-note">${tt.parentNextStep}</div>`
-      : `<label>${tt.childAge} <span class="field-hint">${tt.ageOptional}</span><input name="age" type="number" min="3" max="16"${fieldValue("age") || ' value="7"'}></label>
+      ? `<label>${ar() ? "لغة القراءة المفضلة" : "Preferred reading language"}
+          <select name="readingLanguage">
+            <option value="ar" ${draft.readingLanguage === "ar" ? "selected" : ""}>${ar() ? "العربية" : "Arabic"}</option>
+            <option value="en" ${draft.readingLanguage === "en" ? "selected" : ""}>${ar() ? "الإنجليزية" : "English"}</option>
+            <option value="both" ${!draft.readingLanguage || draft.readingLanguage === "both" ? "selected" : ""}>${ar() ? "العربية والإنجليزية" : "Arabic and English"}</option>
+          </select>
+         </label>
+         <label>${ar() ? "عدد الأطفال" : "Number of children"}
+          <select name="parentChildCount" id="parent-child-count">
+            ${[1, 2, 3].map((count) => `<option value="${count}" ${state.parentChildCount === count ? "selected" : ""}>${count} ${count === 1 ? (ar() ? "طفل" : "child") : (ar() ? "أطفال" : "children")}</option>`).join("")}
+          </select>
+        </label>
+        <div class="parent-children-fields">
+          ${Array.from({ length: state.parentChildCount }, (_, index) => {
+            const n = index + 1;
+            return `<fieldset class="parent-child-fieldset">
+              <legend>${ar() ? `الطفل ${n}` : `Child ${n}`}</legend>
+              <label>${tt.childName}<input name="childName${index}" autocomplete="off"${fieldValue(`childName${index}`)} required></label>
+              <label>${tt.email}<input name="childEmail${index}" type="email" dir="ltr" autocomplete="off"${fieldValue(`childEmail${index}`)} required></label>
+              <label>${tt.childAge} <span class="field-hint">${tt.ageOptional}</span><input name="childAge${index}" type="number" min="3" max="16"${fieldValue(`childAge${index}`) || ' value="7"'}></label>
+            </fieldset>`;
+          }).join("")}
+        </div>`
+      : `      <label>${tt.childAge}<input name="age" type="number" min="3" max="16"${fieldValue("age") || ' value="7"'} required></label>
          <div class="onboarding-note">${tt.studentLevelHint}</div>
-         <span>${tt.childBoyGirl} <span class="field-hint">${tt.ageOptional}</span></span>
+         <span>${tt.childBoyGirl}</span>
          <div class="chip-row">
            <button type="button" class="chip ${state.gender === "boy" ? "on" : ""}" data-gender="boy" style="${state.gender === "boy" ? "background:#29a9e8;border-color:#29a9e8;color:#fff" : ""}">${tt.boy}</button>
            <button type="button" class="chip ${state.gender === "girl" ? "on" : ""}" data-gender="girl" style="${state.gender === "girl" ? "background:#f06292;border-color:#f06292;color:#fff" : ""}">${tt.girl}</button>
          </div>`;
-  return `${flashBar()}<section class="split">
+  return `${flashBar()}<section class="split signup-page">
     <div class="side-panel">
       <img src="assets/walk.jpg" alt="">
       <h2>${tt.signupSide}</h2>
@@ -2246,6 +3016,7 @@ function authForms(kind) {
       <label>${tt.password} <span class="field-hint">${tt.passwordHint}</span><span class="password-field"><input name="password" type="password" dir="ltr" autocomplete="new-password" minlength="6"${fieldValue("password")} required><button type="button" class="password-toggle" data-act="toggle-password">${tt.showPassword}</button></span></label>
       ${extra}
       <button class="btn btn-xl btn-green" type="submit">${tt.createAccount}</button>
+      ${role === "student" ? `<button type="button" class="btn btn-ghost" data-go="onboarding">${ar() ? "عايز إعداد شخصي للطفل؟" : "Personalize the learner?"}</button>` : ""}
       <span class="muted" style="text-align:center">${tt.haveAccount} <button type="button" class="btn-text" data-go="login">${tt.login}</button></span>
     </form>
   </section>`;
@@ -2308,9 +3079,9 @@ function kidView() {
     const fromY = 46 + index * 148;
     const toY = fromY + 148;
     const color = toLevel <= u.level ? "#6cc551"
-      : fromLevel === u.level ? stageOf(u.level).c : "#d9e3ea";
+      : fromLevel === u.level ? stageOf(u.level).c : "var(--journey-path-locked, #d9e3ea)";
     const path = `M${fromX} ${fromY} C${fromX} ${fromY + 64} ${toX} ${toY - 64} ${toX} ${toY}`;
-    return `<path d="${path}" fill="none" stroke="#fff" stroke-width="15" stroke-linecap="round"/>
+    return `<path d="${path}" fill="none" stroke="var(--journey-rope-outline, #fff)" stroke-width="15" stroke-linecap="round"/>
       <path d="${path}" fill="none" stroke="${color}" stroke-width="8" stroke-linecap="round"/>`;
   }).join("");
   const journey = lessons.map((lesson, index) => {
@@ -2321,7 +3092,7 @@ function kidView() {
       <button class="${status === "now" ? "pulse" : ""}" data-open="${status === "lock" ? "" : book.id}" ${status === "lock" ? "disabled" : ""} aria-label="${tt.level} ${level}">
         ${status === "done" ? svg(ICONS.check, 38, 38) : status === "now" ? level : svg(ICONS.lock, 38, 38)}
       </button>
-      <span style="color:${status === "lock" ? "#8a8399" : "#3b3355"}">${level}. ${ar() ? lesson[0] : lesson[1]}</span>
+      <span class="node-label">${level}. ${ar() ? lesson[0] : lesson[1]}</span>
     </div>`;
   }).join("");
   return `${flashBar()}<section class="kid-layout">
@@ -2333,14 +3104,14 @@ function kidView() {
       <div class="continue">
         <img src="assets/book-continue.jpg" alt="" style="width:110px;border-radius:16px">
         <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:8px">
-          <span style="font-size:15px;font-weight:800;color:#a86b00">${tt.continueReading}</span>
+          <span class="continue-label">${tt.continueReading}</span>
           <span style="font-size:24px;font-weight:800">${bookTitle(book)}</span>
           <div class="bar"><span style="width:${studentProgress(u)}%;background:#6cc551"></span></div>
         </div>
         <button class="btn btn-lg btn-green" data-open="${book.id}">${tt.read}</button>
       </div>
       <div class="card homework-card">
-        <strong style="font-size:22px;color:#a86b00">${tt.myHomework}</strong>
+        <strong class="homework-title">${tt.myHomework}</strong>
         ${homework.length ? `<div class="homework-list">${homework.slice(0, 5).map((assignment) => {
           const done = assignment.completedBy?.includes(u.id);
           const assignedBook = findBook(assignment.bookId);
@@ -2380,7 +3151,7 @@ function kidView() {
         </span>
       </button>
       <div class="card mission-card">
-        <strong style="font-size:22px;color:#1e88d6">${tt.dailyMission}</strong>
+        <strong class="mission-title">${tt.dailyMission}</strong>
         ${mission.review ? `<span class="muted">${tt.missionReviewHint}</span>` : ""}
         <span class="muted">${mission.prompt}</span>
         <div class="mission-options">${mission.options.map((option, index) =>
@@ -2391,13 +3162,13 @@ function kidView() {
         </span>
       </div>
       ${challenges.length ? challenges.map((challenge) => `<div class="card challenge-card">
-        <strong style="font-size:22px;color:#3f9a38">${tt.classChallenge}</strong>
+        <strong class="challenge-title">${tt.classChallenge}</strong>
         <span>${escapeHtml(challenge.title)}</span>
         <span class="muted">${tt.challengeTarget}: ${Math.min(challengeMinutes, challenge.targetMinutes)} / ${challenge.targetMinutes} ${tt.minutes}</span>
         <div class="bar"><span style="width:${Math.min(100, Math.round(challengeMinutes / challenge.targetMinutes * 100))}%;background:#6cc551"></span></div>
         <button class="btn btn-green" data-challenge="${challenge.id}" ${challengeMinutes < challenge.targetMinutes ? "disabled" : ""}>${tt.challengeJoin}</button>
       </div>`).join("") : `<div class="card challenge-card">
-        <strong style="font-size:22px;color:#3f9a38">${tt.classChallenge}</strong>
+        <strong class="challenge-title">${tt.classChallenge}</strong>
         <span class="muted">${tt.noChallenge}</span>
       </div>`}
       <div class="card reading-league">
@@ -2414,23 +3185,23 @@ function kidView() {
           : tt.leagueStartRanking}</span>
       </div>
       ${latestEncouragement ? `<div class="card cheer-card">
-        <strong style="color:#d63a72">${tt.cheerReceived}</strong>
+        <strong class="cheer-title">${tt.cheerReceived}</strong>
         <span>${escapeHtml(latestEncouragement.text)}</span>
       </div>` : ""}
       <div class="card badge-card">
-        <strong style="color:#a86b00">${tt.badges}</strong>
+        <strong class="badge-title">${tt.badges}</strong>
         ${earnedBadges.length
           ? `<div class="badge-list">${earnedBadges.map((badge) => `<span class="kid-badge">${uiIcon("star", 16)}${badge}</span>`).join("")}</div>`
           : `<span class="muted">${tt.noBadges}</span>`}
       </div>
-      <div class="card" style="border-color:#f8c6d8">
-        <strong style="color:#d63a72">${tt.dailyGoal}</strong>
+      <div class="card daily-goal-card">
+        <strong class="daily-goal-title">${tt.dailyGoal}</strong>
         <div class="bar" style="height:16px;background:#fdecf3"><span style="width:${pct}%;background:#f06292"></span></div>
         <span class="muted">${Math.floor(elapsed / 60)} / ${stageOf(u.level).mins} ${tt.minutes}</span>
       </div>
-      <div class="card" style="background:#fffbea;border-color:#ffe7a8">
-        <strong style="color:#a86b00">${tt.dhikrTitle}</strong>
-        <span style="font-size:22px;font-weight:700;line-height:1.9">${tt.dhikr}</span>
+      <div class="card dhikr-card">
+        <strong class="dhikr-title">${tt.dhikrTitle}</strong>
+        <span class="dhikr-text">${tt.dhikr}</span>
       </div>
     </aside>
   </section>`;
@@ -2439,6 +3210,8 @@ function kidView() {
 function studentProfileView() {
   const student = sessionUser();
   const tt = t();
+  const recordings = db().recordings.filter((recording) => recording.studentId === student.id)
+    .sort((a, b) => (Number(b.createdAt) || 0) - (Number(a.createdAt) || 0));
   const milestones = [25, 50, 100, 200];
   const nextMilestone = milestones.find((milestone) => Number(student.stars) < milestone);
   const badges = [
@@ -2536,7 +3309,7 @@ function studentProfileView() {
   const isAvatarBuilder = state.screen === "avatar-builder";
   return `${flashBar()}<section class="student-profile ${isAvatarBuilder ? "avatar-builder-view" : ""}">
     ${isAvatarBuilder
-      ? `<header class="avatar-builder-heading"><button class="btn btn-ghost" type="button" data-go="games">← ${tt.gamesBack}</button>
+      ? `      <header class="avatar-builder-heading"><button class="btn btn-ghost" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
           <div><h1>${tt.avatarGameTitle}</h1><p class="muted">${tt.avatarGameDescription}</p></div></header>`
       : `<header class="student-profile-heading">
           <img class="student-profile-avatar" src="${escapeHtml(student.avatar || "assets/avatar.jpg")}" alt="${displayName(student)}">
@@ -2583,24 +3356,7 @@ function studentProfileView() {
         </section>
       </div>
     </section>
-    <div class="student-profile-sections">
-      <section class="card student-profile-details">
-        <h2>${tt.editMyDetails}</h2>
-        <form class="student-profile-form" id="student-profile-form">
-          <label>${tt.name}<input name="name" maxlength="60" value="${escapeHtml(student.name || "")}" required></label>
-          <label>${tt.email}<input name="email" type="email" dir="ltr" value="${escapeHtml(student.email || "")}" required><span class="field-hint">${tt.profileEmailHint}</span></label>
-          <label>${tt.childAge}<input name="age" type="number" min="3" max="16" value="${escapeHtml(student.age || 7)}" required></label>
-          <label>${tt.childBoyGirl}<select name="gender">
-            <option value="girl" ${student.gender === "girl" ? "selected" : ""}>${tt.girl}</option>
-            <option value="boy" ${student.gender === "boy" ? "selected" : ""}>${tt.boy}</option>
-          </select></label>
-          <label>${tt.profilePhoto}<input name="avatar" type="file" accept="image/*"><span class="field-hint">${tt.profilePhotoHint}</span></label>
-          <div class="student-profile-password-row">
-            <label>${tt.newPasswordOptional}<input name="password" type="password" minlength="6" autocomplete="new-password"></label>
-            <button class="btn btn-green" type="submit">${tt.saveChanges}</button>
-          </div>
-        </form>
-      </section>
+    ${isAvatarBuilder ? "" : `<div class="student-profile-sections">
       <aside class="student-profile-side">
         <section class="card student-rewards">
           <h2>${tt.myRewards}</h2>
@@ -2616,8 +3372,19 @@ function studentProfileView() {
           <div class="section-head"><h2>${tt.encouragementMessages}</h2><span class="level-chip">${messages.length}</span></div>
           ${messageCards || `<div class="card student-message-empty">${uiIcon("message", 36)}<p>${tt.noEncouragementMessages}</p></div>`}
         </section>
+        <section class="student-recordings">
+          <div class="section-head"><h2>${ar() ? "تسجيلاتي الصوتية" : "My voice recordings"}</h2><span class="level-chip">${recordings.length}</span></div>
+          ${recordings.length ? recordings.map((recording) => `<article class="card student-recording-item">
+            <div><strong>${bookTitle(findBook(recording.bookId) || BOOKS[0])}</strong>
+              <span class="muted">${ar() ? "صفحة" : "Page"} ${Number(recording.page) || 1} · ${escapeHtml(recording.dur || "—")}</span>
+              ${recordingAudioPlayer(recording)}</div>
+            <button class="btn btn-ghost" type="button" data-delete-recording="${escapeHtml(recording.id)}">
+              ${ar() ? "حذف التسجيل" : "Delete recording"}
+            </button>
+          </article>`).join("") : `<p class="muted">${ar() ? "لا توجد تسجيلات محفوظة بعد." : "No saved recordings yet."}</p>`}
+        </section>
       </aside>
-    </div>
+    </div>`}
   </section>`;
 }
 
@@ -2659,8 +3426,14 @@ function accountProfileView() {
       <h2>${tt.editMyDetails}</h2>
       <form class="student-profile-form" id="account-profile-form">
         <label>${tt.name}<input name="name" maxlength="60" value="${escapeHtml(user.name || "")}" required></label>
-        <label>${tt.email}<input name="email" type="email" dir="ltr" value="${escapeHtml(user.email || "")}" required>
-          <span class="field-hint">${tt.profileEmailHint}</span></label>
+        <label>${tt.email}<input name="email" type="email" dir="ltr" value="${escapeHtml(user.email || "")}" ${isParent ? 'readonly aria-readonly="true"' : ""} required>
+          <span class="field-hint">${isParent ? tt.profileEmailReadOnlyHint : tt.profileEmailHint}</span></label>
+        ${isParent ? `<label>${tt.profileReadingLanguage}
+          <select name="readingLanguage">
+            <option value="ar" ${user.readingLanguage === "ar" ? "selected" : ""}>${ar() ? "العربية" : "Arabic"}</option>
+            <option value="en" ${user.readingLanguage === "en" ? "selected" : ""}>${ar() ? "الإنجليزية" : "English"}</option>
+            <option value="both" ${!user.readingLanguage || user.readingLanguage === "both" ? "selected" : ""}>${ar() ? "العربية والإنجليزية" : "Arabic and English"}</option>
+          </select></label>` : ""}
         <label>${tt.profilePhoto}<input name="avatar" type="file" accept="image/*">
           <span class="field-hint">${tt.profilePhotoHint}</span></label>
         ${user.role === "teacher" ? `<div class="teacher-profile-editor">
@@ -2669,6 +3442,7 @@ function accountProfileView() {
           <label>${tt.teacherSpecialtiesLabel}<input name="teacherSpecialties" maxlength="200" value="${escapeHtml(user.teacherSpecialties || "")}">
             <span class="field-hint">${ar() ? "افصل بين التخصصات بفاصلة." : "Separate specialties with commas."}</span></label>
           <label>${tt.teacherExperienceLabel}<input name="teacherExperienceYears" type="number" min="0" max="60" value="${escapeHtml(user.teacherExperienceYears ?? "")}"></label>
+          <label>${ar() ? "المدرسة أو المؤسسة" : "School or institution"}<input name="teacherInstitution" maxlength="120" value="${escapeHtml(user.teacherInstitution || "")}"></label>
           <label>${tt.teacherQualificationsLabel}<textarea name="teacherQualifications" maxlength="300" rows="3">${escapeHtml(user.teacherQualifications || "")}</textarea></label>
           <label>${tt.teacherApproachLabel}<textarea name="teacherApproach" maxlength="500" rows="4">${escapeHtml(user.teacherApproach || "")}</textarea></label>
         </div>` : ""}
@@ -2707,7 +3481,7 @@ function readerView() {
   const book = findBook(user.currentBook) || BOOKS[0];
   if (bookLockedForUser(book, user)) {
     return `${flashBar()}<section style="display:flex;flex-direction:column;gap:18px">
-      <div class="alert alert-info">${tt.lockedForSubscription}</div>
+      <div class="alert alert-info">${bookAccessMode(book) === "paid" ? `${tt.paidContent} · ${book.purchasePrice || 0} ر.س` : tt.lockedForSubscription}</div>
       <button class="btn btn-blue" data-go="library">${tt.library}</button>
     </section>`;
   }
@@ -2725,7 +3499,17 @@ function readerView() {
   const pct = Math.min(100, Math.round(elapsed / goal * 100));
   const pad = (n) => (n < 10 ? "0" : "") + n;
   const last = state.page === pages.length - 1;
+  const hasUnsentRecording = pendingReadingRecording && !pendingReadingRecording.sent;
+  const waveformBars = pendingReadingRecording ? recordingWaveformBars() : "";
+  let wordIndex = 0;
+  const pageLines = (ar() ? pg.ar : pg.en).map((line) => {
+    const tokens = String(line).split(/(\s+)/);
+    return `<p>${tokens.map((token) => /\s+/.test(token)
+      ? escapeHtml(token)
+      : `<span data-reader-word="${wordIndex++}">${escapeHtml(token)}</span>`).join("")}</p>`;
+  }).join("");
   return `${flashBar()}<section class="reader">
+    <div class="alert alert-info">${tt.protectionNotice}</div>
     <div class="row" style="align-items:center">
       <button class="btn btn-muted" data-go="library">${tt.back}</button>
       <strong style="font-size:26px;flex:1">${bookTitle(book)}</strong>
@@ -2740,16 +3524,36 @@ function readerView() {
     </div>
     <div class="page-card">
       <img src="${escapeHtml(pg.img || "assets/book-continue.jpg")}" alt="">
-      <div class="page-text">${(ar() ? pg.ar : pg.en).map((ln) => `<p>${escapeHtml(ln)}</p>`).join("")}</div>
+      <div class="page-text">${pageLines}</div>
     </div>
     <div class="controls">
       <button class="btn btn-lg btn-muted" data-act="prev">${tt.prev}</button>
       <button class="btn btn-lg btn-gold" data-act="speak">${svg(ICONS.mic, 26, 26, "#6b4600")}${tt.listen}</button>
-      <button class="btn btn-lg ${state.rec === "rec" ? "btn-red" : "btn-pink"}" data-act="rec" ${["starting", "saving"].includes(state.rec) ? "disabled" : ""}><span class="${state.rec === "rec" ? "recdot" : ""}" style="width:16px;height:16px;border-radius:50%;background:#fff"></span>${state.rec === "rec" ? tt.recStop : state.rec === "saved" ? tt.recDone : state.rec === "starting" ? tt.recStarting : state.rec === "saving" ? tt.recSaving : tt.recStart}</button>
+      ${hasUnsentRecording ? "" : `<button class="btn btn-lg ${state.rec === "rec" ? "btn-red" : "btn-pink"}" data-act="rec" ${["starting", "saving", "sending"].includes(state.rec) ? "disabled" : ""}>${state.rec === "rec" ? `<span class="recording-waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>` : `<span class="recording-idle-dot" aria-hidden="true"></span>`}${state.rec === "rec" ? tt.recStop : state.rec === "saved" ? tt.recDone : state.rec === "starting" ? tt.recStarting : state.rec === "saving" ? tt.recSaving : state.rec === "sending" ? tt.recSending : tt.recStart}</button>`}
       ${last ? `<button class="btn btn-lg btn-green" data-go="quiz">${tt.toQuiz}</button>` : `<button class="btn btn-lg btn-blue" data-act="next">${tt.next}</button>`}
     </div>
+    ${pendingReadingRecording ? `<section class="recording-preview ${pendingReadingRecording.sent ? "is-sent" : ""}" aria-live="polite">
+      <div class="recording-preview-heading">
+        <span class="recording-preview-icon" aria-hidden="true">${svg(ICONS.mic, 22, 22, "currentColor")}</span>
+        <div><strong>${pendingReadingRecording.sent ? tt.recSentTitle : tt.recReviewTitle}</strong><p>${pendingReadingRecording.sent ? tt.recSavedMsg : tt.recReviewHint}</p></div>
+        <span class="recording-preview-duration" dir="ltr">${recordingDurationLabel(pendingReadingRecording.duration)}</span>
+      </div>
+      <div class="recording-audio-player" data-duration="${pendingReadingRecording.duration}">
+        <audio class="recording-preview-audio" preload="metadata" src="${escapeHtml(pendingReadingRecording.url)}" aria-hidden="true" tabindex="-1"></audio>
+        <button class="recording-play-toggle" type="button" data-recording-toggle aria-label="${tt.recPlay}" aria-pressed="false">${svg(ICONS.play, 22, 22, "currentColor", "currentColor")}</button>
+        <div class="recording-waveform-track">
+          <div class="recording-waveform-bars" aria-hidden="true">${waveformBars}</div>
+          <div class="recording-waveform-bars recording-waveform-bars-played" aria-hidden="true">${waveformBars}</div>
+          <input class="recording-waveform-seek" type="range" min="0" max="1000" step="1" value="0" data-recording-seek aria-label="${tt.recSeek}" aria-valuetext="0:00 / ${recordingDurationLabel(pendingReadingRecording.duration)}" disabled>
+        </div>
+        <div class="recording-player-time" dir="ltr"><span data-recording-current>0:00</span><span aria-hidden="true">/</span><span data-recording-duration>${recordingDurationLabel(pendingReadingRecording.duration)}</span></div>
+      </div>
+      ${pendingReadingRecording.sent ? "" : `<div class="recording-preview-actions">
+        <button class="btn btn-outline" type="button" data-act="retake-recording" ${state.rec === "sending" ? "disabled" : ""}>${tt.recRetake}</button>
+        <button class="btn btn-green" type="button" data-act="send-recording" ${state.rec === "sending" ? "disabled" : ""}>${state.rec === "sending" ? tt.recSending : tt.recSend}</button>
+      </div>`}
+    </section>` : ""}
     <p class="muted">${tt.recordingPermissionHint}</p>
-    ${state.rec === "saved" ? `<div class="alert" style="background:#fdeef4;border:3px solid #f48fb1;color:#b02a5c">${tt.recSavedMsg}</div>` : ""}
   </section>`;
 }
 
@@ -2770,7 +3574,7 @@ function quizView() {
     <span class="pill" style="align-self:center;background:#e3f5fd;color:#1e88d6;border:none">${tt.quizTag}</span>
     <h1 style="text-align:center;font-size:32px">${escapeHtml(question)}</h1>
     <div style="display:flex;flex-direction:column;gap:12px">${opts}</div>
-    ${state.answer === correctIndex ? `<div class="alert alert-ok" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><span>${tt.right}</span><button class="btn btn-green" data-go="games">${tt.toGame}</button></div>` : ""}
+    ${state.answer === correctIndex ? `<div class="alert alert-ok" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px"><span>${tt.right}</span><button class="btn btn-green" data-go="library">${ar() ? "إكمال القراءة من المكتبة" : "Continue reading from the library"}</button></div>` : ""}
     ${state.answer !== null && state.answer !== correctIndex ? `<div class="alert alert-err">${tt.wrong}</div>` : ""}
   </section>`;
 }
@@ -2790,16 +3594,16 @@ function gameView() {
       <span class="game-card-number">${i + 1}</span>
       <strong class="game-word">${w.alt}</strong>
       <div style="display:flex;align-items:center;gap:2px">
-        <button class="slot ${ok ? "is-correct" : bad ? "is-wrong" : ""}" data-slot="${i}" aria-label="${tt.gameTitle} ${i + 1}">${pl || "?"}</button>
+        <button class="slot ${ok ? "is-correct" : bad ? "is-wrong" : ""}" data-slot="${i}" data-drop-kind="letter-slot" data-drop-index="${i}" aria-label="${tt.gameTitle} ${i + 1}">${pl || "?"}</button>
         <span class="game-word-rest">${w.rest}</span>
       </div>
       <span class="game-card-feedback ${ok ? "is-success" : bad ? "is-error" : ""}" aria-live="polite">${ok ? tt.good : bad ? tt.tryAgain : tt.gameSlotHint}</span>
     </div>`;
   }).join("");
-  const tiles = POOL.map((ch, i) => `<button class="tile ${state.sel === ch ? "sel" : ""}" data-tile="${ch}" style="--tile-color:${TC[i]}" aria-pressed="${state.sel === ch}">${ch}</button>`).join("");
+  const tiles = POOL.map((ch, i) => `<button class="tile ${state.sel === ch ? "sel" : ""}" data-tile="${ch}" data-pointer-drag="letter" data-drag-value="${ch}" style="--tile-color:${TC[i]}" aria-pressed="${state.sel === ch}">${ch}</button>`).join("");
   const done = GW.every((w, i) => state.placed[i] === w.ans);
   return `${flashBar()}<section class="game">
-    <button class="btn btn-ghost learning-game-back" data-go="games">← ${tt.gamesBack}</button>
+    <button class="btn btn-ghost learning-game-back" data-back="games" aria-label="${tt.gamesBack}">←</button>
     <header class="learning-game-heading">
       <span class="pill learning-game-pill">${tt.gameTag}</span>
       <h1>${tt.gameTitle}</h1><p class="muted">${tt.gameHelp}</p>
@@ -2813,7 +3617,11 @@ function gameView() {
       <div class="controls">${tiles}</div>
     </div>
     ${state.sel ? `<div class="selected-letter-hint" aria-live="polite">${tt.gameSelectedLetter}: <strong>${escapeHtml(state.sel)}</strong></div>` : ""}
-    ${done ? `<div class="learning-game-finish"><img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h2>${tt.gameWin}</h2><div class="row"><button class="btn btn-green" data-act="reset-game">${tt.playAgain}</button><button class="btn btn-ghost" data-go="games">${tt.gamesBack}</button></div></div>` : ""}
+    ${done ? `<div class="learning-game-finish game-celebration"><div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div><img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h2>${tt.gameWin}</h2>
+      <div class="game-reward-notice" role="status">${state.letterGameRewardStatus === "awarded"
+        ? (ar() ? "وصلت 3 نجوم إلى رصيدك!" : "3 stars were added to your balance!")
+        : state.letterGameRewardStatus === "claimed" ? tt.gameRewardAlreadyEarned : ""}</div>
+      <div class="row"><button class="btn btn-green" data-act="reset-game">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div></div>` : ""}
   </section>`;
 }
 
@@ -2848,7 +3656,7 @@ function learningGamesView() {
         </div>
       </article>`).join("")}
     </div>
-    <button class="btn btn-ghost learning-game-back" data-go="kid">← ${tt.back}</button>
+    <button class="btn btn-ghost learning-game-back" data-back="kid">← ${tt.back}</button>
   </section>`;
 }
 
@@ -2864,7 +3672,6 @@ function awardGameStars(gameId, amount) {
   student.gameRewards = student.gameRewards && typeof student.gameRewards === "object"
     ? student.gameRewards : {};
   if (student.gameRewards[gameId] === today) {
-    state.flash = t().gameRewardAlreadyEarned;
     return "claimed";
   }
   student.gameRewards[gameId] = today;
@@ -2875,8 +3682,138 @@ function awardGameStars(gameId, amount) {
     state.flash = t().profileSaveError;
     return "error";
   }
-  state.flash = t().gameRewardEarned;
   return "awarded";
+}
+
+function speakGameMessage(message) {
+  if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") return;
+  const utterance = new SpeechSynthesisUtterance(message);
+  utterance.lang = ar() ? "ar-SA" : "en-US";
+  utterance.rate = 0.9;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(utterance);
+}
+
+function placeGameLetter(slotIndex, letter) {
+  const answers = ar() ? ["ش", "ك", "ق"] : ["S", "B", "M"];
+  if (!Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= answers.length ||
+    state.letterGameRewardStatus) return;
+  const placed = state.placed.slice();
+  placed[slotIndex] = letter;
+  const wasDone = state.placed.every((value, index) => value === answers[index]);
+  const done = placed.every((value, index) => value === answers[index]);
+  const correct = letter === answers[slotIndex];
+  if (!correct) speakGameMessage(ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again.");
+  else speakGameMessage(ar() ? "أحسنت!" : "Well done!");
+  if (done && !wasDone) {
+    const current = sessionUser();
+    const data = db();
+    const user = data.users.find((student) => student.id === current?.id && student.role === "student");
+    if (!user) {
+      state.flash = t().noAccess;
+    } else {
+      user.completedLevels = user.completedLevels || [];
+      if (!(user.quizLevels || []).includes(user.level)) {
+        state.flash = t().finishQuizFirst;
+      } else {
+        const completedAssignment = completeBookAssignments(data, user.id, user.currentBook);
+        const completedLevel = user.level;
+        let advancedLevel = false;
+        if (findBook(user.currentBook)?.l === completedLevel &&
+          !user.completedLevels.includes(completedLevel)) {
+          user.completedLevels.push(completedLevel);
+          user.stars += 5;
+          user.books += 1;
+          user.level = Math.min(STAGE.reduce((count, stage) => count + stage.L.length, 0), user.level + 1);
+          const nextBook = catalogBooks().find((book) => book.l === user.level);
+          if (nextBook) user.currentBook = nextBook.id;
+          user.progress = studentProgress(user);
+          advancedLevel = true;
+        }
+        state.flash = completedAssignment ? t().homeworkSaved
+          : advancedLevel
+            ? user.level === completedLevel ? t().allLevelsDone : t().nextLevel
+            : t().readingComplete;
+        save(data);
+        state.letterGameRewardStatus = awardGameStars("letterGame", 3);
+        speakGameMessage(ar() ? "يا بطل، أكملت الكلمات وحصلت على ثلاث نجوم!" : "Amazing! You finished the words and earned three stars!");
+      }
+    }
+  }
+  state.placed = placed;
+  state.sel = null;
+  render();
+}
+
+function placeBuilderLetter(slotIndex, letterIndex) {
+  const round = WORD_BUILDER_ROUNDS[ar() ? "ar" : "en"][state.wordBuilderRound];
+  if (!round || state.wordBuilderFeedback === "right" ||
+    !Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= round.letters.length ||
+    !Number.isInteger(letterIndex) || letterIndex < 0 || letterIndex >= round.letters.length) return;
+  const letters = [...state.wordBuilderLetters];
+  const previousSlot = letters.indexOf(letterIndex);
+  if (previousSlot >= 0) letters.splice(previousSlot, 1);
+  letters.splice(Math.min(slotIndex, letters.length), 0, letterIndex);
+  state.wordBuilderLetters = letters;
+  state.wordBuilderHistory[state.wordBuilderRound] = [...letters];
+  state.wordBuilderFeedback = "";
+  render();
+}
+
+function wirePointerGameDrag() {
+  if (document.documentElement.dataset.bayanGamePointerDrag) return;
+  document.documentElement.dataset.bayanGamePointerDrag = "true";
+  let activeDrag = null;
+  const releaseDrag = (source) => {
+    source.classList.remove("is-dragging");
+    source.style.removeProperty("--drag-x");
+    source.style.removeProperty("--drag-y");
+  };
+  document.addEventListener("pointerdown", (event) => {
+    const source = event.target.closest("[data-pointer-drag]");
+    if (!source || (event.button !== undefined && event.button !== 0)) return;
+    activeDrag = {
+      pointerId: event.pointerId,
+      source,
+      startX: event.clientX,
+      startY: event.clientY,
+      moved: false
+    };
+    source.classList.add("is-dragging");
+  });
+  document.addEventListener("pointermove", (event) => {
+    if (!activeDrag || event.pointerId !== activeDrag.pointerId) return;
+    if (Math.hypot(event.clientX - activeDrag.startX, event.clientY - activeDrag.startY) > 8) {
+      activeDrag.moved = true;
+    }
+    if (activeDrag.moved) {
+      activeDrag.source.style.setProperty("--drag-x", `${event.clientX - activeDrag.startX}px`);
+      activeDrag.source.style.setProperty("--drag-y", `${event.clientY - activeDrag.startY}px`);
+    }
+  });
+  document.addEventListener("pointerup", (event) => {
+    if (!activeDrag || event.pointerId !== activeDrag.pointerId) return;
+    const drag = activeDrag;
+    activeDrag = null;
+    const target = drag.moved
+      ? document.elementFromPoint(event.clientX, event.clientY)?.closest("[data-drop-kind]")
+      : null;
+    releaseDrag(drag.source);
+    if (!drag.moved) return;
+    state.lastPointerDragAt = Date.now();
+    if (!target) return;
+    if (drag.source.dataset.pointerDrag === "letter" && target.dataset.dropKind === "letter-slot") {
+      placeGameLetter(Number(target.dataset.dropIndex), drag.source.dataset.dragValue);
+    }
+    if (drag.source.dataset.pointerDrag === "builder-letter" && target.dataset.dropKind === "builder-slot") {
+      placeBuilderLetter(Number(target.dataset.dropIndex), Number(drag.source.dataset.dragValue));
+    }
+  });
+  document.addEventListener("pointercancel", (event) => {
+    if (!activeDrag || event.pointerId !== activeDrag.pointerId) return;
+    releaseDrag(activeDrag.source);
+    activeDrag = null;
+  });
 }
 
 function wordHuntView() {
@@ -2886,25 +3823,37 @@ function wordHuntView() {
   if (!round) {
     const alreadyRewarded = sessionUser()?.gameRewards?.wordHunt === dateKey(new Date());
     const rewardMessage = state.wordHuntRewardStatus === "awarded" ? tt.wordHuntReward
-      : alreadyRewarded ? tt.wordHuntRewardClaimed : "";
+      : state.wordHuntRewardStatus === "claimed" || alreadyRewarded ? tt.wordHuntRewardClaimed : "";
     return `${flashBar()}<section class="learning-game-page">
       <span class="pill learning-game-pill">${tt.wordHuntTitle}</span>
-      <div class="learning-game-finish">
+      <div class="learning-game-finish game-celebration">
+        <div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div>
         <img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h1>${tt.wordHuntComplete}</h1>
-        ${rewardMessage ? `<strong>${rewardMessage}</strong>` : ""}
-        <div class="row"><button class="btn btn-green" data-act="restart-word-hunt">${tt.playAgain}</button><button class="btn btn-ghost" data-go="games">${tt.gamesBack}</button></div>
+        ${rewardMessage ? `<div class="game-reward-notice" role="status">${rewardMessage}</div>` : ""}
+        <div class="game-earned-points">${state.wordHuntRewardStatus === "awarded" || alreadyRewarded
+          ? (ar() ? "⭐ 3 نجوم" : "⭐ 3 stars") : ""}</div>
+        <div class="row"><button class="btn btn-green" data-act="restart-word-hunt">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div>
       </div>
     </section>`;
   }
   const correct = state.wordHuntChoice === round.answer;
+  const pictureNames = ar()
+    ? { moon: "القمر", sun: "الشمس", book: "الكتاب", flower: "الزهرة", house: "البيت", fish: "السمكة" }
+    : { moon: "moon", sun: "sun", book: "book", flower: "flower", house: "house", fish: "fish" };
   const choices = round.choices.map((picture, index) => {
     const chosen = state.wordHuntChoice === index;
     const resultClass = correct && chosen ? "is-correct"
       : chosen ? "is-incorrect" : "";
     return `<button class="word-hunt-choice ${resultClass}" data-hunt-choice="${index}"
-      aria-label="${tt.wordHuntTitle} ${index + 1}" ${correct ? "disabled" : ""}><img src="assets/game-picture-${picture}.svg" alt="" loading="lazy"></button>`;
+      aria-label="${escapeHtml(pictureNames[picture] || picture)}" ${correct ? "disabled" : ""}><img src="assets/game-picture-${picture}.svg" alt="${escapeHtml(pictureNames[picture] || picture)}" loading="lazy"></button>`;
   }).join("");
   return `${flashBar()}<section class="learning-game-page">
+    <div class="learning-game-step-nav">
+      <button class="game-arrow-button is-back" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
+      <button class="game-arrow-button" type="button" data-hunt-previous aria-label="${tt.prev}" ${state.wordHuntRound <= 0 ? "disabled" : ""}>←</button>
+      <span>${tt.wordHuntRound} ${state.wordHuntRound + 1} / ${rounds.length}</span>
+      <button class="game-arrow-button is-next" type="button" data-hunt-next aria-label="${tt.wordHuntNext}" ${correct ? "" : "disabled"}>→</button>
+    </div>
     <header class="learning-game-heading">
       <span class="pill learning-game-pill">${tt.wordHuntTitle}</span>
       <h1>${tt.wordHuntTitle}</h1><p class="muted">${tt.wordHuntHelp}</p>
@@ -2913,15 +3862,17 @@ function wordHuntView() {
       <div class="bar"><span style="width:${Math.round((state.wordHuntRound + 1) / rounds.length * 100)}%;background:#f06292"></span></div>
     </div>
     <div class="word-hunt-board">
-      <span class="word-hunt-word">${escapeHtml(round.word)}</span>
+      <div class="word-hunt-scene">
+        <img src="assets/game-hunt-scene.svg" alt="${ar() ? "طفل يصطاد الكلمات من كتاب" : "A child fishing for words from a book"}">
+        <span class="word-hunt-word">${escapeHtml(round.word)}</span>
+      </div>
       <div class="word-hunt-choices">${choices}</div>
     </div>
     <div class="learning-game-feedback ${correct ? "is-success" : state.wordHuntChoice !== null ? "is-error" : ""}" aria-live="polite">
-      ${correct ? tt.wordHuntCorrect : state.wordHuntChoice !== null ? tt.wordHuntWrong : tt.wordHuntHelp}
+      ${correct ? `${tt.wordHuntCorrect} 👏 ⭐` : state.wordHuntChoice !== null ? tt.wordHuntWrong : tt.wordHuntHelp}
     </div>
     <div class="learning-game-actions">
       ${correct ? `<button class="btn btn-green" data-hunt-next>${tt.wordHuntNext}</button>` : ""}
-      <button class="btn btn-ghost" data-go="games">${tt.gamesBack}</button>
     </div>
   </section>`;
 }
@@ -2933,13 +3884,16 @@ function wordBuilderView() {
   if (!round) {
     const alreadyRewarded = sessionUser()?.gameRewards?.wordBuilder === dateKey(new Date());
     const rewardMessage = state.wordBuilderRewardStatus === "awarded" ? tt.wordBuilderReward
-      : alreadyRewarded ? tt.wordBuilderRewardClaimed : "";
+      : state.wordBuilderRewardStatus === "claimed" || alreadyRewarded ? tt.wordBuilderRewardClaimed : "";
     return `${flashBar()}<section class="learning-game-page">
       <span class="pill learning-game-pill">${tt.wordBuilderTitle}</span>
-      <div class="learning-game-finish">
+      <div class="learning-game-finish game-celebration">
+        <div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div>
         <img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h1>${tt.wordBuilderComplete}</h1>
-        ${rewardMessage ? `<strong>${rewardMessage}</strong>` : ""}
-        <div class="row"><button class="btn btn-green" data-act="restart-word-builder">${tt.playAgain}</button><button class="btn btn-ghost" data-go="games">${tt.gamesBack}</button></div>
+        ${rewardMessage ? `<div class="game-reward-notice" role="status">${rewardMessage}</div>` : ""}
+        <div class="game-earned-points">${state.wordBuilderRewardStatus === "awarded" || alreadyRewarded
+          ? (ar() ? "⭐ 4 نجوم" : "⭐ 4 stars") : ""}</div>
+        <div class="row"><button class="btn btn-green" data-act="restart-word-builder">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div>
       </div>
     </section>`;
   }
@@ -2947,16 +3901,22 @@ function wordBuilderView() {
   const correct = state.wordBuilderFeedback === "right";
   const availableLetters = round.letters.map((letter, index) => {
     const selected = letters.includes(index);
-    return `<button class="builder-letter ${selected ? "is-used" : ""}" data-builder-letter="${index}"
+    return `<button class="builder-letter ${selected ? "is-used" : ""}" data-builder-letter="${index}" data-pointer-drag="builder-letter" data-drag-value="${index}"
       ${selected || correct ? "disabled" : ""}>${escapeHtml(letter)}</button>`;
   }).join("");
   const answerSlots = round.letters.map((_, slotIndex) => {
     const letterIndex = letters[slotIndex];
     return letterIndex === undefined
-      ? `<span class="builder-slot is-empty" aria-hidden="true">?</span>`
-      : `<button class="builder-slot" data-builder-remove="${slotIndex}" ${correct ? "disabled" : ""}>${escapeHtml(round.letters[letterIndex])}</button>`;
+      ? `<span class="builder-slot is-empty" data-drop-kind="builder-slot" data-drop-index="${slotIndex}" aria-label="${ar() ? "مكان حرف" : "Letter slot"}">?</span>`
+      : `<button class="builder-slot" data-builder-remove="${slotIndex}" data-drop-kind="builder-slot" data-drop-index="${slotIndex}" ${correct ? "disabled" : ""}>${escapeHtml(round.letters[letterIndex])}</button>`;
   }).join("");
   return `${flashBar()}<section class="learning-game-page">
+    <div class="learning-game-step-nav">
+      <button class="game-arrow-button is-back" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
+      <button class="game-arrow-button" type="button" data-builder-previous aria-label="${tt.prev}" ${state.wordBuilderRound <= 0 ? "disabled" : ""}>←</button>
+      <span>${tt.gameRoundProgress} ${state.wordBuilderRound + 1} / ${rounds.length}</span>
+      <button class="game-arrow-button is-next" type="button" data-builder-next aria-label="${tt.wordHuntNext}" ${correct ? "" : "disabled"}>→</button>
+    </div>
     <header class="learning-game-heading">
       <span class="pill learning-game-pill">${tt.wordBuilderTitle}</span>
       <h1>${tt.wordBuilderTitle}</h1><p class="muted">${tt.wordBuilderHelp}</p>
@@ -2976,7 +3936,6 @@ function wordBuilderView() {
           ? `<button class="btn btn-green" data-builder-next>${tt.wordHuntNext}</button>`
           : `<button class="btn btn-blue" data-builder-check ${letters.length !== round.letters.length ? "disabled" : ""}>${tt.wordBuilderCheck}</button>
              <button class="btn btn-ghost" data-builder-clear ${letters.length ? "" : "disabled"}>${tt.wordBuilderClear}</button>`}
-        <button class="btn btn-ghost" data-go="games">${tt.gamesBack}</button>
       </div>
     </div>
   </section>`;
@@ -2986,6 +3945,9 @@ function parentView() {
   const user = sessionUser();
   const data = db();
   const tt = t();
+  const readingLanguage = user.readingLanguage === "ar" ? (ar() ? "العربية" : "Arabic")
+    : user.readingLanguage === "en" ? (ar() ? "الإنجليزية" : "English")
+      : (ar() ? "العربية والإنجليزية" : "Arabic and English");
   const kids = data.users.filter((u) => u.role === "student" &&
     (user.childIds?.includes(u.id) || u.parentId === user.id));
   const cols = ["#f06292", "#29a9e8", "#6cc551"];
@@ -3013,6 +3975,28 @@ function parentView() {
         <strong>${tt.homeworkSummary}: ${completedHomework} / ${childHomework.length} ${tt.homeworkDone}</strong>
         <span class="muted">${bookTitle(findBook(childHomework[0].bookId) || BOOKS[0])}</span>
       </div>` : ""}
+      <button class="btn btn-ghost parent-child-edit-toggle" type="button" data-edit-child="${escapeHtml(c.id)}">
+        ${ar() ? "إدارة بيانات الطفل" : "Manage child details"}
+      </button>
+      ${state.editChildId === c.id ? `<form class="parent-child-edit-form" data-parent-edit-child="${escapeHtml(c.id)}">
+        <label>${tt.name}<input name="name" maxlength="60" value="${escapeHtml(c.name || "")}" required></label>
+        <label>${tt.email}<input name="email" type="email" dir="ltr" value="${escapeHtml(c.email || "")}" required></label>
+        <label>${tt.childAge}<input name="age" type="number" min="3" max="16" value="${escapeHtml(c.age || 7)}" required></label>
+        <label>${tt.childBoyGirl}<select name="gender" required>
+          <option value="girl" ${c.gender === "girl" ? "selected" : ""}>${tt.girl}</option>
+          <option value="boy" ${c.gender === "boy" ? "selected" : ""}>${tt.boy}</option>
+        </select></label>
+        <label>${ar() ? "لغة القراءة" : "Reading language"}<select name="readingLanguage">
+          <option value="ar" ${c.readingLanguage === "ar" ? "selected" : ""}>${ar() ? "العربية" : "Arabic"}</option>
+          <option value="en" ${c.readingLanguage === "en" ? "selected" : ""}>${ar() ? "الإنجليزية" : "English"}</option>
+          <option value="both" ${!c.readingLanguage || c.readingLanguage === "both" ? "selected" : ""}>${ar() ? "العربية والإنجليزية" : "Arabic and English"}</option>
+        </select></label>
+        <label>${ar() ? "تغيير رمز الدخول (اختياري)" : "Change sign-in PIN (optional)"}
+          <input name="accessPin" type="password" inputmode="numeric" minlength="4" maxlength="8" pattern="[0-9]{4,8}" autocomplete="new-password">
+        </label>
+        <div class="row"><button class="btn btn-green" type="submit">${tt.saveChanges}</button>
+          <button class="btn btn-ghost" type="button" data-cancel-child-edit="">${ar() ? "إلغاء" : "Cancel"}</button></div>
+      </form>` : ""}
       ${weekReadingMinutes(c) < 1 ? `<span class="muted">${tt.noReadingYet}</span>` : ""}
       ${c.note ? `<div class="muted">${tt.note}: ${escapeHtml(c.note)}</div>` : ""}
       <strong>${tt.encouragement}</strong>
@@ -3063,6 +4047,7 @@ function parentView() {
     <div class="card family-goal-card">
       <strong style="font-size:22px;color:#d63a72">${tt.readingTogether}</strong>
       <span class="muted">${tt.familyGoalHint}</span>
+      <span class="muted">${ar() ? "لغة القراءة المفضلة" : "Preferred reading language"}: ${readingLanguage}</span>
       <div class="bar"><span style="width:${Math.min(100, Math.round(familyMinutes / familyGoal * 100))}%;background:#f06292"></span></div>
       <strong>${familyMinutes} / ${familyGoal} ${tt.minutes}</strong>
       <form id="family-goal-form" class="inline-goal-form">
@@ -3257,6 +4242,7 @@ function teacherStudents() {
         <div><strong>${bookTitle(findBook(recording.bookId) || BOOKS[0])}</strong>
           <span class="muted">${recordingWhen(recording)} · ${tt.recordingPage} ${Number(recording.page) || 1} · ${escapeHtml(recording.dur || "—")}</span>
           ${recordingAudioPlayer(recording)}</div>
+        <button class="btn btn-ghost" type="button" data-delete-recording="${escapeHtml(recording.id)}">${ar() ? "حذف التسجيل" : "Delete recording"}</button>
       </article>`;
     }).join("") : `<p class="muted">${tt.noStudentRecordings}</p>`;
     const activityItems = [
@@ -3322,7 +4308,19 @@ function teacherStudents() {
     </section>`;
   })() : "";
   return `${flashBar()}<section style="display:flex;flex-direction:column;gap:18px">
-    <div class="section-head"><h1 style="font-size:36px">${tt.students}</h1></div>
+    <div class="section-head teacher-students-heading">
+      <h1 style="font-size:36px">${tt.students}</h1>
+      <div class="teacher-link-popover">
+        <button class="btn btn-blue" type="button" data-act="link-teacher-student">${ar() ? "ربط طالب" : "Link student"}</button>
+        <form class="form-card teacher-link-student-form" id="link-teacher-student-form" hidden>
+          <div class="teacher-link-intro">
+            <strong>${ar() ? "ربط طالب بحساب المعلم" : "Link student to teacher"}</strong>
+          </div>
+          <label>${ar() ? "البريد الإلكتروني للطالب" : "Student email"}<input name="email" type="email" dir="ltr" autocomplete="email" required></label>
+          <button class="btn btn-green" type="submit">${ar() ? "ربط" : "Link"}</button>
+        </form>
+      </div>
+    </div>
     ${focus ? "" : `<div class="alert alert-info">${tt.noRecipients}</div>`}
     ${rows ? `<div class="table-wrap"><table>
       <thead><tr><th>${tt.student}</th><th>${tt.level}</th><th>${tt.lastBook}</th><th>${tt.quizScore}</th><th>${tt.stars}</th><th>${tt.action}</th></tr></thead>
@@ -3371,7 +4369,8 @@ function teacherTasks() {
       return `<div class="card teacher-recording-item" style="flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between">
         <div><strong>${displayName(st)}</strong><div class="muted">${bookTitle(findBook(r.bookId))} · ${r.dur}</div>
           ${recordingAudioPlayer(r)}</div>
-        <button class="btn btn-ghost" data-star="${st.id}">${tt.sendStar}</button>
+         <div class="row"><button class="btn btn-ghost" data-star="${st.id}">${tt.sendStar}</button>
+           <button class="btn btn-ghost" type="button" data-delete-recording="${escapeHtml(r.id)}">${ar() ? "حذف التسجيل" : "Delete recording"}</button></div>
       </div>`;
     }).join("")}
   </section>`;
@@ -3724,11 +4723,12 @@ function adminContent() {
   const search = state.adminContentQuery.trim().toLocaleLowerCase();
   const filteredCatalog = catalog.filter((book) => {
     const text = [book.id, book.ar, book.en].filter(Boolean).join(" ").toLocaleLowerCase();
+    const accessMode = bookAccessMode(book);
     return (!search || text.includes(search)) &&
       (state.adminContentLevel === "all" || String(book.l) === state.adminContentLevel) &&
       (state.adminContentSeries === "all" || book.s === state.adminContentSeries) &&
       (state.adminContentAccess === "all" ||
-        (state.adminContentAccess === "premium" ? Boolean(book.premium) : !book.premium)) &&
+        accessMode === state.adminContentAccess) &&
       (state.adminContentStatus === "all" ||
         (state.adminContentStatus === "active" ? book.active !== false : book.active === false));
   });
@@ -3738,10 +4738,12 @@ function adminContent() {
     <div class="section-head"><strong style="font-size:20px">${bookTitle(book)}</strong><span>${lvName(book.l)}</span></div>
     <span class="muted">${book.custom ? tt.addStory : tt.catalog}${book.active === false ? ` · ${tt.disabled}` : ""}</span>
     <form class="row" data-content-access="${escapeHtml(book.id)}">
-      <label>${tt.contentAccess}<select name="premium">
-        <option value="false" ${book.premium ? "" : "selected"}>${tt.freeContent}</option>
-        <option value="true" ${book.premium ? "selected" : ""}>${tt.premiumContent}</option>
+      <label>${tt.contentAccess}<select name="accessMode">
+        <option value="free" ${bookAccessMode(book) === "free" ? "selected" : ""}>${tt.freeContent}</option>
+        <option value="subscription" ${bookAccessMode(book) === "subscription" ? "selected" : ""}>${tt.premiumContent}</option>
+        <option value="paid" ${bookAccessMode(book) === "paid" ? "selected" : ""}>${tt.paidContent}</option>
       </select></label>
+      <label class="purchase-price-field" ${bookAccessMode(book) === "paid" ? "" : "hidden"}>${ar() ? "سعر الكتاب" : "Book price"}<span class="price-input"><input name="purchasePrice" type="number" min="1" step="1" value="${book.purchasePrice || 1}" ${bookAccessMode(book) === "paid" ? "required" : ""}><b>${ar() ? "ر.س" : "SAR"}</b></span></label>
       <button class="btn btn-ghost" type="submit">${tt.saveAccess}</button>
     </form>
     ${book.custom ? `<button class="btn ${book.active === false ? "btn-green" : "btn-muted"}" data-toggle-content="${escapeHtml(book.id)}">${book.active === false ? tt.restoreStory : tt.deleteStory}</button>` : ""}
@@ -3757,7 +4759,10 @@ function adminContent() {
         <label>${tt.storyTitleEn}<input name="titleEn" maxlength="80" required></label>
         <label>${tt.level}<select name="level">${Array.from({ length: 12 }, (_, index) => `<option value="${index + 1}">${index + 1}</option>`).join("")}</select></label>
         <label>${tt.series}<select name="series">${series.map(([value, label]) => `<option value="${value}">${label}</option>`).join("")}</select></label>
-        <label>${tt.contentAccess}<select name="premium"><option value="false">${tt.freeContent}</option><option value="true">${tt.premiumContent}</option></select></label>
+        <div class="access-price-control admin-wide">
+          <label>${tt.contentAccess}<select name="accessMode"><option value="free">${tt.freeContent}</option><option value="subscription">${tt.premiumContent}</option><option value="paid">${tt.paidContent}</option></select></label>
+          <label class="purchase-price-field" hidden>${ar() ? "سعر الكتاب" : "Book price"}<span class="price-input"><input name="purchasePrice" type="number" min="1" step="1" value="1" required><b>${ar() ? "ر.س" : "SAR"}</b></span></label>
+        </div>
         <label class="admin-wide">${tt.storyPagesAr}<textarea name="pagesAr" rows="5" required></textarea><span class="field-hint">${tt.storyPagesHint}</span></label>
         <label class="admin-wide">${tt.storyPagesEn}<textarea name="pagesEn" rows="5" required></textarea></label>
         <label class="admin-wide">${tt.storyQuestionAr}<input name="questionAr" required></label>
@@ -3780,7 +4785,8 @@ function adminContent() {
       <label>${tt.contentAccess}<select name="access">
         <option value="all">${tt.libraryAccessFilter}</option>
         <option value="free" ${state.adminContentAccess === "free" ? "selected" : ""}>${tt.freeContent}</option>
-        <option value="premium" ${state.adminContentAccess === "premium" ? "selected" : ""}>${tt.premiumContent}</option>
+        <option value="subscription" ${state.adminContentAccess === "subscription" ? "selected" : ""}>${tt.premiumContent}</option>
+        <option value="paid" ${state.adminContentAccess === "paid" ? "selected" : ""}>${tt.paidContent}</option>
       </select></label>
       <label>${tt.libraryStatusFilter}<select name="status">
         <option value="all">${tt.libraryStatusFilter}</option>
@@ -3802,34 +4808,150 @@ function aboutView() {
   const vals = tt.values.map((v, i) => {
     const c = ["#4fc3f7", "#6cc551", "#f5a000", "#f06292"][i];
     const bg = ["#e3f5fd", "#eef9e8", "#fff6dc", "#fdeef4"][i];
-    return `<div class="card" style="background:${bg};border-color:${c}"><strong style="font-size:22px">${v[0]}</strong><span class="muted">${v[1]}</span></div>`;
+    return `<article class="about-value-card" style="--value-color:${c};--value-bg:${bg}">
+      <span class="about-value-number">${String(i + 1).padStart(2, "0")}</span>
+      <strong>${v[0]}</strong>
+      <p>${v[1]}</p>
+    </article>`;
   }).join("");
-  return `${flashBar()}<section style="display:flex;flex-direction:column;gap:26px">
-    <div class="split" style="align-items:center">
-      <div style="flex:1 1 420px;display:flex;flex-direction:column;gap:14px">
-        <h1 style="font-size:40px">${tt.aboutTitle}</h1>
-        <p style="font-size:20px;line-height:1.8">${tt.aboutP1}</p>
-        <p style="font-size:20px;line-height:1.8">${tt.aboutP2}</p>
+  return `${flashBar()}<section class="about-page">
+    <header class="about-hero">
+      <div class="about-copy">
+        <span class="pill">${ar() ? "رحلتنا" : "Our story"}</span>
+        <h1>${tt.aboutTitle}</h1>
+        <p>${tt.aboutP1}</p>
+        <p>${tt.aboutP2}</p>
       </div>
-      <img src="assets/about.jpg" alt="" style="flex:1 1 380px;border-radius:32px;border:6px solid #fff;box-shadow:0 12px 30px rgba(0,0,0,.08)">
-    </div>
-    <div class="grid-feat">${vals}</div>
-    <div class="split">
-      <div style="flex:1 1 300px;display:flex;flex-direction:column;gap:14px">
-        <h2 style="font-size:32px">${tt.contactTitle}</h2>
-        <div class="card" style="background:#e3f5fd;border:none"><span class="muted">${tt.emailLabel}</span><strong dir="ltr">hello@bayan.read</strong></div>
-        <div class="card" style="background:#eef9e8;border:none"><span class="muted">${tt.whatsapp}</span><strong dir="ltr">+966 555 000 000</strong></div>
-        <div class="card" style="background:#fdeef4;border:none"><span class="muted">${tt.hours}</span><strong>${tt.hoursText}</strong></div>
+      <div class="about-art">
+        <img src="assets/about.jpg" alt="">
+        <span class="about-art-note">${ar() ? "نقرأ معًا… وننمو معًا" : "Read together. Grow together."}</span>
       </div>
-      <form class="form-card" id="contact-form" style="flex:2 1 420px">
-        <label>${tt.yourName}<input name="name" required></label>
-        <label>${tt.email}<input name="email" type="email" dir="ltr" required></label>
-        <label>${tt.message}<textarea name="message" rows="4" required></textarea></label>
+    </header>
+
+    <section class="about-values">
+      <div class="section-head"><h2>${ar() ? "ما الذي يؤسس رحلتنا؟" : "What shapes our journey?"}</h2></div>
+      <div class="about-values-grid">${vals}</div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="contact-info">
+        <span class="pill">${ar() ? "نحن هنا لمساعدتك" : "We are here to help"}</span>
+        <h2>${tt.contactTitle}</h2>
+        <p class="muted">${ar() ? "اسألنا عن الاشتراك، إنشاء الحساب، أو استخدام المعلم والطفل." : "Ask us about subscriptions, accounts, or using the student and teacher experience."}</p>
+        <div class="contact-details">
+          <div class="contact-detail"><span>${svg(ICONS.mail || ICONS.book, 22, 22, "#287c9c")}</span><div><small>${tt.emailLabel}</small><strong dir="ltr">hello@bayan.read</strong></div></div>
+          <div class="contact-detail"><span>${svg(ICONS.mic, 22, 22, "#3f9a38")}</span><div><small>${tt.whatsapp}</small><strong dir="ltr">+966 555 000 000</strong></div></div>
+          <div class="contact-detail"><span>${svg(ICONS.star, 22, 22, "#a86b00")}</span><div><small>${tt.hours}</small><strong>${tt.hoursText}</strong></div></div>
+        </div>
+      </div>
+      <form class="contact-form" id="contact-form">
+        <h3>${ar() ? "أرسل لنا رسالة" : "Send us a message"}</h3>
+        <label>${tt.yourName}<input name="name" autocomplete="name" required></label>
+        <label>${tt.email}<input name="email" type="email" dir="ltr" autocomplete="email" required></label>
+        <label>${tt.message}<textarea name="message" rows="5" required></textarea></label>
         <button class="btn btn-blue" type="submit">${tt.send}</button>
         ${state.contactSent ? `<span class="alert alert-ok">${tt.sentMsg}</span>` : ""}
       </form>
-    </div>
+    </section>
   </section>`;
+}
+
+function animateTrustStripCounters(strip) {
+  strip.querySelectorAll("strong").forEach((counter) => {
+    const original = counter.textContent.trim();
+    const match = original.match(/^(\d+)(.*)$/);
+    if (!match) return;
+
+    const target = Number(match[1]);
+    const suffix = match[2];
+    const duration = 2200;
+    const start = performance.now();
+    counter.textContent = `0${suffix}`;
+
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      counter.textContent = `${Math.floor(target * progress)}${suffix}`;
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = original;
+    }
+
+    requestAnimationFrame(update);
+  });
+}
+
+function initLandingScrollAnimations() {
+  const strip = document.querySelector(".main > .trust-strip");
+  if (!strip || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const siblings = Array.from(strip.parentElement.children);
+  const stripIndex = siblings.indexOf(strip);
+  const targets = siblings
+    .slice(stripIndex)
+    .filter((element) => element.tagName === "SECTION");
+  const footer = document.querySelector(".footer");
+  if (footer) targets.push(footer);
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      if (entry.target === strip) animateTrustStripCounters(strip);
+      currentObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -32px 0px" });
+
+  targets.forEach((target) => {
+    target.classList.add("scroll-reveal");
+    observer.observe(target);
+  });
+}
+
+function initHeroTypingEffect() {
+  const heading = document.querySelector(".hero h1");
+  const description = document.querySelector(".hero-description");
+  if (!heading || !description || typeof requestAnimationFrame !== "function") return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const parts = Array.from(heading.querySelectorAll("[data-typewriter-part]"));
+  const characters = parts.map((part) => Array.from(part.textContent));
+  if (!parts.length || characters.some((text) => !text.length)) return;
+
+  parts.forEach((part) => {
+    part.textContent = "";
+  });
+  parts[0].classList.add("typing-cursor");
+  description.classList.add("typewriter-pending");
+
+  let partIndex = 0;
+  let characterIndex = 0;
+  const delay = document.documentElement.lang === "ar" ? 75 : 55;
+
+  function typeNextCharacter() {
+    if (!heading.isConnected) return;
+    const part = parts[partIndex];
+    const text = characters[partIndex];
+    if (characterIndex >= text.length) {
+      part.classList.remove("typing-cursor");
+      partIndex += 1;
+      characterIndex = 0;
+      if (partIndex >= parts.length) {
+        description.classList.remove("typewriter-pending");
+        return;
+      }
+      parts[partIndex].classList.add("typing-cursor");
+      window.setTimeout(typeNextCharacter, 180);
+      return;
+    }
+
+    const character = text[characterIndex];
+    part.textContent += character;
+    characterIndex += 1;
+    const pause = /[\s،,.…!?؟]/.test(character) ? 150 : delay;
+    window.setTimeout(typeNextCharacter, pause);
+  }
+
+  window.setTimeout(typeNextCharacter, 180);
 }
 
 function render() {
@@ -3847,6 +4969,14 @@ function render() {
     case "teacher-profile": main = teacherPublicProfileView(); break;
     case "login": main = authForms("login"); break;
     case "signup": main = authForms("signup"); break;
+    case "onboarding": main = onboardingView(); break;
+    case "reset-password": main = resetPasswordView(); break;
+    case "checkout": main = checkoutView(); break;
+    case "privacy": main = privacyView(); break;
+    case "schools": main = schoolsView(); break;
+    case "help": main = helpView(); break;
+    case "classroom": main = classroomView(); break;
+    case "accessibility": main = accessibilityView(); break;
     case "kid": main = kidView(); break;
     case "student-profile": main = studentProfileView(); break;
     case "account-profile": main = accountProfileView(); break;
@@ -3871,6 +5001,11 @@ function render() {
     default: main = homeView();
   }
   root.innerHTML = `${header()}<main class="main">${main}</main>${footer()}`;
+  wirePointerGameDrag();
+  if (state.screen === "home") {
+    initHeroTypingEffect();
+    initLandingScrollAnimations();
+  }
   bind();
   void hydrateRecordingAudio();
 }
@@ -3894,6 +5029,11 @@ function openBook(id) {
     return;
   }
   if (bookLockedForUser(book, user)) {
+    if (bookAccessMode(book) === "paid") {
+      state.checkoutBook = book.id;
+      go("checkout");
+      return;
+    }
     state.flash = t().lockedForSubscription;
     keepFlash = true;
     go("library");
@@ -3911,22 +5051,101 @@ function openBook(id) {
 }
 
 function bind() {
+  bindRecordingPreviewPlayer();
+  document.querySelectorAll("select[name='accessMode']").forEach((select) => {
+    const syncPriceField = () => {
+      const container = select.closest(".access-price-control") || select.closest("form");
+      const field = container?.querySelector(".purchase-price-field");
+      if (!field) return;
+      const paid = select.value === "paid";
+      field.hidden = !paid;
+      const input = field.querySelector("input[name='purchasePrice']");
+      if (input) input.required = paid;
+    };
+    syncPriceField();
+    select.addEventListener("change", () => {
+      syncPriceField();
+      if (select.value === "paid") {
+        select.closest(".access-price-control")?.querySelector("input[name='purchasePrice']")?.focus();
+      }
+    });
+  });
+  if (!document.documentElement.dataset.bayanReaderProtection) {
+    document.documentElement.dataset.bayanReaderProtection = "true";
+    document.addEventListener("contextmenu", (event) => {
+      if (state.screen === "reader") event.preventDefault();
+    });
+    document.addEventListener("keydown", (event) => {
+      const key = String(event.key).toLowerCase();
+      if (state.screen === "reader" &&
+        ((event.ctrlKey && ["s", "p", "u", "c"].includes(key)) || key === "printscreen")) {
+        event.preventDefault();
+      }
+    });
+    document.addEventListener("visibilitychange", () => {
+      if (state.screen === "reader" && document.hidden) {
+        document.body.classList.add("reader-hidden");
+      } else {
+        document.body.classList.remove("reader-hidden");
+      }
+    });
+  }
   document.querySelectorAll("[data-go]").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       if (el.dataset.role) state.signupRole = el.dataset.role;
+      if (el.dataset.plan) state.checkoutPlan = el.dataset.plan;
       if (el.dataset.lvl) state.lvl = Number(el.dataset.lvl);
       if (el.dataset.sid) state.viewStudent = el.dataset.sid;
       if (el.dataset.tid) state.viewTeacher = el.dataset.tid;
       go(el.dataset.go);
+      if (el.dataset.contact) {
+        requestAnimationFrame(() => {
+          document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
     });
   });
+  document.querySelectorAll("[data-back]").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      goBack(el.dataset.back);
+    });
+  });
+  const featuredTeacherSearch = document.getElementById("featured-teacher-search");
+  if (featuredTeacherSearch) {
+    featuredTeacherSearch.addEventListener("input", () => {
+      const query = featuredTeacherSearch.value.trim().toLowerCase();
+      const cards = [...document.querySelectorAll("[data-teacher-search]")];
+      let visible = 0;
+      cards.forEach((card) => {
+        const matches = !query || card.dataset.teacherSearch.includes(query);
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+      const empty = document.querySelector(".featured-teacher-search-empty");
+      if (empty) empty.hidden = visible !== 0;
+    });
+  }
   document.querySelectorAll("[data-act]").forEach((el) => {
     el.addEventListener("click", () => {
       const act = el.dataset.act;
+      if (act === "mobile-menu") {
+        setMobileMenuOpen(el.getAttribute("aria-expanded") !== "true", el);
+      }
       if (act === "lang") {
         state.lang = ar() ? "en" : "ar";
         localStorage.setItem("bayan-lang", state.lang);
+        render();
+      }
+      if (act === "theme") {
+        state.visualMode = state.visualMode === "dark" ? "standard" : "dark";
+        localStorage.setItem("bayan-visual-mode", state.visualMode);
+        document.body.classList.toggle("dark-visual-mode", state.visualMode === "dark");
+        render();
+      }
+      if (act === "notifications") {
+        state.notificationsOpen = !state.notificationsOpen;
         render();
       }
       if (act === "logout") logout();
@@ -3947,9 +5166,19 @@ function bind() {
       if (act === "speak") {
         const book = findBook(sessionUser().currentBook);
         const pg = bookPages(book)[state.page];
-        const u = new SpeechSynthesisUtterance((ar() ? pg.ar : pg.en).join(" "));
+        const utteranceText = (ar() ? pg.ar : pg.en).join(" ");
+        const u = new SpeechSynthesisUtterance(utteranceText);
         u.lang = ar() ? "ar-SA" : "en-US";
         u.rate = 0.85;
+        const words = [...document.querySelectorAll("[data-reader-word]")];
+        u.onboundary = (event) => {
+          if (!Number.isFinite(event.charIndex)) return;
+          const index = (utteranceText.slice(0, event.charIndex).match(/\S+/g) || []).length;
+          words.forEach((word) => word.classList.toggle("is-speaking", Number(word.dataset.readerWord) === index));
+        };
+        const clearHighlight = () => words.forEach((word) => word.classList.remove("is-speaking"));
+        u.onend = clearHighlight;
+        u.onerror = clearHighlight;
         speechSynthesis.cancel();
         speechSynthesis.speak(u);
       }
@@ -3957,20 +5186,29 @@ function bind() {
         if (state.rec === "rec") stopReadingRecording();
         else void startReadingRecording();
       }
+      if (act === "retake-recording") {
+        clearPendingReadingRecording();
+        state.rec = "idle";
+        void startReadingRecording();
+      }
+      if (act === "send-recording") void sendReadingRecording();
       if (act === "reset-game") {
         state.placed = [null, null, null];
         state.sel = null;
+        state.letterGameRewardStatus = "";
         render();
       }
       if (act === "restart-word-hunt") {
         state.wordHuntRound = 0;
         state.wordHuntChoice = null;
+        state.wordHuntAnswers = {};
         state.wordHuntRewardStatus = "";
         render();
       }
       if (act === "restart-word-builder") {
         state.wordBuilderRound = 0;
         state.wordBuilderLetters = [];
+        state.wordBuilderHistory = {};
         state.wordBuilderFeedback = "";
         state.wordBuilderRewardStatus = "";
         render();
@@ -3991,6 +5229,15 @@ function bind() {
           f.style.display = f.style.display === "none" ? "flex" : "none";
           if (f.style.display === "flex") {
             f.scrollIntoView({ behavior: "smooth", block: "center" });
+            f.querySelector("input")?.focus({ preventScroll: true });
+          }
+        }
+      }
+      if (act === "link-teacher-student") {
+        const f = document.getElementById("link-teacher-student-form");
+        if (f) {
+          f.hidden = !f.hidden;
+          if (!f.hidden) {
             f.querySelector("input")?.focus({ preventScroll: true });
           }
         }
@@ -4016,6 +5263,16 @@ function bind() {
         state.flash = t().noteSaved;
         render();
       }
+    });
+  });
+  const mobileMenuToggle = document.querySelector(".menu-toggle");
+  const primaryNavigation = document.getElementById("primary-navigation");
+  [mobileMenuToggle, primaryNavigation].filter(Boolean).forEach((element) => {
+    element.addEventListener("keydown", (event) => {
+      if (!mobileMenuToggle || event.key !== "Escape" ||
+        mobileMenuToggle.getAttribute("aria-expanded") !== "true") return;
+      setMobileMenuOpen(false, mobileMenuToggle);
+      mobileMenuToggle.focus();
     });
   });
   document.querySelectorAll("[data-avatar-tone], [data-avatar-hair], [data-avatar-hijab], [data-avatar-gender], [data-avatar-hairstyle]").forEach((el) => {
@@ -4155,6 +5412,233 @@ function bind() {
     if (el.dataset.go) return;
     el.addEventListener("click", () => { state.lvl = Number(el.dataset.lvl); render(); });
   });
+  document.querySelectorAll("[data-onboarding-age]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.onboardingAge = Number(el.dataset.onboardingAge);
+      el.closest(".onboarding-options")?.querySelectorAll(".onboarding-option").forEach((item) => item.classList.remove("selected"));
+      el.classList.add("selected");
+    });
+  });
+  document.querySelectorAll("[data-onboarding-interest]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const value = el.dataset.onboardingInterest;
+      state.onboardingInterests = state.onboardingInterests.includes(value)
+        ? state.onboardingInterests.filter((item) => item !== value)
+        : [...state.onboardingInterests, value];
+      render();
+    });
+  });
+  document.querySelectorAll("[data-onboarding-next]").forEach((el) => {
+    el.addEventListener("click", () => { state.onboardingStep = Math.min(2, state.onboardingStep + 1); render(); });
+  });
+  document.querySelectorAll("[data-onboarding-back]").forEach((el) => {
+    el.addEventListener("click", () => { state.onboardingStep = Math.max(0, state.onboardingStep - 1); render(); });
+  });
+  document.querySelectorAll("[data-onboarding-finish]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const current = sessionUser();
+      if (current?.role === "student") {
+        const data = db();
+        const student = data.users.find((user) => user.id === current.id && user.role === "student");
+        if (student) {
+          student.readingAgeBand = Number(state.onboardingAge) || student.readingAgeBand || 0;
+          student.readingInterests = [...state.onboardingInterests];
+          student.readingGoalMins = Number(state.onboardingGoalMins) || student.readingGoalMins || 15;
+          try {
+            save(data);
+          } catch {
+            state.flash = t().profileSaveError;
+            render();
+            return;
+          }
+        }
+      }
+      state.flash = ar() ? "تم تجهيز رحلة القراءة حسب اهتمامات طفلك." : "Your reading journey is ready.";
+      keepFlash = true;
+      go(current ? homeFor(current.role) : "signup", undefined, { skipHistory: true });
+    });
+  });
+  document.querySelectorAll("[data-onboarding-goal]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.onboardingGoalMins = Number(el.dataset.onboardingGoal);
+      el.closest(".goal-grid")?.querySelectorAll(".goal-card").forEach((item) => item.classList.remove("selected"));
+      el.classList.add("selected");
+    });
+  });
+  document.querySelectorAll("[data-act=\"new-class\"]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const form = document.getElementById("classroom-create-form");
+      if (form) {
+        form.hidden = false;
+        form.querySelector("input")?.focus();
+      }
+    });
+  });
+  document.querySelectorAll("[data-classroom-search]").forEach((searchInput) => {
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      const picker = searchInput.closest(".classroom-student-picker");
+      if (!picker) return;
+      picker.querySelectorAll("[data-student-search]").forEach((choice) => {
+        choice.hidden = Boolean(query) &&
+          !choice.dataset.studentSearch.includes(query);
+      });
+    });
+  });
+  document.querySelectorAll("[data-classroom-add-search]").forEach((searchInput) => {
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      const card = searchInput.closest(".classroom-quick-add");
+      if (!card) return;
+      card.querySelectorAll("[data-student-search]").forEach((result) => {
+        result.hidden = Boolean(query) && !result.dataset.studentSearch.includes(query);
+      });
+    });
+  });
+  document.querySelectorAll("[data-add-student-class]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const teacher = sessionUser();
+      const data = db();
+      const classItem = data.classes.find((item) =>
+        item.id === button.dataset.addStudentClass && item.teacherId === teacher?.id);
+      const student = data.users.find((item) =>
+        item.id === button.dataset.studentId && item.role === "student");
+      if (!classItem || !student || !studentsForTeacher(data, teacher).some((item) => item.id === student.id)) {
+        state.flash = t().noAccess;
+        render();
+        return;
+      }
+      classItem.studentIds = Array.isArray(classItem.studentIds) ? classItem.studentIds : [];
+      if (!classItem.studentIds.includes(student.id)) classItem.studentIds.push(student.id);
+      save(data);
+      state.flash = ar()
+        ? `تمت إضافة ${displayName(student)} إلى الفصل.`
+        : `${displayName(student)} was added to the class.`;
+      keepFlash = true;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-edit-class-open]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.viewClass = state.viewClass === el.dataset.editClassOpen ? null : el.dataset.editClassOpen;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-edit-class]").forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const teacher = sessionUser();
+      const data = db();
+      const classItem = data.classes.find((item) => item.id === form.dataset.editClass &&
+        item.teacherId === teacher?.id);
+      if (!classItem) {
+        state.flash = t().noAccess;
+        render();
+        return;
+      }
+      const className = String(new FormData(form).get("className") || "").trim();
+      if (!className) {
+        state.flash = t().fillErr;
+        render();
+        return;
+      }
+      classItem.name = className;
+      classItem.studentIds = new FormData(form).getAll("studentIds").map(String);
+      save(data);
+      state.viewClass = null;
+      state.flash = ar() ? "تم تحديث طلاب الفصل." : "Class students updated.";
+      keepFlash = true;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-delete-class]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const teacher = sessionUser();
+      if (teacher?.role !== "teacher") {
+        state.flash = t().noAccess;
+        render();
+        return;
+      }
+      const data = db();
+      const classItem = data.classes.find((item) =>
+        item.id === button.dataset.deleteClass && item.teacherId === teacher.id);
+      if (!classItem) return;
+      if (!confirm(ar()
+        ? `هل تريد حذف فصل «${classItem.name}»؟ لن يُحذف الطلاب من حساباتهم.`
+        : `Delete class "${classItem.name}"? Students will not be deleted.`)) return;
+      data.classes = data.classes.filter((item) => item.id !== classItem.id);
+      save(data);
+      if (state.viewClass === classItem.id) state.viewClass = null;
+      state.flash = ar() ? "تم حذف الفصل." : "Class deleted.";
+      keepFlash = true;
+      render();
+    });
+  });
+  const classroomForm = document.getElementById("classroom-create-form");
+  if (classroomForm) {
+    classroomForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = String(new FormData(classroomForm).get("className") || "").trim();
+      const studentIds = new FormData(classroomForm).getAll("studentIds").map(String);
+      const teacher = sessionUser();
+      if (!name || teacher?.role !== "teacher") {
+        state.flash = t().fillErr;
+        render();
+        return;
+      }
+      const data = db();
+      data.classes = Array.isArray(data.classes) ? data.classes : [];
+      data.classes.push({
+        id: uid("class"),
+        name,
+        teacherId: teacher.id,
+        studentIds,
+        createdAt: Date.now()
+      });
+      save(data);
+      state.classroomDraft = name;
+      state.flash = ar() ? "تم إنشاء الفصل ويمكنك الآن إدارة طلابه." : "Class created and ready for students.";
+      keepFlash = true;
+      render();
+    });
+  }
+  document.querySelectorAll("[data-accessibility]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.accessibilityMode = el.dataset.accessibility;
+      localStorage.setItem("bayan-accessibility", state.accessibilityMode);
+      document.body.classList.toggle("reduce-motion", state.accessibilityMode === "reduced");
+      document.body.classList.toggle("dark-visual-mode", state.visualMode === "dark");
+      render();
+    });
+  });
+  document.querySelectorAll("[data-visual]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.visualMode = el.dataset.visual === "dark" ? "dark" : "standard";
+      localStorage.setItem("bayan-visual-mode", state.visualMode);
+      document.body.classList.toggle("dark-visual-mode", state.visualMode === "dark");
+      render();
+    });
+  });
+  document.querySelectorAll("[data-font-size]").forEach((el) => {
+    el.addEventListener("click", () => {
+      if (!["small", "standard", "large"].includes(el.dataset.fontSize)) return;
+      state.fontSize = el.dataset.fontSize;
+      localStorage.setItem("bayan-font-size", state.fontSize);
+      document.body.classList.remove("text-small", "text-large");
+      if (el.dataset.fontSize === "small") document.body.classList.add("text-small");
+      if (el.dataset.fontSize === "large") document.body.classList.add("text-large");
+      render();
+    });
+  });
+  document.querySelectorAll("[data-speak-word]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const utterance = new SpeechSynthesisUtterance(el.dataset.speakWord);
+      utterance.lang = ar() ? "ar-SA" : "en-US";
+      utterance.rate = 0.8;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utterance);
+    });
+  });
   document.querySelectorAll("[data-role]").forEach((el) => {
     if (el.dataset.go) return;
     el.addEventListener("click", () => {
@@ -4170,6 +5654,17 @@ function bind() {
       const input = event.target;
       if (input.name) state.signupDraft[input.name] = input.value;
     });
+    signupDraftForm.addEventListener("change", (event) => {
+      const input = event.target;
+      if (input.name) state.signupDraft[input.name] = input.value;
+    });
+    const parentChildCount = document.getElementById("parent-child-count");
+    if (parentChildCount) {
+      parentChildCount.addEventListener("change", () => {
+        state.parentChildCount = Math.max(1, Math.min(3, Number(parentChildCount.value) || 1));
+        render();
+      });
+    }
   }
   document.querySelectorAll("[data-gender]").forEach((el) => {
     el.addEventListener("click", () => {
@@ -4263,6 +5758,18 @@ function bind() {
       if (!round || state.wordHuntChoice === round.answer ||
         !Number.isInteger(choice) || choice < 0 || choice >= round.choices.length) return;
       state.wordHuntChoice = choice;
+      state.wordHuntAnswers[state.wordHuntRound] = choice;
+      speakGameMessage(choice === round.answer
+        ? (ar() ? "أحسنت! إجابة صحيحة." : "Well done! That's right.")
+        : (ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again."));
+      render();
+    });
+  });
+  document.querySelectorAll("[data-hunt-previous]").forEach((el) => {
+    el.addEventListener("click", () => {
+      if (state.wordHuntRound <= 0) return;
+      state.wordHuntRound -= 1;
+      state.wordHuntChoice = state.wordHuntAnswers[state.wordHuntRound] ?? null;
       render();
     });
   });
@@ -4276,13 +5783,17 @@ function bind() {
         state.wordHuntRewardStatus = awardGameStars("wordHunt", 3);
       } else {
         state.wordHuntRound += 1;
-        state.wordHuntChoice = null;
+        state.wordHuntChoice = state.wordHuntAnswers[state.wordHuntRound] ?? null;
+      }
+      if (state.wordHuntRewardStatus === "awarded") {
+        speakGameMessage(ar() ? "يا بطل، اصطدت الكلمات وحصلت على ثلاث نجوم!" : "Amazing! You found every word and earned three stars!");
       }
       render();
     });
   });
   document.querySelectorAll("[data-builder-letter]").forEach((el) => {
     el.addEventListener("click", () => {
+      if (Date.now() - (state.lastPointerDragAt || 0) < 500) return;
       const round = WORD_BUILDER_ROUNDS[ar() ? "ar" : "en"][state.wordBuilderRound];
       const index = Number(el.dataset.builderLetter);
       if (!round || state.wordBuilderFeedback === "right" ||
@@ -4290,6 +5801,7 @@ function bind() {
         state.wordBuilderLetters.includes(index) ||
         state.wordBuilderLetters.length >= round.letters.length) return;
       state.wordBuilderLetters.push(index);
+      state.wordBuilderHistory[state.wordBuilderRound] = [...state.wordBuilderLetters];
       state.wordBuilderFeedback = "";
       render();
     });
@@ -4299,6 +5811,7 @@ function bind() {
       const slot = Number(el.dataset.builderRemove);
       if (!Number.isInteger(slot) || slot < 0 || slot >= state.wordBuilderLetters.length) return;
       state.wordBuilderLetters.splice(slot, 1);
+      state.wordBuilderHistory[state.wordBuilderRound] = [...state.wordBuilderLetters];
       state.wordBuilderFeedback = "";
       render();
     });
@@ -4306,6 +5819,7 @@ function bind() {
   document.querySelectorAll("[data-builder-clear]").forEach((el) => {
     el.addEventListener("click", () => {
       state.wordBuilderLetters = [];
+      state.wordBuilderHistory[state.wordBuilderRound] = [];
       state.wordBuilderFeedback = "";
       render();
     });
@@ -4316,6 +5830,21 @@ function bind() {
       if (!round || state.wordBuilderLetters.length !== round.letters.length) return;
       const builtWord = state.wordBuilderLetters.map((index) => round.letters[index]).join("");
       state.wordBuilderFeedback = builtWord === round.word ? "right" : "wrong";
+      state.wordBuilderHistory[state.wordBuilderRound] = [...state.wordBuilderLetters];
+      speakGameMessage(state.wordBuilderFeedback === "right"
+        ? (ar() ? "أحسنت! بنيت الكلمة بشكل صحيح." : "Well done! You built the word correctly.")
+        : (ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again."));
+      render();
+    });
+  });
+  document.querySelectorAll("[data-builder-previous]").forEach((el) => {
+    el.addEventListener("click", () => {
+      if (state.wordBuilderRound <= 0) return;
+      state.wordBuilderRound -= 1;
+      const round = WORD_BUILDER_ROUNDS[ar() ? "ar" : "en"][state.wordBuilderRound];
+      state.wordBuilderLetters = [...(state.wordBuilderHistory[state.wordBuilderRound] || [])];
+      const builtWord = state.wordBuilderLetters.map((index) => round.letters[index]).join("");
+      state.wordBuilderFeedback = builtWord === round.word ? "right" : "";
       render();
     });
   });
@@ -4328,8 +5857,13 @@ function bind() {
         state.wordBuilderRewardStatus = awardGameStars("wordBuilder", 4);
       } else {
         state.wordBuilderRound += 1;
-        state.wordBuilderLetters = [];
-        state.wordBuilderFeedback = "";
+        state.wordBuilderLetters = [...(state.wordBuilderHistory[state.wordBuilderRound] || [])];
+        const nextRound = rounds[state.wordBuilderRound];
+        const builtWord = state.wordBuilderLetters.map((index) => nextRound.letters[index]).join("");
+        state.wordBuilderFeedback = builtWord === nextRound.word ? "right" : "";
+      }
+      if (state.wordBuilderRewardStatus === "awarded") {
+        speakGameMessage(ar() ? "يا بطل، رتبت الكلمات وحصلت على أربع نجوم!" : "Amazing! You built every word and earned four stars!");
       }
       render();
     });
@@ -4367,50 +5901,56 @@ function bind() {
   });
   document.querySelectorAll("[data-tile]").forEach((el) => {
     el.addEventListener("click", () => {
+      if (Date.now() - (state.lastPointerDragAt || 0) < 500) return;
       state.sel = state.sel === el.dataset.tile ? null : el.dataset.tile;
       render();
     });
   });
   document.querySelectorAll("[data-slot]").forEach((el) => {
     el.addEventListener("click", () => {
+      if (Date.now() - (state.lastPointerDragAt || 0) < 500) return;
       if (!state.sel) return;
       const i = Number(el.dataset.slot);
-      const placed = state.placed.slice();
-      placed[i] = state.sel;
-      const GW = ar() ? ["ش", "ك", "ق"] : ["S", "B", "M"];
-      const wasDone = state.placed.every((x, k) => x === GW[k]);
-      const done = placed.every((x, k) => x === GW[k]);
-      if (done && !wasDone) {
-        const current = sessionUser();
-        const data = db();
-        const user = data.users.find((student) => student.id === current?.id);
-        user.completedLevels = user.completedLevels || [];
-        if (!(user.quizLevels || []).includes(user.level)) {
-          state.flash = t().finishQuizFirst;
-        } else {
-          const completedAssignment = completeBookAssignments(data, user.id, user.currentBook);
-          const completedLevel = user.level;
-          let advancedLevel = false;
-          if (findBook(user.currentBook)?.l === completedLevel &&
-            !user.completedLevels.includes(completedLevel)) {
-            user.completedLevels.push(completedLevel);
-            user.stars += 5;
-            user.books += 1;
-            user.level = Math.min(STAGE.reduce((count, stage) => count + stage.L.length, 0), user.level + 1);
-            const nextBook = catalogBooks().find((book) => book.l === user.level);
-            if (nextBook) user.currentBook = nextBook.id;
-            user.progress = studentProgress(user);
-            advancedLevel = true;
-          }
-          state.flash = completedAssignment ? t().homeworkSaved
-            : advancedLevel
-              ? user.level === completedLevel ? t().allLevelsDone : t().nextLevel
-              : t().readingComplete;
-          save(data);
-        }
+      placeGameLetter(i, state.sel);
+    });
+  });
+  document.querySelectorAll("[data-delete-recording]").forEach((el) => {
+    el.addEventListener("click", async () => {
+      const current = sessionUser();
+      const data = db();
+      const recording = data.recordings.find((item) => item.id === el.dataset.deleteRecording);
+      const allowedStudentIds = current?.role === "student"
+        ? [current.id]
+        : current?.role === "teacher"
+          ? studentsForTeacher(data, current).map((student) => student.id)
+          : [];
+      if (!recording || !allowedStudentIds.includes(recording.studentId)) {
+        state.flash = t().noAccess;
+        render();
+        return;
       }
-      state.placed = placed;
-      state.sel = null;
+      if (!window.confirm(ar() ? "هل تريد حذف هذا التسجيل الصوتي نهائيًا؟" : "Delete this voice recording permanently?")) return;
+      el.disabled = true;
+      try {
+        if (typeof indexedDB !== "undefined") await deleteRecordingAudio(recording.id);
+      } catch {
+        state.flash = ar()
+          ? "تعذر حذف الملف الصوتي من مساحة التخزين."
+          : "The audio file could not be removed from storage.";
+        render();
+        return;
+      }
+      data.recordings = data.recordings.filter((item) => item.id !== recording.id);
+      try {
+        save(data);
+      } catch {
+        state.flash = ar()
+          ? "حُذف الملف الصوتي لكن تعذر تحديث قائمة التسجيلات. حدّث الصفحة وحاول مرة أخرى."
+          : "The audio file was removed, but the recording list could not be updated. Refresh and retry.";
+        render();
+        return;
+      }
+      state.flash = ar() ? "تم حذف التسجيل الصوتي." : "The voice recording was deleted.";
       render();
     });
   });
@@ -4439,6 +5979,16 @@ function bind() {
   });
 
   const loginForm = document.getElementById("login-form");
+  document.querySelectorAll("[data-social]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const email = document.querySelector('#login-form [name="email"]');
+      const password = document.querySelector('#login-form [name="password"]');
+      if (email) email.value = el.dataset.social === "google" ? "parent@bayan.test" : "teacher@bayan.test";
+      if (password) password.value = "1234";
+      state.flash = ar() ? "تم ملء حساب تجريبي؛ اضغط تسجيل الدخول." : "Demo account filled. Click Log in.";
+      render();
+    });
+  });
   document.querySelectorAll("[data-demo-email]").forEach((el) => {
     el.addEventListener("click", () => {
       const email = document.querySelector('#login-form [name="email"]');
@@ -4472,16 +6022,90 @@ function bind() {
       if (new Set(emails).size !== emails.length ||
         data.users.some((u) => emails.includes(u.email.toLowerCase()))) return showErr(t().existsErr);
       const id = uid("u");
-      const user = { id, role, name, nameEn: name, email, password, active: true, createdAt: Date.now() };
+      const user = { id, role, name, nameEn: name, email, password, active: true, isDemo: false, createdAt: Date.now() };
       if (role === "student") {
+        const age = Number(fd.get("age"));
+        if (!Number.isInteger(age) || age < 3 || age > 16 || !["boy", "girl"].includes(state.gender)) {
+          return showErr(t().profileInvalid);
+        }
         Object.assign(user, newStudentProfile({
-          id, name, email, password, age: Number(fd.get("age") || 7), gender: state.gender
+          id, name, email, password, age, gender: state.gender
         }));
+        user.readingAgeBand = Number(state.onboardingAge) || 0;
+        user.readingInterests = [...state.onboardingInterests];
+        user.readingGoalMins = Number(state.onboardingGoalMins) || 15;
+      }
+      if (role === "teacher") {
+        const specialties = String(fd.get("teacherSpecialties") || "").trim();
+        const experience = String(fd.get("teacherExperienceYears") || "").trim();
+        const experienceYears = experience ? Number(experience) : "";
+        const institution = String(fd.get("teacherInstitution") || "").trim();
+        if (!specialties || specialties.length > 200 ||
+          (experience && (!Number.isInteger(experienceYears) || experienceYears < 0 || experienceYears > 60)) ||
+          institution.length > 120) {
+          return showErr(t().profileInvalid);
+        }
+        user.teacherSpecialties = specialties;
+        user.teacherExperienceYears = experienceYears;
+        user.teacherInstitution = institution;
       }
       if (role === "parent") {
+        user.readingLanguage = String(fd.get("readingLanguage") || "both");
+        if (!["ar", "en", "both"].includes(user.readingLanguage)) return showErr(t().profileInvalid);
         user.childIds = [];
         user.reminder = true;
         user.familyGoalMins = 60;
+
+        const childEntries = [];
+        for (let index = 0; index < state.parentChildCount; index++) {
+          const childName = String(fd.get(`childName${index}`) || "").trim();
+          const childEmail = String(fd.get(`childEmail${index}`) || "").trim().toLowerCase();
+          const childAge = Number(fd.get(`childAge${index}`) || 7);
+          if (!childName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(childEmail) ||
+            !Number.isInteger(childAge) || childAge < 3 || childAge > 16) {
+            return showErr(t().profileInvalid);
+          }
+          childEntries.push({ childName, childEmail, childAge });
+        }
+        const childEmails = childEntries.map((child) => child.childEmail);
+        if (childEmails.includes(email.toLowerCase()) ||
+          new Set(childEmails).size !== childEmails.length ||
+          data.users.some((account) => childEmails.includes(account.email.toLowerCase()))) {
+          return showErr(t().existsErr);
+        }
+
+        data.users.push(user);
+        const credentials = [];
+        childEntries.forEach((child) => {
+          const childId = uid("u");
+          const pin = String(Math.floor(100000 + Math.random() * 900000));
+          const student = newStudentProfile({
+            id: childId,
+            name: child.childName,
+            email: child.childEmail,
+            password: pin,
+            age: child.childAge,
+            gender: null,
+            parentId: id
+          });
+          student.readingLanguage = user.readingLanguage;
+          student.createdAt = Date.now();
+          student.accessPin = pin;
+          user.childIds.push(childId);
+          data.users.push(student);
+          credentials.push(`${child.childName}: ${child.childEmail} — PIN ${pin}`);
+        });
+        save(data);
+        state.signupDraft = {};
+        setSession(id);
+        state.flash = ar()
+          ? `تم إنشاء الحساب وربط ${credentials.length} ${credentials.length === 1 ? "طفل" : "أطفال"}`
+          : `Account created with ${credentials.length} linked ${credentials.length === 1 ? "child" : "children"}`;
+        keepFlash = true;
+        state.screenHistory = [];
+        resetLearningGames();
+        go("parent", undefined, { skipHistory: true });
+        return;
       }
       data.users.push(user);
       save(data);
@@ -4489,71 +6113,75 @@ function bind() {
       setSession(id);
       state.flash = t().welcomeRole;
       keepFlash = true;
-      go(homeFor(role));
+      state.screenHistory = [];
+      resetLearningGames();
+      go(homeFor(role), undefined, { skipHistory: true });
     });
   }
-  const studentProfileForm = document.getElementById("student-profile-form");
-  if (studentProfileForm) {
-    const avatarInput = studentProfileForm.elements.namedItem("avatar");
-    avatarInput.addEventListener("change", async () => {
-      const file = avatarInput.files?.[0];
-      if (!file) return;
-      if (!file.type.startsWith("image/") || file.size > 8 * 1024 * 1024) {
-        state.flash = t().profilePhotoInvalid;
-        render();
-        return;
-      }
-      try {
-        const preview = await imageDataUrl(file);
-        document.querySelector(".student-profile-avatar")?.setAttribute("src", preview);
-      } catch {
-        state.flash = t().profilePhotoError;
-        render();
-      }
-    });
-    studentProfileForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+  document.querySelectorAll("[data-edit-child]").forEach((button) => {
+    button.addEventListener("click", () => {
       const current = sessionUser();
       const data = db();
-      const student = data.users.find((user) => user.id === current?.id && user.role === "student");
-      if (!student || current?.role !== "student") {
+      const parent = data.users.find((user) => user.id === current?.id && user.role === "parent");
+      const childId = button.dataset.editChild;
+      const child = data.users.find((user) => user.id === childId && user.role === "student");
+      if (!parent || !child ||
+        !(parent.childIds?.includes(child.id) || child.parentId === parent.id)) {
         state.flash = t().noAccess;
         render();
         return;
       }
-      const formData = new FormData(studentProfileForm);
-      const name = String(formData.get("name") || "").trim();
-      const email = String(formData.get("email") || "").trim();
-      const age = Number(formData.get("age"));
-      const gender = String(formData.get("gender") || "");
-      const password = String(formData.get("password") || "");
-      const avatarFile = avatarInput.files?.[0];
+      state.editChildId = state.editChildId === childId ? null : childId;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-cancel-child-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.editChildId = null;
+      render();
+    });
+  });
+  document.querySelectorAll("[data-parent-edit-child]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const current = sessionUser();
+      const data = db();
+      const parent = data.users.find((user) => user.id === current?.id && user.role === "parent");
+      const child = data.users.find((user) =>
+        user.id === form.dataset.parentEditChild && user.role === "student");
+      if (!parent || !child ||
+        !(parent.childIds?.includes(child.id) || child.parentId === parent.id)) {
+        state.flash = t().noAccess;
+        render();
+        return;
+      }
+      const values = new FormData(form);
+      const name = String(values.get("name") || "").trim();
+      const email = String(values.get("email") || "").trim().toLowerCase();
+      const age = Number(values.get("age"));
+      const gender = String(values.get("gender") || "");
+      const readingLanguage = String(values.get("readingLanguage") || "");
+      const accessPin = String(values.get("accessPin") || "").trim();
       const emailInUse = data.users.some((user) =>
-        user.id !== student.id && user.email.toLocaleLowerCase() === email.toLocaleLowerCase());
-      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
-        !Number.isInteger(age) || age < 3 || age > 16 ||
-        !["boy", "girl"].includes(gender) || emailInUse ||
-        (password && password.length < 6) ||
-        (avatarFile && (!avatarFile.type.startsWith("image/") || avatarFile.size > 8 * 1024 * 1024))) {
+        user.id !== child.id && user.email.toLocaleLowerCase() === email);
+      if (!name || name.length > 60 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+        emailInUse || !Number.isInteger(age) || age < 3 || age > 16 ||
+        !["boy", "girl"].includes(gender) || !["ar", "en", "both"].includes(readingLanguage) ||
+        (accessPin && !/^\d{4,8}$/.test(accessPin))) {
         state.flash = t().profileInvalid;
         render();
         return;
       }
-      let avatar;
-      try {
-        if (avatarFile) avatar = await imageDataUrl(avatarFile);
-      } catch {
-        state.flash = t().profilePhotoError;
-        render();
-        return;
+      if (!child.nameEn || child.nameEn === child.name) child.nameEn = name;
+      child.name = name;
+      child.email = email;
+      child.age = age;
+      child.gender = gender;
+      child.readingLanguage = readingLanguage;
+      if (accessPin) {
+        child.password = accessPin;
+        child.accessPin = accessPin;
       }
-      if (!student.nameEn || student.nameEn === student.name) student.nameEn = name;
-      student.name = name;
-      student.email = email;
-      student.age = age;
-      student.gender = gender;
-      if (password) student.password = password;
-      if (avatar) student.avatar = avatar;
       try {
         save(data);
       } catch {
@@ -4561,10 +6189,11 @@ function bind() {
         render();
         return;
       }
+      state.editChildId = null;
       state.flash = t().profileSaved;
       render();
     });
-  }
+  });
   const accountProfileForm = document.getElementById("account-profile-form");
   if (accountProfileForm) {
     const avatarInput = accountProfileForm.elements.namedItem("avatar");
@@ -4597,8 +6226,11 @@ function bind() {
       }
       const formData = new FormData(accountProfileForm);
       const name = String(formData.get("name") || "").trim();
-      const email = String(formData.get("email") || "").trim();
+      const email = account.role === "parent"
+        ? account.email : String(formData.get("email") || "").trim();
       const password = String(formData.get("password") || "");
+      const readingLanguage = account.role === "parent"
+        ? String(formData.get("readingLanguage") || "") : "";
       const avatarFile = avatarInput.files?.[0];
       const teacherBio = account.role === "teacher" ? String(formData.get("teacherBio") || "").trim() : "";
       const teacherSpecialties = account.role === "teacher" ? String(formData.get("teacherSpecialties") || "").trim() : "";
@@ -4608,14 +6240,19 @@ function bind() {
       const teacherQualifications = account.role === "teacher"
         ? String(formData.get("teacherQualifications") || "").trim() : "";
       const teacherApproach = account.role === "teacher" ? String(formData.get("teacherApproach") || "").trim() : "";
-      const emailInUse = data.users.some((user) =>
+      const teacherInstitution = account.role === "teacher"
+        ? String(formData.get("teacherInstitution") || "").trim() : "";
+      const emailInUse = account.role === "teacher" && data.users.some((user) =>
         user.id !== account.id && user.email.toLocaleLowerCase() === email.toLocaleLowerCase());
-      if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || emailInUse ||
+      if (!name ||
+        (account.role === "teacher" && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || emailInUse)) ||
+        (account.role === "parent" && !["ar", "en", "both"].includes(readingLanguage)) ||
         (password && password.length < 6) ||
         (account.role === "teacher" && (
           teacherBio.length > 600 || teacherSpecialties.length > 200 ||
           (experienceValue && (!Number.isInteger(teacherExperienceYears) || teacherExperienceYears < 0 || teacherExperienceYears > 60)) ||
-          teacherQualifications.length > 300 || teacherApproach.length > 500
+          teacherQualifications.length > 300 || teacherApproach.length > 500 ||
+          teacherInstitution.length > 120
         )) ||
         (avatarFile && (!avatarFile.type.startsWith("image/") || avatarFile.size > 8 * 1024 * 1024))) {
         state.flash = t().profileInvalid;
@@ -4632,7 +6269,8 @@ function bind() {
       }
       if (!account.nameEn || account.nameEn === account.name) account.nameEn = name;
       account.name = name;
-      account.email = email;
+      if (account.role === "teacher") account.email = email;
+      if (account.role === "parent") account.readingLanguage = readingLanguage;
       if (password) account.password = password;
       if (avatar) account.avatar = avatar;
       if (account.role === "teacher") {
@@ -4641,6 +6279,7 @@ function bind() {
         account.teacherExperienceYears = teacherExperienceYears;
         account.teacherQualifications = teacherQualifications;
         account.teacherApproach = teacherApproach;
+        account.teacherInstitution = teacherInstitution;
       }
       try {
         save(data);
@@ -5095,11 +6734,20 @@ function bind() {
         return;
       }
       const data = db();
+      const accessMode = String(formData.get("accessMode") || "free");
+      const purchasePrice = Math.max(0, Number(formData.get("purchasePrice")) || 0);
+      if (accessMode === "paid" && purchasePrice < 1) {
+        state.flash = ar() ? "أدخل سعرًا صحيحًا للكتاب المدفوع." : "Enter a valid price for the paid book.";
+        render();
+        return;
+      }
       data.books.unshift({
         id: uid("book"), custom: true, active: true,
         ar: titleAr, en: titleEn, s: String(formData.get("series")),
         l: level, color: "linear-gradient(160deg,#4fc3f7,#1e88d6)",
-        premium: String(formData.get("premium")) === "true",
+        premium: accessMode !== "free",
+        accessMode,
+        purchasePrice: accessMode === "paid" ? purchasePrice : 0,
         pages: pagesAr.map((page, index) => ({
           img: "assets/book-continue.jpg", ar: page, en: pagesEn[index]
         })),
@@ -5120,10 +6768,22 @@ function bind() {
       }
       const data = db();
       const id = form.dataset.contentAccess;
-      const premium = String(new FormData(form).get("premium")) === "true";
+      const formData = new FormData(form);
+      const accessMode = String(formData.get("accessMode") || "free");
+      const purchasePrice = Math.max(0, Number(formData.get("purchasePrice")) || 0);
+      if (accessMode === "paid" && purchasePrice < 1) {
+        state.flash = ar() ? "أدخل سعرًا صحيحًا للكتاب المدفوع." : "Enter a valid price for the paid book.";
+        render();
+        return;
+      }
+      const premium = accessMode !== "free";
       const customBook = data.books.find((book) => book.id === id);
-      if (customBook) customBook.premium = premium;
-      else if (BOOKS.some((book) => book.id === id)) data.bookAccess[id] = premium;
+      if (customBook) {
+        customBook.premium = premium;
+        customBook.accessMode = accessMode;
+        customBook.purchasePrice = accessMode === "paid" ? purchasePrice : 0;
+      }
+      else if (BOOKS.some((book) => book.id === id)) data.bookAccess[id] = { premium, accessMode, purchasePrice: accessMode === "paid" ? purchasePrice : 0 };
       else {
         state.flash = t().noAccess;
         render();
@@ -5183,6 +6843,43 @@ function bind() {
       data.users[pi] = parent;
       save(data);
       state.flash = `${t().addChildOk} ${t().studentLoginDetails.replace("{email}", escapeHtml(email)).replace("{pin}", pin)}`;
+      render();
+    });
+  }
+  const linkTeacherStudent = document.getElementById("link-teacher-student-form");
+  if (linkTeacherStudent) {
+    linkTeacherStudent.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const teacher = sessionUser();
+      if (teacher?.role !== "teacher") {
+        state.flash = t().noAccess;
+        render();
+        return;
+      }
+      const email = String(new FormData(linkTeacherStudent).get("email") || "").trim().toLowerCase();
+      if (!email) {
+        state.flash = t().fillErr;
+        render();
+        return;
+      }
+      const data = db();
+      const student = data.users.find((account) =>
+        account.role === "student" && account.email.toLowerCase() === email);
+      if (!student) {
+        state.flash = ar() ? "لم يتم العثور على طالب بهذا البريد." : "No student account was found with that email.";
+        render();
+        return;
+      }
+      student.teacherIds = Array.isArray(student.teacherIds) ? student.teacherIds : [];
+      if (student.teacherIds.includes(teacher.id)) {
+        state.flash = ar() ? "هذا الطالب مرتبط بك بالفعل." : "This student is already linked to you.";
+        render();
+        return;
+      }
+      student.teacherIds.push(teacher.id);
+      save(data);
+      state.flash = ar() ? "تم ربط الطالب بحسابك." : "Student linked to your account.";
+      keepFlash = true;
       render();
     });
   }
@@ -5303,6 +7000,81 @@ function bind() {
       render();
     });
   }
+  const resetPasswordForm = document.getElementById("reset-password-form");
+  if (resetPasswordForm) {
+    resetPasswordForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const formData = new FormData(resetPasswordForm);
+      const email = String(formData.get("email") || "").trim().toLowerCase();
+      const password = String(formData.get("newPassword") || "");
+      const confirmation = String(formData.get("confirmPassword") || "");
+      if (password.length < 6 || password !== confirmation) {
+        state.flash = ar() ? "كلمتا المرور غير متطابقتين أو قصيرة جدًا." : "Passwords do not match or are too short.";
+        render();
+        return;
+      }
+      const data = db();
+      const account = data.users.find((user) => user.email.toLowerCase() === email);
+      if (!account) {
+        state.flash = ar() ? "لا يوجد حساب بهذا البريد على هذا الجهاز." : "No account with this email exists on this device.";
+        render();
+        return;
+      }
+      account.password = password;
+      save(data);
+      state.flash = ar() ? "تم تحديث كلمة المرور بنجاح." : "Password updated successfully.";
+      keepFlash = true;
+      go("login");
+    });
+  }
+  document.querySelectorAll("[data-checkout-plan]").forEach((el) => {
+    el.addEventListener("click", () => {
+      state.checkoutPlan = el.dataset.checkoutPlan;
+      render();
+    });
+  });
+  const checkoutForm = document.getElementById("checkout-form");
+  if (checkoutForm) {
+    checkoutForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (state.checkoutBook) {
+        const user = sessionUser();
+        const book = findBook(state.checkoutBook);
+        if (!user || user.role !== "student" || !book) {
+          state.flash = t().noAccess;
+          render();
+          return;
+        }
+        const data = db();
+        const liveUser = data.users.find((candidate) => candidate.id === user.id);
+        liveUser.ownedBooks = Array.isArray(liveUser.ownedBooks) ? liveUser.ownedBooks : [];
+        if (!liveUser.ownedBooks.includes(book.id)) liveUser.ownedBooks.push(book.id);
+        data.payments.push({
+          id: uid("purchase"), type: "book", bookId: book.id, userId: user.id,
+          amount: book.purchasePrice || 0, when: new Date().toISOString().slice(0, 10),
+          createdAt: Date.now()
+        });
+        save(data);
+        state.checkoutBook = null;
+        state.flash = t().bookPurchased;
+        keepFlash = true;
+        openBook(book.id);
+        return;
+      }
+      state.flash = ar() ? "تم تأكيد الاشتراك التجريبي. لن يتم خصم أي مبلغ." : "Demo subscription confirmed. No real payment was made.";
+      keepFlash = true;
+      go("signup");
+    });
+  }
+  const helpSearch = document.querySelector(".help-search input");
+  if (helpSearch) {
+    helpSearch.addEventListener("input", () => {
+      const query = helpSearch.value.trim().toLowerCase();
+      document.querySelectorAll(".faq-list details").forEach((item) => {
+        item.hidden = Boolean(query) && !item.textContent.toLowerCase().includes(query);
+      });
+    });
+  }
   const contact = document.getElementById("contact-form");
   if (contact) {
     contact.addEventListener("submit", (e) => {
@@ -5319,6 +7091,10 @@ function bind() {
 
 seed();
 const existing = sessionUser();
+document.body.classList.toggle("reduce-motion", state.accessibilityMode === "reduced");
+document.body.classList.toggle("dark-visual-mode", state.visualMode === "dark");
+document.body.classList.toggle("text-small", state.fontSize === "small");
+document.body.classList.toggle("text-large", state.fontSize === "large");
 if (existing && ["home", "login", "signup"].includes(state.screen)) {
   state.screen = homeFor(existing.role);
 }

@@ -3,15 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="درب البيان منصة عربية ودولية لتعلّم القراءة بالقصص والألعاب وتقارير تقدم للعائلة والمعلم.">
+  <meta name="theme-color" content="#fefcf8">
+  <meta property="og:title" content="درب البيان — لتعلّم القراءة">
+  <meta property="og:description" content="نتعلّم القراءة ونكبر على القيم مع قصص وألعاب وتقارير تقدم.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero.jpg">
+  <link rel="icon" href="assets/logo.jpg">
+  <link rel="apple-touch-icon" href="assets/logo.jpg">
+  <link rel="manifest" href="manifest.webmanifest">
   <title>درب البيان — لتعلّم القراءة</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Cairo:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261122-30">
 </head>
 <body>
   <div id="app" class="app"></div>
   <script src="js/avatar-library.bundle.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=20261122-26"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+    }
+  </script>
 </body>
 </html>

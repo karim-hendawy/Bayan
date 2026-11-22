@@ -1,0 +1,14 @@
+{
+  "name": "درب البيان",
+  "short_name": "درب البيان",
+  "description": "منصة تعلّم القراءة بالعربية والإنجليزية",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fefcf8",
+  "theme_color": "#fefcf8",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    { "src": "assets/logo.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any" }
+  ]
+}
