@@ -403,7 +403,6 @@ const T = {
     lastBook: "آخر كتاب", quizScore: "درجة السؤال", status: "الحالة", action: "إجراء",
     view: "عرض",     allClass: "كل طلابي المرتبطين", homework: "واجب القراءة",
     parentDash: "متابعة الأبناء", teacherDash: "إدارة الطلاب", studentDash: "رحلة الطالب",
-    welcomeRole: "تم تسجيل الدخول. هذه صفحتك حسب دورك.",
     addChildOk: "أُضيف الطفل. احفظ بيانات الدخول الظاهرة في حسابك.",
     linkChild: "ربط حساب طالب موجود",
     linkByEmail: "البريد الإلكتروني للطالب",
@@ -557,6 +556,7 @@ const T = {
     profilePhotoInvalid: "اختر صورة بصيغة مدعومة، وحجمها أقل من 8 ميجابايت.",
     profilePhotoError: "تعذر تجهيز الصورة. جرّب صورة أخرى.",
     profileSaveError: "تعذر حفظ التعديلات. مساحة التخزين في هذا المتصفح قد تكون ممتلئة.",
+    notificationSaveError: "تم حفظ التغيير، لكن تعذر حفظ إشعاره.",
     myRewards: "مكافآتي",
     nextStarReward: "المكافأة القادمة عند",
     starsRemaining: "نجمة متبقية",
@@ -890,7 +890,6 @@ const T = {
     lastBook: "Last book", quizScore: "Quiz", status: "Status", action: "Action",
     view: "View",     allClass: "All my linked students", homework: "Reading homework",
     parentDash: "Follow your children", teacherDash: "Manage students", studentDash: "Student journey",
-    welcomeRole: "You are signed in. This page is for your role only.",
     addChildOk: "Child added. Save the login details shown in your account.",
     linkChild: "Link an existing student account",
     linkByEmail: "Student email",
@@ -1044,6 +1043,7 @@ const T = {
     profilePhotoInvalid: "Choose a supported image smaller than 8 MB.",
     profilePhotoError: "The image could not be processed. Try another image.",
     profileSaveError: "Changes could not be saved. This browser may be out of storage space.",
+    notificationSaveError: "The change was saved, but its notification could not be stored.",
     myRewards: "My rewards",
     nextStarReward: "Next reward at",
     starsRemaining: "stars to go",
@@ -1416,6 +1416,15 @@ function seed() {
     db.recordings = Array.isArray(db.recordings) ? db.recordings : [];
     db.contacts = Array.isArray(db.contacts) ? db.contacts : [];
     db.books = Array.isArray(db.books) ? db.books : [];
+    if (!Array.isArray(db.notifications)) {
+      db.notifications = [];
+      changed = true;
+    }
+    if (!db.dismissedNotifications || typeof db.dismissedNotifications !== "object" ||
+      Array.isArray(db.dismissedNotifications)) {
+      db.dismissedNotifications = {};
+      changed = true;
+    }
     if (!Array.isArray(db.payments)) {
       db.payments = [];
       changed = true;
@@ -1635,6 +1644,8 @@ function seed() {
     ],
     week: [12, 18, 9, 22, 15, 26, 10],
     contacts: [],
+    notifications: [],
+    dismissedNotifications: {},
     payments: [],
     challenges: [],
     classes: [],
@@ -1700,6 +1711,7 @@ const state = {
   checkoutPlan: "yearly",
   checkoutBook: null,
   notificationsOpen: false,
+  missionCelebration: null,
   onboardingStep: 0,
   onboardingInterests: [],
   onboardingAge: null,
@@ -2102,8 +2114,6 @@ function login(email, password) {
   setSession(user.id);
   state.screenHistory = [];
   resetLearningGames();
-  state.flash = t().welcomeRole;
-  keepFlash = true;
   go(homeFor(user.role), undefined, { skipHistory: true });
   return true;
 }
@@ -2132,6 +2142,7 @@ function svg(path, w, h, stroke, fill) {
 function uiIcon(name, size = 26) {
   const paths = {
     bell: `<path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/><circle cx="12" cy="5" r="1.2"/>`,
+    close: `<path d="m6 6 12 12M18 6 6 18"/>`,
     trophy: `<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM7 6H4v2a4 4 0 0 0 4 4M17 6h3v2a4 4 0 0 1-4 4"/>`,
     star: `<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>`,
     book: `<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21V5.5ZM4 5v16M8 7h8M8 11h7"/>`,
@@ -2164,17 +2175,41 @@ function setMobileMenuOpen(open, button) {
     : (ar() ? "فتح القائمة" : "Open menu"));
 }
 
-function notificationItems(user) {
+function notificationItems(user, includeAll = false) {
   if (!user) return [];
   const data = db();
   const arMode = ar();
+  const notificationId = (type, item, context = "") =>
+    `${type}:${context}:${item.id || item.at || item.createdAt || [item.when, item.title, item.text, item.message, item.name].filter(Boolean).join(":")}`;
+  const visible = (items) => {
+    const dismissed = Array.isArray(data.dismissedNotifications?.[user.id])
+      ? data.dismissedNotifications[user.id] : [];
+    return items.filter((item) => !dismissed.includes(item.id));
+  };
+  const confirmations = (Array.isArray(data.notifications) ? data.notifications : [])
+    .filter((notification) => notification && notification.userId === user.id)
+    .map((notification) => ({
+      id: notification.id,
+      title: notification.title,
+      sender: notification.sender,
+      text: notification.text,
+      time: notification.at
+        ? new Date(notification.at).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" })
+        : "",
+      sortAt: Number(notification.at) || 0,
+      isActionConfirmation: true
+    }));
+  const combineNotifications = (items) => {
+    const all = visible([...confirmations, ...items]
+      .sort((a, b) => (Number(b.sortAt) || 0) - (Number(a.sortAt) || 0)));
+    return includeAll ? all : all.slice(0, 8);
+  };
 
   if (user.role === "student") {
-    return (user.encouragements || [])
+    const messages = (user.encouragements || [])
       .slice()
-      .sort((a, b) => Number(b.at) - Number(a.at))
-      .slice(0, 8)
-      .map((message) => {
+      .sort((a, b) => Number(b.at) - Number(a.at));
+    return combineNotifications(messages.map((message) => {
         const senderRole = message.senderRole === "teacher"
           ? (arMode ? "المعلم" : "Teacher")
           : message.senderRole === "parent"
@@ -2182,12 +2217,14 @@ function notificationItems(user) {
             : (arMode ? "الدعم" : "Support");
         const senderName = String(message.senderName || "").trim();
         return {
+          id: notificationId("encouragement", message, user.id),
           title: arMode ? "رسالة تشجيع جديدة" : "New encouragement",
           sender: senderName ? `${senderRole} · ${senderName}` : senderRole,
           text: message.text,
-          time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+          time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : "",
+          sortAt: Number(message.at) || 0
         };
-      });
+      }));
   }
 
   if (user.role === "parent") {
@@ -2196,67 +2233,257 @@ function notificationItems(user) {
     const items = [];
     children.forEach((child) => {
       const homework = assignmentsForStudent(data, child)
-        .filter((assignment) => !(assignment.completedBy || []).includes(child.id))
-        .slice(0, 3);
-      homework.forEach((assignment) => items.push({
+        .filter((assignment) => !(assignment.completedBy || []).includes(child.id));
+      (includeAll ? homework : homework.slice(0, 3)).forEach((assignment) => items.push({
+        id: notificationId("homework", assignment, child.id),
         title: arMode ? `واجب جديد لـ${displayName(child)}` : `New homework for ${displayName(child)}`,
         sender: arMode ? "المعلم" : "Teacher",
         text: findBook(assignment.bookId) ? bookTitle(findBook(assignment.bookId)) : (assignment.title || ""),
-        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : ""
+        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : "",
+        sortAt: Number(assignment.createdAt) || 0
       }));
-      (child.encouragements || []).slice(0, 2).forEach((message) => items.push({
+      const encouragements = child.encouragements || [];
+      (includeAll ? encouragements : encouragements.slice(0, 2)).forEach((message) => items.push({
+        id: notificationId("encouragement", message, child.id),
         title: arMode ? `تحديث لـ${displayName(child)}` : `Update for ${displayName(child)}`,
         sender: message.senderName
           ? `${message.senderRole === "teacher" ? (arMode ? "المعلم" : "Teacher") : (arMode ? "الدعم" : "Support")} · ${message.senderName}`
           : (arMode ? "رسالة تشجيع" : "Encouragement"),
         text: message.text,
-        time: message.at ? new Date(message.at).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+        time: message.at ? new Date(message.at).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : "",
+        sortAt: Number(message.at) || 0
       }));
     });
-    return items.slice(0, 8);
+    return combineNotifications(items);
   }
 
   if (user.role === "teacher") {
     const students = studentsForTeacher(data, user);
     const items = [];
-    data.assignments
-      .filter((assignment) => assignment.teacherId === user.id)
-      .slice(0, 4)
+    const assignments = data.assignments.filter((assignment) => assignment.teacherId === user.id);
+    (includeAll ? assignments : assignments.slice(0, 4))
       .forEach((assignment) => items.push({
+        id: notificationId("homework", assignment, user.id),
         title: arMode ? "تم نشر واجب قراءة" : "Reading assignment published",
         sender: arMode ? `المعلم · ${displayName(user)}` : `Teacher · ${displayName(user)}`,
         text: assignment.title || (findBook(assignment.bookId) ? bookTitle(findBook(assignment.bookId)) : ""),
-        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : ""
+        time: assignment.createdAt ? new Date(assignment.createdAt).toLocaleDateString(arMode ? "ar-EG" : "en-US") : "",
+        sortAt: Number(assignment.createdAt) || 0
       }));
-    data.recordings
-      .filter((recording) => students.some((student) => student.id === recording.studentId))
-      .slice(0, 4)
+    const recordings = data.recordings.filter((recording) =>
+      students.some((student) => student.id === recording.studentId));
+    (includeAll ? recordings : recordings.slice(0, 4))
       .forEach((recording) => {
         const student = students.find((candidate) => candidate.id === recording.studentId);
         items.push({
+          id: notificationId("recording", recording, user.id),
           title: arMode ? "تسجيل قراءة جديد" : "New reading recording",
           sender: student ? `${arMode ? "الطالب" : "Student"} · ${displayName(student)}` : (arMode ? "طالب" : "Student"),
           text: student ? displayName(student) : "",
-          time: recording.createdAt ? new Date(recording.createdAt).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
+          time: recording.createdAt ? new Date(recording.createdAt).toLocaleTimeString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : "",
+          sortAt: Number(recording.createdAt) || 0
         });
       });
-    return items.slice(0, 8);
+    return combineNotifications(items);
   }
 
   if (user.role === "admin") {
-    return data.contacts
+    const contacts = data.contacts
       .filter((message) => !message.readAt)
-      .sort((a, b) => Number(b.at) - Number(a.at))
-      .slice(0, 8)
+      .sort((a, b) => Number(b.at) - Number(a.at));
+    return combineNotifications((includeAll ? contacts : contacts.slice(0, 8))
       .map((message) => ({
+        id: notificationId("contact", message, user.id),
         title: arMode ? "رسالة دعم جديدة" : "New support message",
         sender: message.name || (message.email || (arMode ? "زائر" : "Visitor")),
         text: message.message || "",
-        time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : ""
-      }));
+        time: message.at ? new Date(message.at).toLocaleString(arMode ? "ar-EG" : "en-US", { hour: "2-digit", minute: "2-digit" }) : "",
+        sortAt: Number(message.at) || 0
+      })));
   }
 
-  return [];
+  return combineNotifications([]);
+}
+
+function notifyActionSuccess(message, recipientUserId) {
+  const text = String(message || "").trim();
+  const userId = recipientUserId || sessionUser()?.id;
+  if (!text) return;
+  if (!userId) {
+    state.flash = text;
+    return;
+  }
+
+  const data = db();
+  data.notifications = Array.isArray(data.notifications) ? data.notifications : [];
+  data.notifications.unshift({
+    id: uid("notice"),
+    userId,
+    title: ar() ? "تأكيد" : "Confirmation",
+    sender: ar() ? "درب البيان" : "Darb Al-Bayan",
+    text,
+    at: Date.now()
+  });
+  data.dismissedNotifications = data.dismissedNotifications &&
+    typeof data.dismissedNotifications === "object" && !Array.isArray(data.dismissedNotifications)
+    ? data.dismissedNotifications : {};
+  const userNotifications = data.notifications
+    .filter((notification) => notification.userId === userId)
+    .sort((a, b) => Number(b.at) - Number(a.at));
+  if (userNotifications.length > 50) {
+    const removedIds = new Set(userNotifications.slice(50).map((notification) => notification.id));
+    data.notifications = data.notifications.filter((notification) => !removedIds.has(notification.id));
+    const dismissedIds = Array.isArray(data.dismissedNotifications[userId])
+      ? data.dismissedNotifications[userId] : [];
+    data.dismissedNotifications[userId] = dismissedIds
+      .filter((id) => !removedIds.has(id));
+  }
+
+  try {
+    save(data);
+    state.flash = "";
+  } catch (error) {
+    console.error("Could not save confirmation notification.", error);
+    state.flash = t().notificationSaveError;
+    keepFlash = true;
+  }
+}
+
+let notificationAudioContext = null;
+let previousNotificationUserId = null;
+let previousNotificationIds = new Set();
+
+function enableNotificationAudio() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext || notificationAudioContext) return;
+  try {
+    notificationAudioContext = new AudioContext();
+    if (notificationAudioContext.state === "suspended") {
+      notificationAudioContext.resume().catch((error) =>
+        console.warn("Notification audio could not be enabled.", error));
+    }
+  } catch (error) {
+    console.warn("Notification audio could not be enabled.", error);
+  }
+}
+
+function playNotificationSound() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+  try {
+    notificationAudioContext = notificationAudioContext || new AudioContext();
+    const context = notificationAudioContext;
+    const playTone = () => {
+      const now = context.currentTime;
+      [
+        { frequency: 523.25, offset: 0, duration: 0.32 },
+        { frequency: 659.25, offset: 0.11, duration: 0.38 },
+        { frequency: 783.99, offset: 0.22, duration: 0.5 }
+      ].forEach((note) => {
+        const start = now + note.offset;
+        const oscillator = context.createOscillator();
+        const overtone = context.createOscillator();
+        const gain = context.createGain();
+        const overtoneGain = context.createGain();
+        oscillator.type = "sine";
+        overtone.type = "sine";
+        oscillator.frequency.setValueAtTime(note.frequency, start);
+        overtone.frequency.setValueAtTime(note.frequency * 2, start);
+        gain.gain.setValueAtTime(0.001, start);
+        gain.gain.exponentialRampToValueAtTime(0.12, start + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + note.duration);
+        overtoneGain.gain.setValueAtTime(0.001, start);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.025, start + 0.02);
+        overtoneGain.gain.exponentialRampToValueAtTime(0.001, start + note.duration * 0.8);
+        oscillator.connect(gain);
+        overtone.connect(overtoneGain);
+        gain.connect(context.destination);
+        overtoneGain.connect(context.destination);
+        oscillator.start(start);
+        overtone.start(start);
+        oscillator.stop(start + note.duration + 0.01);
+        overtone.stop(start + note.duration + 0.01);
+      });
+    };
+    if (context.state === "suspended") {
+      context.resume().then(playTone).catch((error) =>
+        console.warn("Notification sound could not be played.", error));
+    } else {
+      playTone();
+    }
+  } catch (error) {
+    console.warn("Notification sound could not be played.", error);
+  }
+}
+
+function playAnswerFeedbackSound(correct, celebration = false) {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+  try {
+    notificationAudioContext = notificationAudioContext || new AudioContext();
+    const context = notificationAudioContext;
+    const playTones = () => {
+      const now = context.currentTime;
+      const notes = correct
+        ? celebration
+          ? [
+            { frequency: 523.25, offset: 0, duration: 0.62 },
+            { frequency: 659.25, offset: 0.1, duration: 0.68 },
+            { frequency: 783.99, offset: 0.2, duration: 0.76 },
+            { frequency: 1046.5, offset: 0.31, duration: 0.9 },
+            { frequency: 1318.51, offset: 0.46, duration: 0.95 }
+          ]
+          : [
+            { frequency: 523.25, offset: 0, duration: 0.56 },
+            { frequency: 659.25, offset: 0.11, duration: 0.62 },
+            { frequency: 783.99, offset: 0.22, duration: 0.7 },
+            { frequency: 1046.5, offset: 0.34, duration: 0.88 }
+          ]
+        : [
+          { frequency: 392, offset: 0, duration: 0.22 },
+          { frequency: 329.63, offset: 0.14, duration: 0.22 },
+          { frequency: 261.63, offset: 0.28, duration: 0.28 }
+        ];
+      notes.forEach((note) => {
+        const start = now + note.offset;
+        const partials = correct
+          ? [{ harmonic: 1, volume: 0.1 }, { harmonic: 2, volume: 0.024 }, { harmonic: 3, volume: 0.008 }]
+          : [{ harmonic: 1, volume: 0.075 }, { harmonic: 2, volume: 0.01 }];
+        partials.forEach((partial) => {
+          const oscillator = context.createOscillator();
+          const gain = context.createGain();
+          oscillator.type = "sine";
+          oscillator.frequency.setValueAtTime(note.frequency * partial.harmonic, start);
+          gain.gain.setValueAtTime(0.001, start);
+          gain.gain.exponentialRampToValueAtTime(partial.volume, start + 0.025);
+          gain.gain.exponentialRampToValueAtTime(0.001, start + note.duration);
+          oscillator.connect(gain);
+          gain.connect(context.destination);
+          oscillator.start(start);
+          oscillator.stop(start + note.duration + 0.01);
+        });
+      });
+    };
+    if (context.state === "suspended") {
+      context.resume().then(playTones).catch((error) =>
+        console.warn("Answer feedback sound could not be played.", error));
+    } else {
+      playTones();
+    }
+  } catch (error) {
+    console.warn("Answer feedback sound could not be played.", error);
+  }
+}
+
+function trackNewNotifications(user) {
+  const notifications = user ? notificationItems(user, true) : [];
+  const ids = new Set(notifications.map((item) => item.id));
+  if (user && previousNotificationUserId === user.id &&
+    notifications.some((item) => !item.isActionConfirmation && !previousNotificationIds.has(item.id))) {
+    playNotificationSound();
+  }
+  previousNotificationUserId = user?.id || null;
+  previousNotificationIds = ids;
 }
 
 function header() {
@@ -2323,7 +2550,7 @@ function header() {
   } else {
     const colors = { student: "#6cc551", parent: "#7e57c2", teacher: "#ff8a65", admin: "#9575cd" };
     const labels = { student: tt.student, parent: tt.parentRole, teacher: tt.teacherRole, admin: tt.adminRole };
-    const notifications = notificationItems(user);
+    const notifications = notificationItems(user).slice(0, 8);
     const notificationCount = notifications.length;
     actions += `<div class="notification-wrap">
       <button class="notification-button" type="button" data-act="notifications" aria-label="${ar() ? "الإشعارات" : "Notifications"}">
@@ -2336,6 +2563,7 @@ function header() {
           ? `<div class="notification-list">${notifications.map((item) => `<article class="notification-item">
               <span class="notification-dot"></span>
               <div><strong>${escapeHtml(item.title)}</strong>${item.sender ? `<span class="notification-sender">${escapeHtml(item.sender)}</span>` : ""}<p>${escapeHtml(item.text)}</p>${item.time ? `<time>${escapeHtml(item.time)}</time>` : ""}</div>
+              <button class="notification-dismiss" type="button" data-act="dismiss-notification" data-notification-id="${escapeHtml(item.id)}" aria-label="${ar() ? "حذف الإشعار" : "Delete notification"}" title="${ar() ? "حذف الإشعار" : "Delete notification"}">${uiIcon("close", 14)}</button>
             </article>`).join("")}</div>`
           : `<p class="muted">${ar() ? "لا توجد إشعارات جديدة." : "No new notifications."}</p>`}
       </div>` : ""}
@@ -3150,14 +3378,14 @@ function kidView() {
           <img src="assets/game-letters.svg" alt=""><img src="assets/game-hunt.svg" alt=""><img src="assets/game-builder.svg" alt="">
         </span>
       </button>
-      <div class="card mission-card">
+      <div class="card mission-card ${state.missionCelebration === today ? "game-celebration mission-just-completed" : ""}">
         <strong class="mission-title">${tt.dailyMission}</strong>
         ${mission.review ? `<span class="muted">${tt.missionReviewHint}</span>` : ""}
         <span class="muted">${mission.prompt}</span>
         <div class="mission-options">${mission.options.map((option, index) =>
           `<button class="mission-option" data-mission-answer="${index}" ${missionDone ? "disabled" : ""}>${option}</button>`
         ).join("")}</div>
-        <span class="mission-feedback ${missionDone ? "mission-success" : ""}" aria-live="polite">
+        <span class="mission-feedback ${missionDone ? "mission-success" : ""} ${state.missionCelebration === today ? "game-reward-notice" : ""}" aria-live="polite">
           ${missionDone ? tt.missionComplete : escapeHtml(missionFeedback)}
         </span>
       </div>
@@ -3279,14 +3507,18 @@ function studentProfileView() {
     </article>`;
   }).join("");
   const skinSwatches = AVATAR_SKIN_TONES.map((tone) =>
-    `<button class="avatar-color-swatch ${student.avatarSkinTone === tone.id ? "is-selected" : ""}" type="button"
-      style="--swatch-color:${tone.color}" data-avatar-tone="${tone.id}"
-      aria-label="${tt.avatarSkinTone}: ${ar() ? tone.ar : tone.en}" aria-pressed="${student.avatarSkinTone === tone.id}"></button>`
+    `<button class="avatar-swatch-choice ${student.avatarSkinTone === tone.id ? "is-selected" : ""}" type="button"
+      data-avatar-tone="${tone.id}" aria-label="${tt.avatarSkinTone}: ${ar() ? tone.ar : tone.en}" aria-pressed="${student.avatarSkinTone === tone.id}">
+      <span class="avatar-color-swatch" style="--swatch-color:${tone.color}" aria-hidden="true"></span>
+      <small>${ar() ? tone.ar : tone.en}</small>
+    </button>`
   ).join("");
   const hairSwatches = AVATAR_HAIR_COLORS.map((color) =>
-    `<button class="avatar-color-swatch ${student.avatarHairColor === color.id ? "is-selected" : ""}" type="button"
-      style="--swatch-color:${color.color}" data-avatar-hair="${color.id}"
-      aria-label="${tt.avatarHairColor}: ${ar() ? color.ar : color.en}" aria-pressed="${student.avatarHairColor === color.id}"></button>`
+    `<button class="avatar-swatch-choice ${student.avatarHairColor === color.id ? "is-selected" : ""}" type="button"
+      data-avatar-hair="${color.id}" aria-label="${tt.avatarHairColor}: ${ar() ? color.ar : color.en}" aria-pressed="${student.avatarHairColor === color.id}">
+      <span class="avatar-color-swatch" style="--swatch-color:${color.color}" aria-hidden="true"></span>
+      <small>${ar() ? color.ar : color.en}</small>
+    </button>`
   ).join("");
   const hairStyles = AVATAR_HAIR_STYLES.map((style) =>
     `<button class="avatar-style-choice ${student.avatarHairStyle === style.id ? "is-selected" : ""}" type="button"
@@ -3295,9 +3527,11 @@ function studentProfileView() {
     </button>`
   ).join("");
   const hijabSwatches = AVATAR_HIJAB_COLORS.map((color) =>
-    `<button class="avatar-color-swatch ${student.avatarHijabColor === color.id ? "is-selected" : ""}" type="button"
-      style="--swatch-color:${color.color}" data-avatar-hijab="${color.id}"
-      aria-label="${tt.avatarHijabColor}: ${ar() ? color.ar : color.en}" aria-pressed="${student.avatarHijabColor === color.id}"></button>`
+    `<button class="avatar-swatch-choice ${student.avatarHijabColor === color.id ? "is-selected" : ""}" type="button"
+      data-avatar-hijab="${color.id}" aria-label="${tt.avatarHijabColor}: ${ar() ? color.ar : color.en}" aria-pressed="${student.avatarHijabColor === color.id}">
+      <span class="avatar-color-swatch" style="--swatch-color:${color.color}" aria-hidden="true"></span>
+      <small>${ar() ? color.ar : color.en}</small>
+    </button>`
   ).join("");
   const avatarGender = student.avatarGender || student.gender;
   const genderOptions = [["girl", tt.avatarGirl], ["boy", tt.avatarBoy]].map(([gender, label]) =>
@@ -3309,7 +3543,7 @@ function studentProfileView() {
   const isAvatarBuilder = state.screen === "avatar-builder";
   return `${flashBar()}<section class="student-profile ${isAvatarBuilder ? "avatar-builder-view" : ""}">
     ${isAvatarBuilder
-      ? `      <header class="avatar-builder-heading"><button class="btn btn-ghost" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
+      ? `      <header class="avatar-builder-heading"><button class="btn btn-ghost" type="button" data-back="games" aria-label="${tt.gamesBack}"><span aria-hidden="true">←</span><strong>${tt.gamesBack}</strong></button>
           <div><h1>${tt.avatarGameTitle}</h1><p class="muted">${tt.avatarGameDescription}</p></div></header>`
       : `<header class="student-profile-heading">
           <img class="student-profile-avatar" src="${escapeHtml(student.avatar || "assets/avatar.jpg")}" alt="${displayName(student)}">
@@ -3617,11 +3851,11 @@ function gameView() {
       <div class="controls">${tiles}</div>
     </div>
     ${state.sel ? `<div class="selected-letter-hint" aria-live="polite">${tt.gameSelectedLetter}: <strong>${escapeHtml(state.sel)}</strong></div>` : ""}
-    ${done ? `<div class="learning-game-finish game-celebration"><div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div><img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h2>${tt.gameWin}</h2>
+    ${done ? `<div class="learning-game-finish game-celebration"><h2>${tt.gameWin}</h2>
       <div class="game-reward-notice" role="status">${state.letterGameRewardStatus === "awarded"
         ? (ar() ? "وصلت 3 نجوم إلى رصيدك!" : "3 stars were added to your balance!")
         : state.letterGameRewardStatus === "claimed" ? tt.gameRewardAlreadyEarned : ""}</div>
-      <div class="row"><button class="btn btn-green" data-act="reset-game">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div></div>` : ""}
+      <div class="learning-game-finish-actions"><button class="btn btn-green" data-act="reset-game">${tt.playAgain}</button><button class="btn btn-blue game-finish-back" data-back="games" aria-label="${tt.gamesBack}">← ${tt.gamesBack}</button></div></div>` : ""}
   </section>`;
 }
 
@@ -3685,13 +3919,44 @@ function awardGameStars(gameId, amount) {
   return "awarded";
 }
 
-function speakGameMessage(message) {
+function preferredSpeechVoice(language) {
+  const voices = window.speechSynthesis.getVoices();
+  const languageCode = language.split("-")[0].toLowerCase();
+  const matches = voices.filter((voice) =>
+    voice.lang.toLowerCase().split("-")[0] === languageCode);
+  return matches.find((voice) => /natural|neural|enhanced|premium/i.test(voice.name)) ||
+    matches.find((voice) => voice.localService === false) ||
+    matches.find((voice) => /google|microsoft|apple|siri/i.test(voice.name)) ||
+    matches.find((voice) => voice.default) ||
+    matches[0] ||
+    voices.find((voice) => voice.default) ||
+    null;
+}
+
+function createSpeechUtterance(text, options = {}) {
+  const language = ar() ? "ar-SA" : "en-US";
+  const utterance = new SpeechSynthesisUtterance(text);
+  const voice = preferredSpeechVoice(language);
+  if (voice) {
+    utterance.voice = voice;
+    utterance.lang = voice.lang;
+  } else {
+    utterance.lang = language;
+  }
+  utterance.rate = options.rate || (ar() ? 0.9 : 0.95);
+  utterance.pitch = options.pitch || 1;
+  utterance.volume = 1;
+  return utterance;
+}
+
+function speakText(text, options = {}) {
   if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") return;
-  const utterance = new SpeechSynthesisUtterance(message);
-  utterance.lang = ar() ? "ar-SA" : "en-US";
-  utterance.rate = 0.9;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(utterance);
+  const utterance = createSpeechUtterance(text, options);
+  utterance.onboundary = options.onboundary || null;
+  utterance.onend = options.onend || null;
+  utterance.onerror = options.onerror || null;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(utterance);
 }
 
 function placeGameLetter(slotIndex, letter) {
@@ -3703,8 +3968,7 @@ function placeGameLetter(slotIndex, letter) {
   const wasDone = state.placed.every((value, index) => value === answers[index]);
   const done = placed.every((value, index) => value === answers[index]);
   const correct = letter === answers[slotIndex];
-  if (!correct) speakGameMessage(ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again.");
-  else speakGameMessage(ar() ? "أحسنت!" : "Well done!");
+  let gameCompleted = false;
   if (done && !wasDone) {
     const current = sessionUser();
     const data = db();
@@ -3730,16 +3994,20 @@ function placeGameLetter(slotIndex, letter) {
           user.progress = studentProgress(user);
           advancedLevel = true;
         }
-        state.flash = completedAssignment ? t().homeworkSaved
+        const completionMessage = completedAssignment ? t().homeworkSaved
           : advancedLevel
             ? user.level === completedLevel ? t().allLevelsDone : t().nextLevel
             : t().readingComplete;
         save(data);
+        notifyActionSuccess(completionMessage);
         state.letterGameRewardStatus = awardGameStars("letterGame", 3);
-        speakGameMessage(ar() ? "يا بطل، أكملت الكلمات وحصلت على ثلاث نجوم!" : "Amazing! You finished the words and earned three stars!");
+        gameCompleted = true;
       }
     }
   }
+  playAnswerFeedbackSound(correct, gameCompleted);
+  if (gameCompleted) window.celebrateGameWin();
+  else if (correct) window.celebrateAnswerCorrect?.();
   state.placed = placed;
   state.sel = null;
   render();
@@ -3827,12 +4095,11 @@ function wordHuntView() {
     return `${flashBar()}<section class="learning-game-page">
       <span class="pill learning-game-pill">${tt.wordHuntTitle}</span>
       <div class="learning-game-finish game-celebration">
-        <div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div>
-        <img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h1>${tt.wordHuntComplete}</h1>
+        <h1>${tt.wordHuntComplete}</h1>
         ${rewardMessage ? `<div class="game-reward-notice" role="status">${rewardMessage}</div>` : ""}
         <div class="game-earned-points">${state.wordHuntRewardStatus === "awarded" || alreadyRewarded
           ? (ar() ? "⭐ 3 نجوم" : "⭐ 3 stars") : ""}</div>
-        <div class="row"><button class="btn btn-green" data-act="restart-word-hunt">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div>
+        <div class="learning-game-finish-actions"><button class="btn btn-green" data-act="restart-word-hunt">${tt.playAgain}</button><button class="btn btn-blue game-finish-back" data-back="games" aria-label="${tt.gamesBack}">← ${tt.gamesBack}</button></div>
       </div>
     </section>`;
   }
@@ -3845,16 +4112,16 @@ function wordHuntView() {
     const resultClass = correct && chosen ? "is-correct"
       : chosen ? "is-incorrect" : "";
     return `<button class="word-hunt-choice ${resultClass}" data-hunt-choice="${index}"
-      aria-label="${escapeHtml(pictureNames[picture] || picture)}" ${correct ? "disabled" : ""}><img src="assets/game-picture-${picture}.svg" alt="${escapeHtml(pictureNames[picture] || picture)}" loading="lazy"></button>`;
+      aria-label="${escapeHtml(pictureNames[picture] || picture)}" ${correct ? "disabled" : ""}>
+      <span class="word-hunt-choice-number">${index + 1}</span>
+      <span class="word-hunt-picture"><img src="assets/game-picture-${picture}.svg" alt="" loading="lazy"></span>
+      <strong class="word-hunt-choice-label">${escapeHtml(pictureNames[picture] || picture)}</strong>
+      ${chosen ? `<span class="word-hunt-choice-status" aria-hidden="true">${correct ? "✓" : "×"}</span>` : ""}
+    </button>`;
   }).join("");
   return `${flashBar()}<section class="learning-game-page">
-    <div class="learning-game-step-nav">
-      <button class="game-arrow-button is-back" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
-      <button class="game-arrow-button" type="button" data-hunt-previous aria-label="${tt.prev}" ${state.wordHuntRound <= 0 ? "disabled" : ""}>←</button>
-      <span>${tt.wordHuntRound} ${state.wordHuntRound + 1} / ${rounds.length}</span>
-      <button class="game-arrow-button is-next" type="button" data-hunt-next aria-label="${tt.wordHuntNext}" ${correct ? "" : "disabled"}>→</button>
-    </div>
     <header class="learning-game-heading">
+      <button class="btn btn-ghost learning-game-back" type="button" data-back="games" aria-label="${tt.gamesBack}">← ${tt.gamesBack}</button>
       <span class="pill learning-game-pill">${tt.wordHuntTitle}</span>
       <h1>${tt.wordHuntTitle}</h1><p class="muted">${tt.wordHuntHelp}</p>
     </header>
@@ -3863,8 +4130,11 @@ function wordHuntView() {
     </div>
     <div class="word-hunt-board">
       <div class="word-hunt-scene">
-        <img src="assets/game-hunt-scene.svg" alt="${ar() ? "طفل يصطاد الكلمات من كتاب" : "A child fishing for words from a book"}">
-        <span class="word-hunt-word">${escapeHtml(round.word)}</span>
+        <img src="assets/game-hunt-reference.png" alt="${ar() ? "طفل يصطاد على مركب في البحر" : "A child fishing from a boat at sea"}">
+        <div class="word-hunt-word-card" dir="${ar() ? "rtl" : "ltr"}">
+          <span>${ar() ? "ابحث عن صورة" : "Find the picture for"}</span>
+          <strong class="word-hunt-word">${escapeHtml(round.word)}</strong>
+        </div>
       </div>
       <div class="word-hunt-choices">${choices}</div>
     </div>
@@ -3888,12 +4158,11 @@ function wordBuilderView() {
     return `${flashBar()}<section class="learning-game-page">
       <span class="pill learning-game-pill">${tt.wordBuilderTitle}</span>
       <div class="learning-game-finish game-celebration">
-        <div class="celebration-stars" aria-hidden="true">⭐ 👏 ⭐</div>
-        <img src="assets/game-trophy.svg" alt="" aria-hidden="true"><h1>${tt.wordBuilderComplete}</h1>
+        <h1>${tt.wordBuilderComplete}</h1>
         ${rewardMessage ? `<div class="game-reward-notice" role="status">${rewardMessage}</div>` : ""}
         <div class="game-earned-points">${state.wordBuilderRewardStatus === "awarded" || alreadyRewarded
           ? (ar() ? "⭐ 4 نجوم" : "⭐ 4 stars") : ""}</div>
-        <div class="row"><button class="btn btn-green" data-act="restart-word-builder">${tt.playAgain}</button><button class="btn btn-ghost game-finish-back" data-back="games" aria-label="${tt.gamesBack}">←</button></div>
+        <div class="learning-game-finish-actions"><button class="btn btn-green" data-act="restart-word-builder">${tt.playAgain}</button><button class="btn btn-blue game-finish-back" data-back="games" aria-label="${tt.gamesBack}">← ${tt.gamesBack}</button></div>
       </div>
     </section>`;
   }
@@ -3911,13 +4180,17 @@ function wordBuilderView() {
       : `<button class="builder-slot" data-builder-remove="${slotIndex}" data-drop-kind="builder-slot" data-drop-index="${slotIndex}" ${correct ? "disabled" : ""}>${escapeHtml(round.letters[letterIndex])}</button>`;
   }).join("");
   return `${flashBar()}<section class="learning-game-page">
-    <div class="learning-game-step-nav">
-      <button class="game-arrow-button is-back" type="button" data-back="games" aria-label="${tt.gamesBack}">←</button>
-      <button class="game-arrow-button" type="button" data-builder-previous aria-label="${tt.prev}" ${state.wordBuilderRound <= 0 ? "disabled" : ""}>←</button>
-      <span>${tt.gameRoundProgress} ${state.wordBuilderRound + 1} / ${rounds.length}</span>
-      <button class="game-arrow-button is-next" type="button" data-builder-next aria-label="${tt.wordHuntNext}" ${correct ? "" : "disabled"}>→</button>
-    </div>
     <header class="learning-game-heading">
+      <div class="learning-game-topbar">
+        <button class="learning-game-back-button" type="button" data-back="games" aria-label="${tt.gamesBack}">
+          <span aria-hidden="true">←</span><strong>${tt.gamesBack}</strong>
+        </button>
+        <div class="learning-game-round">
+          <span>${tt.gameRoundProgress}</span>
+          <strong>${state.wordBuilderRound + 1} / ${rounds.length}</strong>
+        </div>
+        ${correct ? `<button class="learning-game-next-button" type="button" data-builder-next aria-label="${tt.wordHuntNext}"><strong>${tt.wordHuntNext}</strong><span aria-hidden="true">←</span></button>` : `<span class="learning-game-next-placeholder" aria-hidden="true"></span>`}
+      </div>
       <span class="pill learning-game-pill">${tt.wordBuilderTitle}</span>
       <h1>${tt.wordBuilderTitle}</h1><p class="muted">${tt.wordBuilderHelp}</p>
     </header>
@@ -4959,6 +5232,7 @@ function render() {
   if (!canSee(state.screen, user)) {
     state.screen = user ? homeFor(user.role) : "login";
   }
+  trackNewNotifications(user);
   const root = document.getElementById("app");
   document.documentElement.lang = state.lang;
   document.documentElement.dir = ar() ? "rtl" : "ltr";
@@ -5148,6 +5422,21 @@ function bind() {
         state.notificationsOpen = !state.notificationsOpen;
         render();
       }
+      if (act === "dismiss-notification") {
+        const user = sessionUser();
+        const notificationId = el.dataset.notificationId;
+        if (!user || !notificationItems(user).some((item) => item.id === notificationId)) return;
+        const data = db();
+        data.dismissedNotifications = data.dismissedNotifications || {};
+        if (!Array.isArray(data.dismissedNotifications[user.id])) {
+          data.dismissedNotifications[user.id] = [];
+        }
+        if (!data.dismissedNotifications[user.id].includes(notificationId)) {
+          data.dismissedNotifications[user.id].push(notificationId);
+          save(data);
+        }
+        render();
+      }
       if (act === "logout") logout();
       if (act === "toggle-password") {
         const input = el.closest(".password-field")?.querySelector("input");
@@ -5167,20 +5456,19 @@ function bind() {
         const book = findBook(sessionUser().currentBook);
         const pg = bookPages(book)[state.page];
         const utteranceText = (ar() ? pg.ar : pg.en).join(" ");
-        const u = new SpeechSynthesisUtterance(utteranceText);
-        u.lang = ar() ? "ar-SA" : "en-US";
-        u.rate = 0.85;
         const words = [...document.querySelectorAll("[data-reader-word]")];
-        u.onboundary = (event) => {
-          if (!Number.isFinite(event.charIndex)) return;
-          const index = (utteranceText.slice(0, event.charIndex).match(/\S+/g) || []).length;
-          words.forEach((word) => word.classList.toggle("is-speaking", Number(word.dataset.readerWord) === index));
-        };
         const clearHighlight = () => words.forEach((word) => word.classList.remove("is-speaking"));
-        u.onend = clearHighlight;
-        u.onerror = clearHighlight;
-        speechSynthesis.cancel();
-        speechSynthesis.speak(u);
+        speakText(utteranceText, {
+          rate: 0.86,
+          pitch: 1,
+          onboundary: (event) => {
+            if (!Number.isFinite(event.charIndex)) return;
+            const index = (utteranceText.slice(0, event.charIndex).match(/\S+/g) || []).length;
+            words.forEach((word) => word.classList.toggle("is-speaking", Number(word.dataset.readerWord) === index));
+          },
+          onend: clearHighlight,
+          onerror: clearHighlight
+        });
       }
       if (act === "rec") {
         if (state.rec === "rec") stopReadingRecording();
@@ -5260,7 +5548,7 @@ function bind() {
         }
         st.note = document.getElementById("note-box").value;
         save(data);
-        state.flash = t().noteSaved;
+        notifyActionSuccess(t().noteSaved);
         render();
       }
     });
@@ -5304,7 +5592,7 @@ function bind() {
         render();
         return;
       }
-      state.flash = t().avatarChanged;
+      notifyActionSuccess(t().avatarChanged);
       render();
     });
   });
@@ -5339,7 +5627,7 @@ function bind() {
         render();
         return;
       }
-      state.flash = alreadyOwned ? t().avatarChanged : t().avatarPurchased;
+      notifyActionSuccess(alreadyOwned ? t().avatarChanged : t().avatarPurchased);
       render();
     });
   });
@@ -5364,7 +5652,7 @@ function bind() {
           render();
           return;
         }
-        state.flash = t().avatarChanged;
+        notifyActionSuccess(t().avatarChanged);
         render();
         return;
       }
@@ -5398,7 +5686,7 @@ function bind() {
         render();
         return;
       }
-      state.flash = alreadyOwned ? t().avatarChanged : t().avatarAccessoryPurchased;
+      notifyActionSuccess(alreadyOwned ? t().avatarChanged : t().avatarAccessoryPurchased);
       render();
     });
   });
@@ -5453,7 +5741,7 @@ function bind() {
           }
         }
       }
-      state.flash = ar() ? "تم تجهيز رحلة القراءة حسب اهتمامات طفلك." : "Your reading journey is ready.";
+      notifyActionSuccess(ar() ? "تم تجهيز رحلة القراءة حسب اهتمامات طفلك." : "Your reading journey is ready.");
       keepFlash = true;
       go(current ? homeFor(current.role) : "signup", undefined, { skipHistory: true });
     });
@@ -5511,9 +5799,10 @@ function bind() {
       classItem.studentIds = Array.isArray(classItem.studentIds) ? classItem.studentIds : [];
       if (!classItem.studentIds.includes(student.id)) classItem.studentIds.push(student.id);
       save(data);
-      state.flash = ar()
-        ? `تمت إضافة ${displayName(student)} إلى الفصل.`
-        : `${displayName(student)} was added to the class.`;
+      const studentName = ar() ? student.name : (student.nameEn || student.name);
+      notifyActionSuccess(ar()
+        ? `تمت إضافة ${studentName} إلى الفصل.`
+        : `${studentName} was added to the class.`);
       keepFlash = true;
       render();
     });
@@ -5546,7 +5835,7 @@ function bind() {
       classItem.studentIds = new FormData(form).getAll("studentIds").map(String);
       save(data);
       state.viewClass = null;
-      state.flash = ar() ? "تم تحديث طلاب الفصل." : "Class students updated.";
+      notifyActionSuccess(ar() ? "تم تحديث طلاب الفصل." : "Class students updated.");
       keepFlash = true;
       render();
     });
@@ -5569,7 +5858,7 @@ function bind() {
       data.classes = data.classes.filter((item) => item.id !== classItem.id);
       save(data);
       if (state.viewClass === classItem.id) state.viewClass = null;
-      state.flash = ar() ? "تم حذف الفصل." : "Class deleted.";
+      notifyActionSuccess(ar() ? "تم حذف الفصل." : "Class deleted.");
       keepFlash = true;
       render();
     });
@@ -5597,7 +5886,7 @@ function bind() {
       });
       save(data);
       state.classroomDraft = name;
-      state.flash = ar() ? "تم إنشاء الفصل ويمكنك الآن إدارة طلابه." : "Class created and ready for students.";
+      notifyActionSuccess(ar() ? "تم إنشاء الفصل ويمكنك الآن إدارة طلابه." : "Class created and ready for students.");
       keepFlash = true;
       render();
     });
@@ -5632,11 +5921,7 @@ function bind() {
   });
   document.querySelectorAll("[data-speak-word]").forEach((el) => {
     el.addEventListener("click", () => {
-      const utterance = new SpeechSynthesisUtterance(el.dataset.speakWord);
-      utterance.lang = ar() ? "ar-SA" : "en-US";
-      utterance.rate = 0.8;
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utterance);
+      speakText(el.dataset.speakWord, { rate: 0.86, pitch: 1.04 });
     });
   });
   document.querySelectorAll("[data-role]").forEach((el) => {
@@ -5716,8 +6001,18 @@ function bind() {
         student.dailyMission.completed = true;
         student.stars = (Number(student.stars) || 0) + 2;
         state.missionFeedback = { date: today, message: t().missionComplete };
+        state.missionCelebration = today;
+        playAnswerFeedbackSound(true);
+        window.celebrateDailyMission();
+        window.setTimeout(() => {
+          state.missionCelebration = null;
+          const card = document.querySelector(".mission-card.mission-just-completed");
+          card?.classList.remove("game-celebration", "mission-just-completed");
+          card?.querySelector(".mission-feedback")?.classList.remove("game-reward-notice");
+        }, 2200);
       } else {
         state.missionFeedback = { date: today, message: t().missionTryAgain };
+        playAnswerFeedbackSound(false);
       }
       save(data);
       render();
@@ -5746,7 +6041,7 @@ function bind() {
       if (!challenge.completedBy.includes(student.id)) challenge.completedBy.push(student.id);
       student.stars = (Number(student.stars) || 0) + 5;
       save(data);
-      state.flash = t().challengeDone;
+      notifyActionSuccess(t().challengeDone);
       render();
     });
   });
@@ -5759,9 +6054,9 @@ function bind() {
         !Number.isInteger(choice) || choice < 0 || choice >= round.choices.length) return;
       state.wordHuntChoice = choice;
       state.wordHuntAnswers[state.wordHuntRound] = choice;
-      speakGameMessage(choice === round.answer
-        ? (ar() ? "أحسنت! إجابة صحيحة." : "Well done! That's right.")
-        : (ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again."));
+      const correct = choice === round.answer;
+      playAnswerFeedbackSound(correct);
+      if (correct) window.celebrateAnswerCorrect?.();
       render();
     });
   });
@@ -5778,15 +6073,18 @@ function bind() {
       const rounds = WORD_HUNT_ROUNDS[ar() ? "ar" : "en"];
       const round = rounds[state.wordHuntRound];
       if (!round || state.wordHuntChoice !== round.answer) return;
+      let gameCompleted = false;
       if (state.wordHuntRound + 1 === rounds.length) {
         state.wordHuntRound = rounds.length;
         state.wordHuntRewardStatus = awardGameStars("wordHunt", 3);
+        gameCompleted = true;
       } else {
         state.wordHuntRound += 1;
         state.wordHuntChoice = state.wordHuntAnswers[state.wordHuntRound] ?? null;
       }
-      if (state.wordHuntRewardStatus === "awarded") {
-        speakGameMessage(ar() ? "يا بطل، اصطدت الكلمات وحصلت على ثلاث نجوم!" : "Amazing! You found every word and earned three stars!");
+      if (gameCompleted) {
+        playAnswerFeedbackSound(true, true);
+        window.celebrateGameWin();
       }
       render();
     });
@@ -5831,9 +6129,9 @@ function bind() {
       const builtWord = state.wordBuilderLetters.map((index) => round.letters[index]).join("");
       state.wordBuilderFeedback = builtWord === round.word ? "right" : "wrong";
       state.wordBuilderHistory[state.wordBuilderRound] = [...state.wordBuilderLetters];
-      speakGameMessage(state.wordBuilderFeedback === "right"
-        ? (ar() ? "أحسنت! بنيت الكلمة بشكل صحيح." : "Well done! You built the word correctly.")
-        : (ar() ? "أتفهم، أعدها من جديد" : "I understand. Let's try again."));
+      const correct = state.wordBuilderFeedback === "right";
+      playAnswerFeedbackSound(correct);
+      if (correct) window.celebrateAnswerCorrect?.();
       render();
     });
   });
@@ -5852,9 +6150,11 @@ function bind() {
     el.addEventListener("click", () => {
       const rounds = WORD_BUILDER_ROUNDS[ar() ? "ar" : "en"];
       if (state.wordBuilderFeedback !== "right" || !rounds[state.wordBuilderRound]) return;
+      let gameCompleted = false;
       if (state.wordBuilderRound + 1 === rounds.length) {
         state.wordBuilderRound = rounds.length;
         state.wordBuilderRewardStatus = awardGameStars("wordBuilder", 4);
+        gameCompleted = true;
       } else {
         state.wordBuilderRound += 1;
         state.wordBuilderLetters = [...(state.wordBuilderHistory[state.wordBuilderRound] || [])];
@@ -5862,8 +6162,9 @@ function bind() {
         const builtWord = state.wordBuilderLetters.map((index) => nextRound.letters[index]).join("");
         state.wordBuilderFeedback = builtWord === nextRound.word ? "right" : "";
       }
-      if (state.wordBuilderRewardStatus === "awarded") {
-        speakGameMessage(ar() ? "يا بطل، رتبت الكلمات وحصلت على أربع نجوم!" : "Amazing! You built every word and earned four stars!");
+      if (gameCompleted) {
+        playAnswerFeedbackSound(true, true);
+        window.celebrateGameWin();
       }
       render();
     });
@@ -5888,6 +6189,7 @@ function bind() {
       }
       student.encouragements = student.encouragements || [];
       student.encouragements.unshift({
+        id: uid("cheer"),
         text: message,
         at: Date.now(),
         senderRole: allowedTeacher ? "teacher" : "parent",
@@ -5895,7 +6197,7 @@ function bind() {
       });
       student.encouragements = student.encouragements.slice(0, 20);
       save(data);
-      state.flash = t().encouragementReceived;
+      notifyActionSuccess(t().encouragementReceived);
       render();
     });
   });
@@ -5950,7 +6252,7 @@ function bind() {
         render();
         return;
       }
-      state.flash = ar() ? "تم حذف التسجيل الصوتي." : "The voice recording was deleted.";
+      notifyActionSuccess(ar() ? "تم حذف التسجيل الصوتي." : "The voice recording was deleted.");
       render();
     });
   });
@@ -5969,7 +6271,7 @@ function bind() {
       }
       st.stars += 1;
       save(data);
-      state.flash = t().starSent;
+      notifyActionSuccess(t().starSent);
       render();
     });
   });
@@ -6098,9 +6400,9 @@ function bind() {
         save(data);
         state.signupDraft = {};
         setSession(id);
-        state.flash = ar()
+        notifyActionSuccess(ar()
           ? `تم إنشاء الحساب وربط ${credentials.length} ${credentials.length === 1 ? "طفل" : "أطفال"}`
-          : `Account created with ${credentials.length} linked ${credentials.length === 1 ? "child" : "children"}`;
+          : `Account created with ${credentials.length} linked ${credentials.length === 1 ? "child" : "children"}`);
         keepFlash = true;
         state.screenHistory = [];
         resetLearningGames();
@@ -6111,8 +6413,6 @@ function bind() {
       save(data);
       state.signupDraft = {};
       setSession(id);
-      state.flash = t().welcomeRole;
-      keepFlash = true;
       state.screenHistory = [];
       resetLearningGames();
       go(homeFor(role), undefined, { skipHistory: true });
@@ -6190,7 +6490,7 @@ function bind() {
         return;
       }
       state.editChildId = null;
-      state.flash = t().profileSaved;
+      notifyActionSuccess(t().profileSaved);
       render();
     });
   });
@@ -6288,7 +6588,7 @@ function bind() {
         render();
         return;
       }
-      state.flash = t().profileSaved;
+      notifyActionSuccess(t().profileSaved);
       render();
     });
   }
@@ -6415,7 +6715,7 @@ function bind() {
       }
       message.readAt = Date.now();
       save(data);
-      state.flash = t().messageRead;
+      notifyActionSuccess(t().messageRead);
       render();
     });
   });
@@ -6497,7 +6797,7 @@ function bind() {
       }
       data.users.push(user);
       save(data);
-      state.flash = t().accountCreated;
+      notifyActionSuccess(t().accountCreated);
       render();
     });
   }
@@ -6612,7 +6912,7 @@ function bind() {
         }
       }
       save(data);
-      state.flash = t().accountSaved;
+      notifyActionSuccess(t().accountSaved);
       render();
     });
   });
@@ -6645,6 +6945,8 @@ function bind() {
         if (assignment.teacherId === user.id) assignment.teacherId = null;
       });
       data.recordings = data.recordings.filter((recording) => recording.studentId !== user.id);
+      data.notifications = data.notifications.filter((notification) => notification.userId !== user.id);
+      delete data.dismissedNotifications[user.id];
       data.challenges.forEach((challenge) => {
         challenge.recipientIds = (challenge.recipientIds || []).filter((id) => id !== user.id);
         challenge.completedBy = (challenge.completedBy || []).filter((id) => id !== user.id);
@@ -6652,7 +6954,7 @@ function bind() {
       });
       if (state.viewStudent === user.id) state.viewStudent = null;
       save(data);
-      state.flash = t().accountDeleted;
+      notifyActionSuccess(t().accountDeleted);
       render();
     });
   });
@@ -6699,7 +7001,7 @@ function bind() {
         });
       }
       save(data);
-      state.flash = paymentAmountText ? t().paymentRecorded : t().subscriptionSaved;
+      notifyActionSuccess(paymentAmountText ? t().paymentRecorded : t().subscriptionSaved);
       render();
     });
   });
@@ -6754,7 +7056,7 @@ function bind() {
         quiz: { questionAr, questionEn, optionsAr, optionsEn, correctIndex }
       });
       save(data);
-      state.flash = t().storyCreated;
+      notifyActionSuccess(t().storyCreated);
       render();
     });
   }
@@ -6790,7 +7092,7 @@ function bind() {
         return;
       }
       save(data);
-      state.flash = t().accessSaved;
+      notifyActionSuccess(t().accessSaved);
       render();
     });
   });
@@ -6810,7 +7112,7 @@ function bind() {
       }
       book.active = book.active === false;
       save(data);
-      state.flash = book.active ? t().storyCreated : t().storyDeleted;
+      notifyActionSuccess(book.active ? t().storyCreated : t().storyDeleted);
       render();
     });
   });
@@ -6842,7 +7144,7 @@ function bind() {
       const pi = data.users.findIndex((u) => u.id === parent.id);
       data.users[pi] = parent;
       save(data);
-      state.flash = `${t().addChildOk} ${t().studentLoginDetails.replace("{email}", escapeHtml(email)).replace("{pin}", pin)}`;
+      notifyActionSuccess(`${t().addChildOk} ${t().studentLoginDetails.replace("{email}", email).replace("{pin}", pin)}`);
       render();
     });
   }
@@ -6878,7 +7180,7 @@ function bind() {
       }
       student.teacherIds.push(teacher.id);
       save(data);
-      state.flash = ar() ? "تم ربط الطالب بحسابك." : "Student linked to your account.";
+      notifyActionSuccess(ar() ? "تم ربط الطالب بحسابك." : "Student linked to your account.");
       keepFlash = true;
       render();
     });
@@ -6904,7 +7206,7 @@ function bind() {
         const parentIndex = data.users.findIndex((u) => u.id === parent.id);
         data.users[parentIndex] = parent;
         save(data);
-        state.flash = t().linkChildOk;
+        notifyActionSuccess(t().linkChildOk);
       }
       render();
     });
@@ -6925,7 +7227,7 @@ function bind() {
       const savedParent = data.users.find((user) => user.id === parent.id);
       savedParent.familyGoalMins = goal;
       save(data);
-      state.flash = t().goalSaved;
+      notifyActionSuccess(t().goalSaved);
       render();
     });
   }
@@ -6958,7 +7260,7 @@ function bind() {
         createdAt: Date.now(), active: true, completedBy: []
       });
       save(data);
-      state.flash = t().challengePublished;
+      notifyActionSuccess(t().challengePublished);
       render();
     });
   }
@@ -6996,7 +7298,7 @@ function bind() {
         if (book.l <= student.level) student.currentBook = bookId;
       }
       save(data);
-      state.flash = t().assigned;
+      notifyActionSuccess(t().assigned);
       render();
     });
   }
@@ -7022,7 +7324,7 @@ function bind() {
       }
       account.password = password;
       save(data);
-      state.flash = ar() ? "تم تحديث كلمة المرور بنجاح." : "Password updated successfully.";
+      notifyActionSuccess(ar() ? "تم تحديث كلمة المرور بنجاح." : "Password updated successfully.", account.id);
       keepFlash = true;
       go("login");
     });
@@ -7056,12 +7358,12 @@ function bind() {
         });
         save(data);
         state.checkoutBook = null;
-        state.flash = t().bookPurchased;
+        notifyActionSuccess(t().bookPurchased);
         keepFlash = true;
         openBook(book.id);
         return;
       }
-      state.flash = ar() ? "تم تأكيد الاشتراك التجريبي. لن يتم خصم أي مبلغ." : "Demo subscription confirmed. No real payment was made.";
+      notifyActionSuccess(ar() ? "تم تأكيد الاشتراك التجريبي. لن يتم خصم أي مبلغ." : "Demo subscription confirmed. No real payment was made.");
       keepFlash = true;
       go("signup");
     });
@@ -7088,6 +7390,12 @@ function bind() {
     });
   }
 }
+
+document.addEventListener("pointerdown", enableNotificationAudio, { once: true });
+document.addEventListener("keydown", enableNotificationAudio, { once: true });
+window.addEventListener("storage", (event) => {
+  if (event.key === KEY) render();
+});
 
 seed();
 const existing = sessionUser();

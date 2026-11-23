@@ -2,11 +2,13 @@
   "name": "bayan-reading-site",
   "private": true,
   "scripts": {
-    "build:avatar": "esbuild js/avatar-library.js --bundle --minify --legal-comments=external --outfile=js/avatar-library.bundle.js --format=iife"
+    "build:avatar": "esbuild js/avatar-library.js --bundle --minify --legal-comments=external --outfile=js/avatar-library.bundle.js --format=iife",
+    "build:celebration": "esbuild js/celebration.js --bundle --minify --outfile=js/celebration.bundle.js --format=iife"
   },
   "dependencies": {
     "@dicebear/avataaars": "9.4.2",
-    "@dicebear/core": "9.4.3"
+    "@dicebear/core": "9.4.3",
+    "canvas-confetti": "1.9.4"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

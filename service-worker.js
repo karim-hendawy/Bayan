@@ -1,14 +1,24 @@
-const CACHE_NAME = "bayan-v2";
+const CACHE_NAME = "bayan-v15";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./css/style.css",
-  "./js/app.js",
+  "./css/style.css?v=20261123-44",
+  "./js/app.js?v=20261123-41",
   "./js/avatar-library.bundle.js",
+  "./js/celebration.bundle.js?v=20261123-3",
   "./manifest.webmanifest",
   "./assets/logo.jpg",
   "./assets/hero.jpg",
-  "./assets/avatar.jpg"
+  "./assets/avatar.jpg",
+  "./assets/game-picture-moon.svg",
+  "./assets/game-picture-sun.svg",
+  "./assets/game-picture-book.svg",
+  "./assets/game-picture-house.svg",
+  "./assets/game-picture-fish.svg",
+  "./assets/game-picture-flower.svg",
+  "./assets/game-picture-door.svg",
+  "./assets/game-picture-cat.svg",
+  "./assets/game-picture-star.svg"
 ];
 
 self.addEventListener("install", (event) => {
