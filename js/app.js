@@ -1131,6 +1131,10 @@ function bindRecordingPreviewPlayer() {
   const currentLabel = player.querySelector("[data-recording-current]");
   const durationLabel = player.querySelector("[data-recording-duration]");
   if (!audio || !button || !waveform || !seek || !currentLabel || !durationLabel) return;
+  audio.playsInline = true;
+  audio.setAttribute("playsinline", "");
+  audio.preload = "metadata";
+  audio.load();
 
   const fallbackDuration = Number(player.dataset.duration) || 0;
   const actualDuration = () => Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : 0;
@@ -1159,6 +1163,14 @@ function bindRecordingPreviewPlayer() {
 
   ["loadedmetadata", "durationchange", "timeupdate", "play", "pause", "ended"].forEach((event) => {
     audio.addEventListener(event, update);
+  });
+  audio.addEventListener("error", () => {
+    audio.classList.add("is-fallback");
+    audio.setAttribute("controls", "");
+    audio.removeAttribute("aria-hidden");
+    audio.removeAttribute("tabindex");
+    button.hidden = true;
+    state.flash = t().recordingPlaybackFailed;
   });
   button.addEventListener("click", async () => {
     if (!audio.paused && !audio.ended) {
@@ -1240,7 +1252,7 @@ function deleteRecordingAudio(id) {
 function recordingAudioPlayer(recording, className = "") {
   const classAttribute = className ? ` class="${className}"` : "";
   if (typeof recording.audioData === "string" && recording.audioData.startsWith("data:audio/")) {
-    return `<audio${classAttribute} controls preload="none" src="${escapeHtml(recording.audioData)}"></audio>`;
+    return `<audio${classAttribute} controls preload="metadata" playsinline src="${escapeHtml(recording.audioData)}"></audio>`;
   }
   const id = escapeHtml(recording.id);
   return `<audio${classAttribute} controls preload="none" data-audio-id="${id}" hidden></audio>
@@ -1262,6 +1274,9 @@ async function hydrateRecordingAudio() {
       }
       if (!player.isConnected) return;
       player.src = url;
+      player.preload = "metadata";
+      player.playsInline = true;
+      player.setAttribute("playsinline", "");
       player.hidden = false;
       player.load();
       const fallback = [...document.querySelectorAll("[data-audio-fallback]")]
@@ -1311,7 +1326,7 @@ async function startReadingRecording() {
     }
     activeRecordingStream = stream;
     const supportedType = [
-      "audio/webm;codecs=opus", "audio/webm", "audio/mp4", "audio/ogg;codecs=opus"
+      "audio/mp4", "audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus"
     ].find((type) => MediaRecorder.isTypeSupported?.(type));
     const recorder = supportedType ? new MediaRecorder(stream, { mimeType: supportedType }) : new MediaRecorder(stream);
     const chunks = [];

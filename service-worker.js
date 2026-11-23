@@ -1,9 +1,9 @@
-const CACHE_NAME = "bayan-v15";
+const CACHE_NAME = "bayan-v18";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./css/style.css?v=20261123-44",
-  "./js/app.js?v=20261123-41",
+  "./css/style.css?v=20261123-46",
+  "./js/app.js?v=20261123-43",
   "./js/avatar-library.bundle.js",
   "./js/celebration.bundle.js?v=20261123-3",
   "./manifest.webmanifest",

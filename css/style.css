@@ -4858,6 +4858,15 @@ th { font-size: 15px; color: var(--muted); }
   clip-path: inset(50%);
   white-space: nowrap;
 }
+.recording-preview-audio.is-fallback {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  grid-column: 1 / -1;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+}
 .recording-play-toggle {
   display: grid;
   width: 44px;
